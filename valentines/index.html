@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Flower Index 2026 | Flower Index Data</title>
+    <meta name="description" content="How much do Valentine's Day flowers cost in your city? Compare rose prices, bouquet costs, and romantic spending across 217 US cities.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --warm-white: #f5f3ef;
+            --rose: #9e6b7a;
+            --rose-dark: #7d5462;
+            --rose-light: #f5eef0;
+            --terracotta: #c4775c;
+            --gold: #b8965a;
+            --slate: #6b7280;
+            --border: rgba(26, 26, 26, 0.08);
+            
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 249, 247, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #7d8c7d 0%, var(--terracotta) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-link {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--slate);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--ink);
+            background: var(--warm-white);
+        }
+        
+        .nav-link.active {
+            color: var(--rose);
+            background: var(--rose-light);
+        }
+        
+        .nav-cta {
+            margin-left: 16px;
+            padding: 10px 20px;
+            background: var(--ink);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-cta:hover {
+            background: #333;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(180deg, var(--rose-light) 0%, var(--paper) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(158, 107, 122, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(196, 119, 92, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+        
+        .hero-text {
+            animation: fadeInUp 0.8s var(--ease-out) both;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--rose);
+            margin-bottom: 24px;
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title em {
+            font-style: italic;
+            color: var(--rose);
+        }
+        
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--slate);
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--rose);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .hero-cta:hover {
+            background: var(--rose-dark);
+            transform: translateY(-2px);
+        }
+        
+        .hero-cta-secondary {
+            background: white;
+            color: var(--ink);
+            border: 1px solid var(--border);
+        }
+        
+        .hero-cta-secondary:hover {
+            background: var(--warm-white);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stats Card */
+        .hero-stats {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(26, 26, 26, 0.08);
+            animation: fadeInUp 0.8s var(--ease-out) 0.2s both;
+        }
+        
+        .hero-stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hero-stats-title {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .hero-stats-year {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--rose);
+            padding: 6px 12px;
+            background: var(--rose-light);
+            border-radius: 100px;
+        }
+        
+        .hero-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hero-stat-row:last-child {
+            border-bottom: none;
+        }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            color: var(--slate);
+        }
+        
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .hero-stat-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        
+        .hero-stat-change.up {
+            color: #c4775c;
+        }
+        
+        .hero-stat-change.down {
+            color: #5a8c5a;
+        }
+        
+        /* Story Angles */
+        .stories {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--rose);
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        @media (max-width: 900px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .story-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s var(--ease-out);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(26, 26, 26, 0.08);
+        }
+        
+        .story-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--rose-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .story-card-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .story-card-desc {
+            font-size: 14px;
+            color: var(--slate);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .story-card-example {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--rose);
+            padding: 12px;
+            background: var(--rose-light);
+            border-radius: 8px;
+        }
+        
+        /* Rankings Table */
+        .rankings {
+            padding: 80px 0;
+            background: var(--warm-white);
+        }
+        
+        .rankings-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .rankings-search {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            min-width: 300px;
+        }
+        
+        .rankings-search input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: var(--font-body);
+            width: 100%;
+            background: transparent;
+        }
+        
+        .rankings-search input::placeholder {
+            color: var(--slate);
+        }
+        
+        .rankings-download {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .rankings-download a {
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .rankings-download .csv {
+            background: white;
+            color: var(--ink);
+            border: 1px solid var(--border);
+        }
+        
+        .rankings-download .csv:hover {
+            background: var(--paper);
+        }
+        
+        .rankings-download .json {
+            background: var(--ink);
+            color: white;
+        }
+        
+        .rankings-download .json:hover {
+            background: #333;
+        }
+        
+        .rankings-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(26, 26, 26, 0.04);
+        }
+        
+        .rankings-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .rankings-table th {
+            text-align: left;
+            padding: 16px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--slate);
+            background: var(--warm-white);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .rankings-table td {
+            padding: 16px 20px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .rankings-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .rankings-table tr:hover td {
+            background: rgba(158, 107, 122, 0.04);
+        }
+        
+        .rank-number {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--rose);
+        }
+        
+        .city-name {
+            font-weight: 500;
+        }
+        
+        .city-state {
+            color: var(--slate);
+            margin-left: 4px;
+        }
+        
+        .price {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .change {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .change.up {
+            background: rgba(196, 119, 92, 0.1);
+            color: var(--terracotta);
+        }
+        
+        .change.down {
+            background: rgba(90, 140, 90, 0.1);
+            color: #5a8c5a;
+        }
+        
+        .generosity-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .generosity-bar {
+            width: 60px;
+            height: 6px;
+            background: var(--warm-white);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .generosity-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--rose) 0%, var(--terracotta) 100%);
+            border-radius: 3px;
+        }
+        
+        .view-city {
+            color: var(--rose);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+        }
+        
+        .view-city:hover {
+            text-decoration: underline;
+        }
+        
+        /* Methodology */
+        .methodology {
+            padding: 80px 0;
+        }
+        
+        .methodology-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        @media (max-width: 900px) {
+            .methodology-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+        
+        .methodology-text h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+        
+        .methodology-text p {
+            font-size: 15px;
+            color: var(--slate);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .methodology-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+        
+        .methodology-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .methodology-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .methodology-list-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--rose-light);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .methodology-list-text {
+            font-size: 14px;
+        }
+        
+        .methodology-list-text strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .methodology-list-text span {
+            color: var(--slate);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            background: var(--ink);
+            color: white;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #7d8c7d 0%, var(--terracotta) 100%);
+            border-radius: 8px;
+        }
+        
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom span {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .footer-powered {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .footer-powered a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .footer-powered a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C13.5 2 15 3.5 15 5.5C15 7.5 13.5 9 12 9C10.5 9 9 7.5 9 5.5C9 3.5 10.5 2 12 2ZM12 11C15.5 11 18 13.5 18 17C18 20.5 15.5 22 12 22C8.5 22 6 20.5 6 17C6 13.5 8.5 11 12 11Z"/></svg>
+                </div>
+                <span class="nav-logo-text">Flower Index Data</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="/valentines/" class="nav-link active">Valentine's</a>
+                <a href="/mothers-day/" class="nav-link">Mother's Day</a>
+                <a href="/sympathy/" class="nav-link">Sympathy</a>
+                <a href="/christmas/" class="nav-link">Christmas</a>
+                <a href="/press-kit.html" class="nav-cta">Press Kit</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">💐 Valentine's Day 2026</div>
+                    <h1 class="hero-title">How much does <em>love</em> cost in your city?</h1>
+                    <p class="hero-subtitle">Compare rose prices, bouquet costs, and romantic spending across 217 US cities. Real pricing from real local florists.</p>
+                    <div class="hero-cta-group">
+                        <a href="#rankings" class="hero-cta">View City Rankings</a>
+                        <a href="/press-kit.html" class="hero-cta hero-cta-secondary">Download Press Kit</a>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="hero-stats-header">
+                        <h3 class="hero-stats-title">National Snapshot</h3>
+                        <span class="hero-stats-year">2026</span>
+                    </div>
+                    
+                    <div class="hero-stat-row">
+                        <span class="hero-stat-label">Avg. Dozen Red Roses</span>
+                        <div>
+                            <span class="hero-stat-value">$78.50</span>
+                            <span class="hero-stat-change up">↑ 23%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stat-row">
+                        <span class="hero-stat-label">Avg. Mixed Bouquet</span>
+                        <div>
+                            <span class="hero-stat-value">$62.00</span>
+                            <span class="hero-stat-change up">↑ 18%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stat-row">
+                        <span class="hero-stat-label">Most Expensive City</span>
+                        <div>
+                            <span class="hero-stat-value">NYC</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stat-row">
+                        <span class="hero-stat-label">Most Affordable City</span>
+                        <div>
+                            <span class="hero-stat-value">Tulsa, OK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Angles -->
+    <section class="stories">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Story Angles for Press</p>
+                <h2 class="section-title">Local hooks that drive engagement</h2>
+            </div>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-card-icon">💕</div>
+                    <h3 class="story-card-title">The Generosity Index™</h3>
+                    <p class="story-card-desc">Which cities spend the most relative to their income? Rank romantic generosity when controlling for cost of living.</p>
+                    <div class="story-card-example">"Partners in Oklahoma City spend 40% more on flowers relative to income than those in San Francisco"</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-card-icon">🌹</div>
+                    <h3 class="story-card-title">The Rose Price Map</h3>
+                    <p class="story-card-desc">Geographic pricing variations across regions. Why do roses cost twice as much in some cities?</p>
+                    <div class="story-card-example">"A dozen roses in Manhattan costs $95 — but drive 30 miles to Newark and pay just $68"</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-card-icon">🏆</div>
+                    <h3 class="story-card-title">Regional Rivalries</h3>
+                    <p class="story-card-desc">Compare neighboring cities head-to-head. Dallas vs Houston, LA vs San Diego, Chicago vs Detroit.</p>
+                    <div class="story-card-example">"Houston partners outspend Dallas by $12 per bouquet — but who's more romantic per capita?"</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-card-icon">📈</div>
+                    <h3 class="story-card-title">Fastest-Rising Markets</h3>
+                    <p class="story-card-desc">Which cities saw the biggest year-over-year price increases? Track inflation by metro area.</p>
+                    <div class="story-card-example">"Valentine's flowers up 34% in Austin — the fastest rise of any major city"</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-card-icon">💰</div>
+                    <h3 class="story-card-title">Budget vs. Splurge</h3>
+                    <p class="story-card-desc">Compare what $50 buys you in different cities. Stretch your romantic dollar further.</p>
+                    <div class="story-card-example">"$50 gets you 6 roses in NYC but a full dozen with filler in Phoenix"</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-card-icon">🎤</div>
+                    <h3 class="story-card-title">Local Florist Quotes</h3>
+                    <p class="story-card-desc">Expert sources in every major market. Connect journalists with local florists for quotes.</p>
+                    <div class="story-card-example">"We can connect you with florists in 50+ cities for local perspective"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rankings -->
+    <section class="rankings" id="rankings">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">2026 Rankings</p>
+                <h2 class="section-title">Valentine's Day flower prices by city</h2>
+            </div>
+            
+            <div class="rankings-controls">
+                <div class="rankings-search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" placeholder="Search cities..." id="citySearch">
+                </div>
+                
+                <div class="rankings-download">
+                    <a href="/data/valentines-2026.csv" class="csv">📊 Download CSV</a>
+                    <a href="/data/valentines-2026.json" class="json">{ } JSON API</a>
+                </div>
+            </div>
+            
+            <div class="rankings-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>City</th>
+                            <th>Dozen Roses</th>
+                            <th>YoY Change</th>
+                            <th>Generosity Score</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingsBody">
+                        <tr>
+                            <td><span class="rank-number">1</span></td>
+                            <td><span class="city-name">New York</span><span class="city-state">NY</span></td>
+                            <td><span class="price">$95.00</span></td>
+                            <td><span class="change up">↑ 18%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 65%"></div></div>
+                                    <span>65</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/new-york-ny/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">2</span></td>
+                            <td><span class="city-name">San Francisco</span><span class="city-state">CA</span></td>
+                            <td><span class="price">$92.00</span></td>
+                            <td><span class="change up">↑ 22%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 58%"></div></div>
+                                    <span>58</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/san-francisco-ca/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">3</span></td>
+                            <td><span class="city-name">Los Angeles</span><span class="city-state">CA</span></td>
+                            <td><span class="price">$88.00</span></td>
+                            <td><span class="change up">↑ 20%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 62%"></div></div>
+                                    <span>62</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/los-angeles-ca/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">4</span></td>
+                            <td><span class="city-name">Miami</span><span class="city-state">FL</span></td>
+                            <td><span class="price">$85.00</span></td>
+                            <td><span class="change up">↑ 25%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 78%"></div></div>
+                                    <span>78</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/miami-fl/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">5</span></td>
+                            <td><span class="city-name">Boston</span><span class="city-state">MA</span></td>
+                            <td><span class="price">$84.00</span></td>
+                            <td><span class="change up">↑ 19%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 60%"></div></div>
+                                    <span>60</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/boston-ma/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">6</span></td>
+                            <td><span class="city-name">Chicago</span><span class="city-state">IL</span></td>
+                            <td><span class="price">$82.00</span></td>
+                            <td><span class="change up">↑ 21%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 72%"></div></div>
+                                    <span>72</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/chicago-il/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">7</span></td>
+                            <td><span class="city-name">Phoenix</span><span class="city-state">AZ</span></td>
+                            <td><span class="price">$72.00</span></td>
+                            <td><span class="change up">↑ 28%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 82%"></div></div>
+                                    <span>82</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/phoenix-az/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">8</span></td>
+                            <td><span class="city-name">Houston</span><span class="city-state">TX</span></td>
+                            <td><span class="price">$70.00</span></td>
+                            <td><span class="change up">↑ 24%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 85%"></div></div>
+                                    <span>85</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/houston-tx/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">9</span></td>
+                            <td><span class="city-name">Dallas</span><span class="city-state">TX</span></td>
+                            <td><span class="price">$68.00</span></td>
+                            <td><span class="change up">↑ 22%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 80%"></div></div>
+                                    <span>80</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/dallas-tx/" class="view-city">View →</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-number">10</span></td>
+                            <td><span class="city-name">Atlanta</span><span class="city-state">GA</span></td>
+                            <td><span class="price">$65.00</span></td>
+                            <td><span class="change up">↑ 20%</span></td>
+                            <td>
+                                <div class="generosity-score">
+                                    <div class="generosity-bar"><div class="generosity-fill" style="width: 88%"></div></div>
+                                    <span>88</span>
+                                </div>
+                            </td>
+                            <td><a href="/valentines/atlanta-ga/" class="view-city">View →</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Methodology -->
+    <section class="methodology">
+        <div class="container">
+            <div class="methodology-content">
+                <div class="methodology-text">
+                    <h2>How we collect our data</h2>
+                    <p>The Valentine's Day Flower Index is built on real pricing from actual local florists — not wire services, not online-only retailers, not wholesale prices.</p>
+                    <p>We survey over 500 independent florists across 217 US cities to create the most accurate picture of what consumers actually pay for Valentine's flowers.</p>
+                    
+                    <ul class="methodology-list">
+                        <li>
+                            <span class="methodology-list-icon">🌹</span>
+                            <div class="methodology-list-text">
+                                <strong>Product Standardization</strong>
+                                <span>We track identical products: dozen long-stem red roses, mixed seasonal bouquet, premium arrangement.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="methodology-list-icon">📍</span>
+                            <div class="methodology-list-text">
+                                <strong>Local Florists Only</strong>
+                                <span>Data comes from independent shops, not wire services or big box retailers.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="methodology-list-icon">📅</span>
+                            <div class="methodology-list-text">
+                                <strong>Seasonal Pricing</strong>
+                                <span>We capture Valentine's premium pricing (Jan 20 – Feb 14) vs. regular pricing.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="methodology-list-icon">💰</span>
+                            <div class="methodology-list-text">
+                                <strong>Income-Adjusted Scoring</strong>
+                                <span>Generosity Index™ controls for local median household income.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="methodology-text">
+                    <h2>For journalists & researchers</h2>
+                    <p>We built this index to be cited. All data is freely available for editorial use with attribution to Flower Index Data.</p>
+                    <p>Our press kit includes embargoed data releases, embeddable graphics, and access to local florist sources for quotes in your market.</p>
+                    
+                    <ul class="methodology-list">
+                        <li>
+                            <span class="methodology-list-icon">📊</span>
+                            <div class="methodology-list-text">
+                                <strong>Downloadable Data</strong>
+                                <span>CSV and JSON formats available for all city and state data.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="methodology-list-icon">🎨</span>
+                            <div class="methodology-list-text">
+                                <strong>Embeddable Widgets</strong>
+                                <span>Add our pricing widget to any website with a single line of code.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="methodology-list-icon">🎤</span>
+                            <div class="methodology-list-text">
+                                <strong>Expert Sources</strong>
+                                <span>We can connect you with florists in 50+ cities for local quotes.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="methodology-list-icon">📧</span>
+                            <div class="methodology-list-text">
+                                <strong>Media Contact</strong>
+                                <span>Reach our research team at press@flowerindexdata.com</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon"></div>
+                        <span>Flower Index Data</span>
+                    </div>
+                    <p>The definitive source for flower pricing intelligence across America. Helping consumers, florists, and media make informed decisions.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Indexes</h4>
+                    <ul>
+                        <li><a href="/valentines/">Valentine's Day</a></li>
+                        <li><a href="/mothers-day/">Mother's Day</a></li>
+                        <li><a href="/sympathy/">Sympathy</a></li>
+                        <li><a href="/christmas/">Christmas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/press-kit.html">Press Kit</a></li>
+                        <li><a href="/methodology.html">Methodology</a></li>
+                        <li><a href="/api.html">API Access</a></li>
+                        <li><a href="/widget.html">Embed Widget</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Data</h4>
+                    <ul>
+                        <li><a href="/data/valentines-2026.csv">Download CSV</a></li>
+                        <li><a href="/data/valentines-2026.json">JSON API</a></li>
+                        <li><a href="/states/">Browse by State</a></li>
+                        <li><a href="/cities/">Browse by City</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <span>© 2026 Flower Index Data. All rights reserved.</span>
+                <div class="footer-powered">
+                    Research powered by <a href="https://teamfloral.com" target="_blank">TeamFloral</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple city search
+        document.getElementById('citySearch').addEventListener('input', function(e) {
+            const search = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#rankingsBody tr');
+            
+            rows.forEach(row => {
+                const city = row.querySelector('.city-name').textContent.toLowerCase();
+                const state = row.querySelector('.city-state').textContent.toLowerCase();
+                
+                if (city.includes(search) || state.includes(search)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

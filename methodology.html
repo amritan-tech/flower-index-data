@@ -1,79 +1,546 @@
-💐
-Flower Index Data
-Home
-All Cities
-Methodology
-Press Kit
-Methodology & Data Sources
-How we collect, analyze, and report flower pricing data
-⚠️ Important Notice
-This data is compiled for informational and editorial purposes only. Prices shown are estimates based on market surveys and may not reflect current pricing at any specific florist. Actual prices vary by retailer, arrangement style, flower availability, and market conditions.
-This website and its data are not affiliated with, endorsed by, or sponsored by any individual florist or floral industry organization unless explicitly stated.
-Overview
-The Flower Index Data project tracks Valentine's Day flower prices across 100 American cities to help consumers understand regional pricing variations and help journalists report on seasonal flower market trends.
-This project is a collaboration between independent researchers and TeamFloral, a network of local florists who voluntarily share pricing information to promote market transparency.
-Data Collection Methodology
-Survey Period
-Data is collected annually during the first two weeks of January, approximately 4-6 weeks before Valentine's Day. This timing captures pre-holiday pricing while allowing florists to finalize their Valentine's Day menus.
-Sample Selection
-Cities are selected based on a combination of:
-	•	Population size (representing major metropolitan areas)
-	•	Geographic distribution (ensuring regional coverage)
-	•	Florist participation (cities with willing survey participants)
-Price Data Collection
-For each city, we collect pricing data through multiple methods:
-	1	Direct florist surveys: Participating TeamFloral members report their standard pricing for common Valentine's arrangements.
-	2	Published menu review: We review publicly available pricing from florist websites and published menus.
-	3	Industry benchmarks: We cross-reference with industry publications and wholesale market data.
-PRODUCTS SURVEYED
-We track prices for standardized products: one dozen long-stem red roses (arranged in vase with filler greens) and a mixed seasonal bouquet (mid-range, approximately 12-15 stems). Prices include standard local delivery where available.
-Calculated Metrics
-City Rankings
-Cities are ranked by the average price of one dozen red roses, from highest to lowest. Rankings reflect relative pricing only and do not indicate quality differences.
-Generosity Score
-The "Generosity Score" (0-100) is a composite metric that estimates how often residents purchase flowers for others relative to cost of living. It is calculated using:
-	•	Local flower purchase frequency (survey-estimated)
-	•	Average order value relative to local median income
-	•	Frequency of delivery orders vs. in-store pickup
-This metric is intended as a fun editorial element and should not be considered statistically rigorous.
-Year-over-Year Change
-Where historical data is available, we calculate the percentage change from the previous year's survey. First-year cities show estimated changes based on regional averages.
-Data Sources & References
-	•	TeamFloral Network Surveys Primary pricing data from participating local florists across the United States. teamfloral.com
-	•	Society of American Florists Industry statistics, consumer trends, and market research reports. safnow.org
-	•	U.S. Bureau of Labor Statistics Cost of living indices and regional price parities used for normalization. bls.gov
-	•	USDA Agricultural Marketing Service Wholesale cut flower prices and import statistics. ams.usda.gov
-	•	U.S. Census Bureau Population data and metropolitan statistical area definitions. census.gov
-Limitations & Disclaimers
-LEGAL DISCLAIMER
-The information provided on this website is for general informational purposes only. While we strive for accuracy, we make no warranties about the completeness, reliability, or accuracy of this information. Any reliance you place on such information is strictly at your own risk.
-Known Limitations
-	•	Sample size: Not all cities have equal florist participation. Some price estimates are based on fewer data points than others.
-	•	Timing: Prices are surveyed weeks before Valentine's Day. Last-minute price changes are not captured.
-	•	Product variation: "Dozen roses" can vary by stem length, variety, and arrangement style. We attempt to standardize, but variations exist.
-	•	Online vs. local: Data primarily reflects local florist pricing, not national delivery services which may differ.
-Fair Use of Quotes
-Florist quotes featured on city pages are used with explicit permission from the quoted individuals or businesses. Quotes represent the opinions of the speakers and not necessarily the views of Flower Index Data or its partners.
-Trademark Notice
-All city names, business names, and trademarks mentioned on this site are the property of their respective owners. Flower Index Data is not affiliated with any city government or tourism board unless explicitly stated.
-Data Usage & Attribution
-Journalists, researchers, and content creators are welcome to use data from this site with proper attribution. Suggested citation format:
-"According to the 2026 Valentine's Day Flower Index by Flower Index Data (flowerindexdata.com), [statistic]."
-For press inquiries, high-resolution graphics, or custom data requests, please visit our Press Kit page.
-Creative Commons
-Data tables and aggregate statistics are released under Creative Commons Attribution 4.0 International (CC BY 4.0). You are free to share and adapt the data for any purpose with attribution.
-Privacy & Data Protection
-This website does not collect personal information from visitors beyond standard web analytics (page views, general location). We do not sell or share visitor data with third parties.
-Florist participants in our surveys have consented to have their business information and quotes published. Individuals may request removal of their information by contacting us.
-Updates & Corrections
-We are committed to accuracy. If you believe any data on this site is incorrect, please contact us with specific details and we will investigate and correct verified errors promptly.
-This methodology document was last updated: January 2026
-Questions or Corrections?
-We welcome feedback on our methodology and data accuracy.
-data@flowerindexdata.com
-💐
-Flower Index Data
-Home
-All Cities
-Press Kit
-Research powered by TeamFloral
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology & Data Sources | Flower Index Data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FFFBF7;
+            --color-text: #2D2A26;
+            --color-text-muted: #6B645B;
+            --color-accent: #C4514B;
+            --color-accent-light: #F9E8E7;
+            --color-border: #E8E2DA;
+            --color-card-bg: #FFFFFF;
+            --color-warning-bg: #FFF8E6;
+            --color-warning-border: #E6C84A;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--color-card-bg);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--color-card-bg) 0%, var(--color-bg) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        /* Notice Box */
+        .notice {
+            background: var(--color-warning-bg);
+            border: 1px solid var(--color-warning-border);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .notice-title {
+            font-weight: 600;
+            color: #8B6914;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notice p {
+            font-size: 0.95rem;
+            color: #6B5A1E;
+            margin-bottom: 0.75rem;
+        }
+
+        .notice p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent-light);
+        }
+
+        .section h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .section ul, .section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Data Sources Card */
+        .sources-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .source-item {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .source-item h4 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .source-item p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .source-item .source-url {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+        }
+
+        /* Highlighted Box */
+        .highlight-box {
+            background: var(--color-accent-light);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Disclaimer Section */
+        .disclaimer {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .disclaimer h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .disclaimer p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-cta h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-cta p {
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta a {
+            color: var(--color-accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-cta a:hover {
+            text-decoration: underline;
+        }
+
+        /* Meta Info */
+        .meta-info {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-card-bg);
+            border-top: 1px solid var(--color-border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main {
+                padding: 2rem 1.25rem 4rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">💐 Flower Index Data</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cities">All Cities</a></li>
+                <li><a href="/methodology" class="active">Methodology</a></li>
+                <li><a href="/press">Press Kit</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Methodology & Data Sources</h1>
+        <p class="hero-subtitle">How we collect, analyze, and report flower pricing data</p>
+    </header>
+
+    <main class="main">
+        <div class="notice">
+            <div class="notice-title">⚠️ Important Notice</div>
+            <p>This data is compiled for informational and editorial purposes only. Prices shown are estimates based on market surveys and may not reflect current pricing at any specific florist. Actual prices vary by retailer, arrangement style, flower availability, and market conditions.</p>
+            <p>This website and its data are not affiliated with, endorsed by, or sponsored by any individual florist or floral industry organization unless explicitly stated.</p>
+        </div>
+
+        <section class="section">
+            <h2>Overview</h2>
+            <p>The Flower Index Data project tracks Valentine's Day flower prices across 100 American cities to help consumers understand regional pricing variations and help journalists report on seasonal flower market trends.</p>
+            <p>This project is a collaboration between independent researchers and TeamFloral, a network of local florists who voluntarily share pricing information to promote market transparency.</p>
+        </section>
+
+        <section class="section">
+            <h2>Data Collection Methodology</h2>
+            
+            <h3>Survey Period</h3>
+            <p>Data is collected annually during the first two weeks of January, approximately 4-6 weeks before Valentine's Day. This timing captures pre-holiday pricing while allowing florists to finalize their Valentine's Day menus.</p>
+            
+            <h3>Sample Selection</h3>
+            <p>Cities are selected based on a combination of:</p>
+            <ul>
+                <li>Population size (representing major metropolitan areas)</li>
+                <li>Geographic distribution (ensuring regional coverage)</li>
+                <li>Florist participation (cities with willing survey participants)</li>
+            </ul>
+            
+            <h3>Price Data Collection</h3>
+            <p>For each city, we collect pricing data through multiple methods:</p>
+            <ol>
+                <li><strong>Direct florist surveys:</strong> Participating TeamFloral members report their standard pricing for common Valentine's arrangements.</li>
+                <li><strong>Published menu review:</strong> We review publicly available pricing from florist websites and published menus.</li>
+                <li><strong>Industry benchmarks:</strong> We cross-reference with industry publications and wholesale market data.</li>
+            </ol>
+
+            <div class="highlight-box">
+                <h4>Products Surveyed</h4>
+                <p>We track prices for standardized products: one dozen long-stem red roses (arranged in vase with filler greens) and a mixed seasonal bouquet (mid-range, approximately 12-15 stems). Prices include standard local delivery where available.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Calculated Metrics</h2>
+            
+            <h3>City Rankings</h3>
+            <p>Cities are ranked by the average price of one dozen red roses, from highest to lowest. Rankings reflect relative pricing only and do not indicate quality differences.</p>
+            
+            <h3>Generosity Score</h3>
+            <p>The "Generosity Score" (0-100) is a composite metric that estimates how often residents purchase flowers for others relative to cost of living. It is calculated using:</p>
+            <ul>
+                <li>Local flower purchase frequency (survey-estimated)</li>
+                <li>Average order value relative to local median income</li>
+                <li>Frequency of delivery orders vs. in-store pickup</li>
+            </ul>
+            <p><em>This metric is intended as a fun editorial element and should not be considered statistically rigorous.</em></p>
+            
+            <h3>Year-over-Year Change</h3>
+            <p>Where historical data is available, we calculate the percentage change from the previous year's survey. First-year cities show estimated changes based on regional averages.</p>
+        </section>
+
+        <section class="section">
+            <h2>Data Sources & References</h2>
+            <div class="sources-grid">
+                <div class="source-item">
+                    <h4>TeamFloral Network Surveys</h4>
+                    <p>Primary pricing data from participating local florists across the United States.</p>
+                    <span class="source-url">teamfloral.com</span>
+                </div>
+                <div class="source-item">
+                    <h4>Society of American Florists</h4>
+                    <p>Industry statistics, consumer trends, and market research reports.</p>
+                    <span class="source-url">safnow.org</span>
+                </div>
+                <div class="source-item">
+                    <h4>U.S. Bureau of Labor Statistics</h4>
+                    <p>Cost of living indices and regional price parities used for normalization.</p>
+                    <span class="source-url">bls.gov</span>
+                </div>
+                <div class="source-item">
+                    <h4>USDA Agricultural Marketing Service</h4>
+                    <p>Wholesale cut flower prices and import statistics.</p>
+                    <span class="source-url">ams.usda.gov</span>
+                </div>
+                <div class="source-item">
+                    <h4>U.S. Census Bureau</h4>
+                    <p>Population data and metropolitan statistical area definitions.</p>
+                    <span class="source-url">census.gov</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Limitations & Disclaimers</h2>
+            
+            <div class="disclaimer">
+                <h3>Legal Disclaimer</h3>
+                <p>The information provided on this website is for general informational purposes only. While we strive for accuracy, we make no warranties about the completeness, reliability, or accuracy of this information. Any reliance you place on such information is strictly at your own risk.</p>
+            </div>
+            
+            <h3>Known Limitations</h3>
+            <ul>
+                <li><strong>Sample size:</strong> Not all cities have equal florist participation. Some price estimates are based on fewer data points than others.</li>
+                <li><strong>Timing:</strong> Prices are surveyed weeks before Valentine's Day. Last-minute price changes are not captured.</li>
+                <li><strong>Product variation:</strong> "Dozen roses" can vary by stem length, variety, and arrangement style. We attempt to standardize, but variations exist.</li>
+                <li><strong>Online vs. local:</strong> Data primarily reflects local florist pricing, not national delivery services which may differ.</li>
+            </ul>
+
+            <h3>Fair Use of Quotes</h3>
+            <p>Florist quotes featured on city pages are used with explicit permission from the quoted individuals or businesses. Quotes represent the opinions of the speakers and not necessarily the views of Flower Index Data or its partners.</p>
+
+            <h3>Trademark Notice</h3>
+            <p>All city names, business names, and trademarks mentioned on this site are the property of their respective owners. Flower Index Data is not affiliated with any city government or tourism board unless explicitly stated.</p>
+        </section>
+
+        <section class="section">
+            <h2>Data Usage & Attribution</h2>
+            <p>Journalists, researchers, and content creators are welcome to use data from this site with proper attribution. Suggested citation format:</p>
+            <blockquote style="background: var(--color-card-bg); border-left: 3px solid var(--color-accent); padding: 1rem 1.25rem; margin: 1rem 0; font-style: italic; color: var(--color-text-muted);">
+                "According to the 2026 Valentine's Day Flower Index by Flower Index Data (flowerindexdata.com), [statistic]."
+            </blockquote>
+            <p>For press inquiries, high-resolution graphics, or custom data requests, please visit our <a href="/press" style="color: var(--color-accent);">Press Kit</a> page.</p>
+
+            <h3>Creative Commons</h3>
+            <p>Data tables and aggregate statistics are released under <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong>. You are free to share and adapt the data for any purpose with attribution.</p>
+        </section>
+
+        <section class="section">
+            <h2>Privacy & Data Protection</h2>
+            <p>This website does not collect personal information from visitors beyond standard web analytics (page views, general location). We do not sell or share visitor data with third parties.</p>
+            <p>Florist participants in our surveys have consented to have their business information and quotes published. Individuals may request removal of their information by contacting us.</p>
+        </section>
+
+        <section class="section">
+            <h2>Updates & Corrections</h2>
+            <p>We are committed to accuracy. If you believe any data on this site is incorrect, please contact us with specific details and we will investigate and correct verified errors promptly.</p>
+        </section>
+
+        <div class="contact-cta">
+            <h3>Questions or Corrections?</h3>
+            <p>We welcome feedback on our methodology and data accuracy.</p>
+            <a href="mailto:data@flowerindexdata.com">data@flowerindexdata.com</a>
+        </div>
+
+        <div class="meta-info">
+            This methodology document was last updated: January 2026
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">💐 Flower Index Data</div>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cities">All Cities</a></li>
+                <li><a href="/press">Press Kit</a></li>
+            </ul>
+            <p class="footer-credit">Research powered by TeamFloral</p>
+        </div>
+    </footer>
+</body>
+</html>

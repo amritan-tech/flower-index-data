@@ -1,40 +1,170 @@
-Download Infographic
-Share Valentine's Day flower price data with your audience
-📥 Download PNG 📥 Download JPG
-💐 Valentine's Day Flower Index 2026
-What Americans Pay for Roses Across 100 Cities
-$68
-National Average
-(Dozen Roses)
-+22%
-Year-over-Year
-Price Increase
-100
-Cities
-Surveyed
-City Rankings
-🌹 MOST EXPENSIVE
-1. New York, NY
-$95
-2. San Francisco, CA
-$92
-3. Palo Alto, CA
-$92
-4. Los Angeles, CA
-$88
-5. Hinsdale, IL
-$88
-💚 MOST GENEROUS
-1. Oklahoma City, OK
-98
-2. Tulsa, OK
-98
-3. Jonesboro, AR
-97
-4. Evansville, IN
-97
-5. Detroit, MI
-97
-Source: TeamFloral Valentine's Survey 2026
-flowerindexdata.com
-← Back to Valentine's Index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Flower Index 2026 — Infographic</title>
+    <meta name="description" content="Visual summary of Valentine's Day flower prices and generosity scores across 100 American cities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08);--gold:#d4a853;--teal:#2d8a8a}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+
+        .infographic{max-width:800px;margin:0 auto;padding:40px 24px}
+
+        .header{text-align:center;margin-bottom:48px}
+        .header-badge{display:inline-block;padding:8px 16px;background:white;border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--rose);margin-bottom:16px}
+        .header h1{font-family:'Fraunces',serif;font-size:36px;font-weight:400;margin-bottom:12px}
+        .header p{color:var(--slate);font-size:16px}
+
+        .download-buttons{display:flex;gap:12px;justify-content:center;margin-bottom:48px}
+        .download-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all 0.2s}
+        .download-btn.primary{background:var(--ink);color:white}
+        .download-btn.primary:hover{background:#333}
+        .download-btn.secondary{background:white;color:var(--ink);border:1px solid var(--border)}
+        .download-btn.secondary:hover{background:var(--warm-white)}
+
+        .stats-hero{background:linear-gradient(135deg,var(--rose) 0%,var(--terracotta) 100%);color:white;border-radius:24px;padding:40px;margin-bottom:32px;text-align:center}
+        .stats-hero h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:24px}
+        .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .stat-item h3{font-family:'Fraunces',serif;font-size:48px;font-weight:500;margin-bottom:4px}
+        .stat-item p{font-size:14px;opacity:0.9}
+
+        .rankings-section{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+        .ranking-card{background:white;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+        .ranking-card h3{font-family:'Fraunces',serif;font-size:18px;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+        .ranking-list{list-style:none}
+        .ranking-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+        .ranking-item:last-child{border-bottom:none}
+        .ranking-item .rank{width:24px;height:24px;background:var(--rose-light);color:var(--rose);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-right:12px}
+        .ranking-item .city{flex:1;font-weight:500}
+        .ranking-item .value{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
+        .ranking-item .value.price{color:var(--terracotta)}
+        .ranking-item .value.score{color:var(--sage)}
+
+        .source-footer{text-align:center;padding:32px;background:var(--warm-white);border-radius:16px}
+        .source-footer p{font-size:14px;color:var(--slate);margin-bottom:8px}
+        .source-footer a{color:var(--rose);text-decoration:none;font-weight:500}
+        .source-footer a:hover{text-decoration:underline}
+
+        .back-link{display:block;text-align:center;margin-top:32px}
+        .back-link a{color:var(--slate);text-decoration:none;font-size:14px}
+        .back-link a:hover{color:var(--ink)}
+
+        @media(max-width:768px){
+            .stats-grid{grid-template-columns:1fr}
+            .rankings-section{grid-template-columns:1fr}
+            .stat-item h3{font-size:36px}
+            .download-buttons{flex-direction:column;align-items:center}
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="header-badge">📊 Infographic</div>
+            <h1>Valentine's Day Flower Index 2026</h1>
+            <p>What Americans Pay for Roses Across 100 Cities</p>
+        </div>
+
+        <div class="download-buttons">
+            <a href="#" class="download-btn primary" onclick="window.print(); return false;">🖨️ Print This Page</a>
+            <a href="/" class="download-btn secondary">← Back to Main Site</a>
+        </div>
+
+        <div class="stats-hero">
+            <h2>Key Findings</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>$68</h3>
+                    <p>National Average<br>(Dozen Roses)</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+22%</h3>
+                    <p>Year-over-Year<br>Price Increase</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100</h3>
+                    <p>Cities<br>Surveyed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="rankings-section">
+            <div class="ranking-card">
+                <h3>🌹 Most Expensive Cities</h3>
+                <ul class="ranking-list">
+                    <li class="ranking-item">
+                        <span class="rank">1</span>
+                        <span class="city">New York, NY</span>
+                        <span class="value price">$95</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">2</span>
+                        <span class="city">San Francisco, CA</span>
+                        <span class="value price">$92</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">3</span>
+                        <span class="city">Palo Alto, CA</span>
+                        <span class="value price">$92</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">4</span>
+                        <span class="city">Los Angeles, CA</span>
+                        <span class="value price">$88</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">5</span>
+                        <span class="city">Hinsdale, IL</span>
+                        <span class="value price">$88</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ranking-card">
+                <h3>💚 Most Generous Cities</h3>
+                <ul class="ranking-list">
+                    <li class="ranking-item">
+                        <span class="rank">1</span>
+                        <span class="city">Oklahoma City, OK</span>
+                        <span class="value score">98</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">2</span>
+                        <span class="city">Tulsa, OK</span>
+                        <span class="value score">98</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">3</span>
+                        <span class="city">Jonesboro, AR</span>
+                        <span class="value score">97</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">4</span>
+                        <span class="city">Evansville, IN</span>
+                        <span class="value score">97</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span class="rank">5</span>
+                        <span class="city">Detroit, MI</span>
+                        <span class="value score">97</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="source-footer">
+            <p>Source: TeamFloral Valentine's Survey 2026</p>
+            <a href="https://flowerindexdata.com">flowerindexdata.com</a>
+        </div>
+
+        <div class="back-link">
+            <a href="/">← Back to Valentine's Index</a>
+        </div>
+    </div>
+</body>
+</html>

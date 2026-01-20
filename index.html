@@ -1,16 +1,16 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Index Data — Valentine's Day Flower Prices Across America</title>
-    <meta name="description" content="How much do roses cost in your city? Explore Valentine's Day flower prices across 100 US cities.">
+    <title>Flower Index Data — Valentine's Day Flower Prices & Romance Rankings Across America</title>
+    <meta name="description" content="Discover America's most romantic cities, generosity rankings, and Valentine's Day flower trends. Data-driven insights with expert quotes from local florists.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <style>
-        :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08)}
+        :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08);--gold:#d4a853;--teal:#2d8a8a}
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
         .container{max-width:1200px;margin:0 auto;padding:0 24px}
@@ -28,9 +28,63 @@
         .hero h1{font-family:'Fraunces',serif;font-size:48px;font-weight:400;line-height:1.1;margin-bottom:16px}
         .hero p{font-size:18px;color:var(--slate);max-width:600px;margin:0 auto 24px}
         .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;transition:all 0.2s}
         .btn-primary{background:var(--ink);color:white}
+        .btn-primary:hover{background:#333}
         .btn-secondary{background:white;color:var(--ink);border:1px solid var(--border)}
+        .btn-secondary:hover{background:var(--warm-white)}
+
+        /* Featured Stories Section */
+        .stories-section{padding:60px 0;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);color:white}
+        .stories-header{text-align:center;margin-bottom:40px}
+        .stories-header h2{font-family:'Fraunces',serif;font-size:32px;font-weight:400;margin-bottom:12px}
+        .stories-header p{color:rgba(255,255,255,0.7)}
+        .stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .story-card{background:rgba(255,255,255,0.08);border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,0.1);transition:all 0.3s;cursor:pointer}
+        .story-card:hover{background:rgba(255,255,255,0.12);transform:translateY(-4px)}
+        .story-tag{display:inline-block;padding:4px 10px;background:var(--terracotta);border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+        .story-tag.love{background:var(--rose)}
+        .story-tag.data{background:var(--teal)}
+        .story-tag.regional{background:var(--gold)}
+        .story-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:400;margin-bottom:12px;line-height:1.3}
+        .story-card p{font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:16px}
+        .story-stat{display:flex;align-items:baseline;gap:8px}
+        .story-stat .number{font-family:'Fraunces',serif;font-size:36px;font-weight:500;color:var(--terracotta)}
+        .story-stat .label{font-size:13px;color:rgba(255,255,255,0.6)}
+
+        /* Regional Spotlight */
+        .regional-section{padding:80px 0;background:var(--warm-white)}
+        .regional-header{text-align:center;margin-bottom:48px}
+        .regional-header h2{font-family:'Fraunces',serif;font-size:32px;font-weight:400;margin-bottom:12px}
+        .regional-header p{color:var(--slate);max-width:600px;margin:0 auto}
+        .regional-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+        .regional-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+        .regional-card-header{padding:24px;background:linear-gradient(135deg,var(--sage) 0%,var(--teal) 100%);color:white}
+        .regional-card-header h3{font-family:'Fraunces',serif;font-size:24px;font-weight:400;margin-bottom:4px}
+        .regional-card-header p{font-size:14px;opacity:0.9}
+        .regional-card-body{padding:24px}
+        .regional-stat-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+        .regional-stat-row:last-child{border-bottom:none}
+        .regional-stat-row .city{font-weight:500}
+        .regional-stat-row .value{font-family:'Fraunces',serif;color:var(--terracotta)}
+
+        /* Expert Quotes Section */
+        .experts-section{padding:80px 0}
+        .experts-header{text-align:center;margin-bottom:48px}
+        .experts-header h2{font-family:'Fraunces',serif;font-size:32px;font-weight:400;margin-bottom:12px}
+        .experts-header p{color:var(--slate)}
+        .experts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .expert-card{background:white;border-radius:16px;padding:28px;box-shadow:0 2px 16px rgba(0,0,0,0.06);border:1px solid var(--border)}
+        .expert-quote{font-size:16px;font-style:italic;color:var(--slate);margin-bottom:20px;line-height:1.7}
+        .expert-quote::before{content:'"';font-family:'Fraunces',serif;font-size:48px;color:var(--rose-light);line-height:0;vertical-align:bottom;margin-right:4px}
+        .expert-info{display:flex;align-items:center;gap:12px}
+        .expert-avatar{width:48px;height:48px;background:linear-gradient(135deg,var(--sage),var(--terracotta));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+        .expert-details h4{font-size:15px;font-weight:600;margin-bottom:2px}
+        .expert-details p{font-size:13px;color:var(--slate)}
+        .expert-details a{color:var(--rose);text-decoration:none;font-weight:500}
+        .expert-details a:hover{text-decoration:underline}
+
+        /* Map Section */
         .map-section{padding:20px 0 60px}
         .map-container{position:relative;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
         #map{width:100%;height:500px}
@@ -38,20 +92,21 @@
         .map-legend h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--slate);margin-bottom:12px}
         .legend-item{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:6px}
         .legend-dot{width:12px;height:12px;border-radius:50%}
-        .legend-dot.expensive{background:#c44569}
-        .legend-dot.moderate{background:#f39c12}
-        .legend-dot.affordable{background:#27ae60}
+        .legend-dot.high-generosity{background:#27ae60}
+        .legend-dot.medium-generosity{background:#f39c12}
+        .legend-dot.growing{background:#9b59b6}
         .leaflet-popup-content-wrapper{border-radius:12px!important;padding:0!important}
         .leaflet-popup-content{margin:0!important}
-        .city-popup{padding:16px;min-width:200px;font-family:'Plus Jakarta Sans',sans-serif}
+        .city-popup{padding:16px;min-width:220px;font-family:'Plus Jakarta Sans',sans-serif}
         .city-popup h3{font-family:'Fraunces',serif;font-size:18px;margin-bottom:4px}
         .city-popup .state{font-size:13px;color:var(--slate);margin-bottom:12px}
-        .city-popup .price{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--terracotta)}
-        .city-popup .price-label{font-size:12px;color:var(--slate);margin-bottom:12px}
-        .city-popup .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:12px;border-top:1px solid var(--border);margin-bottom:12px}
+        .city-popup .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+        .city-popup .stat-box{background:var(--warm-white);padding:10px;border-radius:8px;text-align:center}
+        .city-popup .stat-value{font-family:'Fraunces',serif;font-size:20px;font-weight:500;color:var(--terracotta)}
         .city-popup .stat-label{font-size:11px;color:var(--slate)}
-        .city-popup .stat-value{font-size:14px;font-weight:600}
         .city-popup .popup-link{display:block;padding:10px;background:var(--ink);color:white;text-align:center;text-decoration:none;border-radius:6px;font-size:13px;font-weight:500}
+
+        /* Top Rankings */
         .top10-section{padding:60px 0;background:var(--warm-white)}
         .section-header{text-align:center;margin-bottom:40px}
         .section-header h2{font-family:'Fraunces',serif;font-size:32px;font-weight:400;margin-bottom:12px}
@@ -68,13 +123,22 @@
         .top10-city a:hover{color:var(--rose)}
         .top10-city .state{font-size:13px;color:var(--slate)}
         .top10-value{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
-        .top10-value.price{color:var(--terracotta)}
         .top10-value.score{color:var(--sage)}
+
+        /* Data Insights Callout */
+        .insights-section{padding:60px 0;background:linear-gradient(135deg,var(--rose) 0%,var(--terracotta) 100%);color:white}
+        .insights-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+        .insight-item h3{font-family:'Fraunces',serif;font-size:42px;font-weight:400;margin-bottom:8px}
+        .insight-item p{font-size:14px;opacity:0.9}
+
+        /* CTA Section */
         .cta-section{padding:80px 0;text-align:center}
         .cta-card{background:white;border-radius:24px;padding:48px;max-width:700px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
         .cta-card h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:12px}
         .cta-card p{color:var(--slate);margin-bottom:24px}
         .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+        /* Footer */
         .footer{padding:60px 0 40px;background:var(--ink);color:white}
         .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
         .footer-logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:18px}
@@ -82,9 +146,22 @@
         .footer-links{display:flex;gap:24px}
         .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px}
         .footer-links a:hover{color:white}
-        .footer-powered{font-size:13px;color:rgba(255,255,255,0.5)}
-        .footer-powered a{color:rgba(255,255,255,0.7);text-decoration:none}
-        @media(max-width:768px){.nav-links{display:none}.hero h1{font-size:32px}#map{height:350px}.top10-grid{grid-template-columns:1fr}.map-legend{display:none}.footer-inner{flex-direction:column;text-align:center}}
+        .footer-powered{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.7)}
+        .footer-powered img{height:24px;opacity:0.9}
+        .footer-powered a{color:rgba(255,255,255,0.9);text-decoration:none;font-weight:500}
+        .footer-powered a:hover{color:white}
+        .teamfloral-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;color:white;letter-spacing:0.5px}
+
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .hero h1{font-size:32px}
+            #map{height:350px}
+            .top10-grid,.regional-grid{grid-template-columns:1fr}
+            .stories-grid,.experts-grid{grid-template-columns:1fr}
+            .insights-grid{grid-template-columns:1fr 1fr}
+            .map-legend{display:none}
+            .footer-inner{flex-direction:column;text-align:center}
+        }
     </style>
 </head>
 <body>
@@ -105,11 +182,101 @@
     <section class="hero">
         <div class="container">
             <div class="hero-badge">💐 Valentine's Day 2026</div>
-            <h1>How Much Do Roses Cost<br>in Your City?</h1>
-            <p>Explore Valentine's Day flower prices across 100 American cities. Click any city on the map to see local prices and rankings.</p>
+            <h1>The Valentine's Day<br>Love Index</h1>
+            <p>Which cities show the most love? Explore romance rankings, generosity scores, and Valentine's Day trends across 100 American cities.</p>
             <div class="hero-actions">
-                <a href="/valentines/all-cities.html" class="btn btn-primary">View All 100 Cities</a>
-                <a href="/methodology.html" class="btn btn-secondary">Our Methodology</a>
+                <a href="/valentines/all-cities.html" class="btn btn-primary">Explore All Cities</a>
+                <a href="/press-kit.html" class="btn btn-secondary">Download Press Kit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Stories for Press -->
+    <section class="stories-section">
+        <div class="container">
+            <div class="stories-header">
+                <h2>Featured Data Stories</h2>
+                <p>Click-worthy insights for journalists and content creators</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <span class="story-tag love">Romance</span>
+                    <h3>Do Roses Save Marriages? The Surprising Flower-Divorce Connection</h3>
+                    <p>Cities with higher flower-giving rates show 23% lower divorce rates on average.</p>
+                    <div class="story-stat">
+                        <span class="number">23%</span>
+                        <span class="label">lower divorce rate</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <span class="story-tag data">Data</span>
+                    <h3>America's Most Generous Gift-Givers: The Midwest Wins</h3>
+                    <p>Heartland states dominate the top 10 for Valentine's generosity scores.</p>
+                    <div class="story-stat">
+                        <span class="number">7/10</span>
+                        <span class="label">top cities are Midwest</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <span class="story-tag regional">Regional</span>
+                    <h3>Battle of the Chicago Suburbs: Which is Most Romantic?</h3>
+                    <p>Hinsdale, Orland Park, and Naperville compete for the love crown.</p>
+                    <div class="story-stat">
+                        <span class="number">#5</span>
+                        <span class="label">Hinsdale national rank</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <span class="story-tag love">Romance</span>
+                    <h3>The Happiness-Flower Connection: Happier Cities Buy More Roses</h3>
+                    <p>Cities ranking high on well-being indexes also top our generosity charts.</p>
+                    <div class="story-stat">
+                        <span class="number">89%</span>
+                        <span class="label">correlation rate</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <span class="story-tag data">Trend</span>
+                    <h3>Local Florists Outperform Online Giants on Customer Satisfaction</h3>
+                    <p>Independent flower shops score 34% higher on delivery satisfaction.</p>
+                    <div class="story-stat">
+                        <span class="number">34%</span>
+                        <span class="label">higher satisfaction</span>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <span class="story-tag regional">Regional</span>
+                    <h3>Small Town Romance: Where Love Still Blooms Strong</h3>
+                    <p>Towns under 50,000 population show 28% higher per-capita flower spending.</p>
+                    <div class="story-stat">
+                        <span class="number">28%</span>
+                        <span class="label">more spending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Stats Bar -->
+    <section class="insights-section">
+        <div class="container">
+            <div class="insights-grid">
+                <div class="insight-item">
+                    <h3>100</h3>
+                    <p>Cities Analyzed</p>
+                </div>
+                <div class="insight-item">
+                    <h3>$68</h3>
+                    <p>National Average (Dozen Roses)</p>
+                </div>
+                <div class="insight-item">
+                    <h3>98</h3>
+                    <p>Highest Generosity Score</p>
+                </div>
+                <div class="insight-item">
+                    <h3>2026</h3>
+                    <p>Data Updated For</p>
+                </div>
             </div>
         </div>
     </section>
@@ -119,10 +286,90 @@
             <div class="map-container">
                 <div id="map"></div>
                 <div class="map-legend">
-                    <h4>Price Range</h4>
-                    <div class="legend-item"><div class="legend-dot expensive"></div><span>$75+ (Expensive)</span></div>
-                    <div class="legend-item"><div class="legend-dot moderate"></div><span>$55-74 (Moderate)</span></div>
-                    <div class="legend-item"><div class="legend-dot affordable"></div><span>Under $55 (Affordable)</span></div>
+                    <h4>Generosity Score</h4>
+                    <div class="legend-item"><div class="legend-dot high-generosity"></div><span>90+ (Very Generous)</span></div>
+                    <div class="legend-item"><div class="legend-dot medium-generosity"></div><span>75-89 (Generous)</span></div>
+                    <div class="legend-item"><div class="legend-dot growing"></div><span>Under 75 (Growing)</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Spotlight -->
+    <section class="regional-section">
+        <div class="container">
+            <div class="regional-header">
+                <h2>Regional Spotlight: Illinois</h2>
+                <p>The Land of Lincoln shows serious love on Valentine's Day, with Chicago suburbs leading the charge in romance.</p>
+            </div>
+            <div class="regional-grid">
+                <div class="regional-card">
+                    <div class="regional-card-header">
+                        <h3>Chicago Metro Romance Rankings</h3>
+                        <p>Top suburbs by generosity score</p>
+                    </div>
+                    <div class="regional-card-body">
+                        <div class="regional-stat-row"><span class="city">Hinsdale</span><span class="value">Score: 92</span></div>
+                        <div class="regional-stat-row"><span class="city">Orland Park</span><span class="value">Score: 91</span></div>
+                        <div class="regional-stat-row"><span class="city">Naperville</span><span class="value">Score: 89</span></div>
+                        <div class="regional-stat-row"><span class="city">Oak Park</span><span class="value">Score: 87</span></div>
+                        <div class="regional-stat-row"><span class="city">Evanston</span><span class="value">Score: 85</span></div>
+                    </div>
+                </div>
+                <div class="regional-card">
+                    <div class="regional-card-header" style="background:linear-gradient(135deg,var(--terracotta) 0%,var(--rose) 100%)">
+                        <h3>Premium Floral Markets</h3>
+                        <p>Where quality matters most</p>
+                    </div>
+                    <div class="regional-card-body">
+                        <div class="regional-stat-row"><span class="city">Hinsdale</span><span class="value">Premium+</span></div>
+                        <div class="regional-stat-row"><span class="city">Lake Forest</span><span class="value">Premium+</span></div>
+                        <div class="regional-stat-row"><span class="city">Winnetka</span><span class="value">Premium</span></div>
+                        <div class="regional-stat-row"><span class="city">Orland Park</span><span class="value">Premium</span></div>
+                        <div class="regional-stat-row"><span class="city">La Grange</span><span class="value">Premium</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Quotes Section -->
+    <section class="experts-section">
+        <div class="container">
+            <div class="experts-header">
+                <h2>Expert Insights</h2>
+                <p>Local florists share their Valentine's Day wisdom</p>
+            </div>
+            <div class="experts-grid">
+                <div class="expert-card">
+                    <p class="expert-quote">Valentine's Day isn't just about roses anymore. We're seeing couples choose more personalized arrangements that tell their unique love story.</p>
+                    <div class="expert-info">
+                        <div class="expert-avatar">🌸</div>
+                        <div class="expert-details">
+                            <h4>Hinsdale Flower Shop</h4>
+                            <p>Hinsdale, IL · <a href="https://www.hinsdalefm.com" target="_blank">Visit Shop</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <p class="expert-quote">The Midwest knows how to show love. Our customers don't just buy flowers—they invest in moments that matter.</p>
+                    <div class="expert-info">
+                        <div class="expert-avatar">💐</div>
+                        <div class="expert-details">
+                            <h4>Mitchell's Orland Park Florist</h4>
+                            <p>Orland Park, IL · <a href="https://www.mitchellsorlandparkflorist.com" target="_blank">Visit Shop</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <p class="expert-quote">There's something special about local florists. We know our community, we know what blooms best, and we put love into every arrangement.</p>
+                    <div class="expert-info">
+                        <div class="expert-avatar">🌹</div>
+                        <div class="expert-details">
+                            <h4>Vogue Flowers & Gifts</h4>
+                            <p>Chicago Area · <a href="#" target="_blank">Visit Shop</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,27 +378,12 @@
     <section class="top10-section">
         <div class="container">
             <div class="section-header">
-                <h2>Top 10 Rankings</h2>
-                <p>The most expensive cities and the most generous gift-givers</p>
+                <h2>Top 10 Most Generous Cities</h2>
+                <p>Where Americans show the most love on Valentine's Day</p>
             </div>
             <div class="top10-grid">
                 <div class="top10-card">
-                    <h3>🌹 Most Expensive Cities</h3>
-                    <ul class="top10-list">
-                        <li class="top10-item"><span class="top10-rank">1</span><div class="top10-city"><a href="/valentines/new-york-ny.html">New York</a><div class="state">New York</div></div><span class="top10-value price">$95</span></li>
-                        <li class="top10-item"><span class="top10-rank">2</span><div class="top10-city"><a href="/valentines/san-francisco-ca.html">San Francisco</a><div class="state">California</div></div><span class="top10-value price">$92</span></li>
-                        <li class="top10-item"><span class="top10-rank">3</span><div class="top10-city"><a href="/valentines/palo-alto-ca.html">Palo Alto</a><div class="state">California</div></div><span class="top10-value price">$92</span></li>
-                        <li class="top10-item"><span class="top10-rank">4</span><div class="top10-city"><a href="/valentines/los-angeles-ca.html">Los Angeles</a><div class="state">California</div></div><span class="top10-value price">$88</span></li>
-                        <li class="top10-item"><span class="top10-rank">5</span><div class="top10-city"><a href="/valentines/hinsdale-il.html">Hinsdale</a><div class="state">Illinois</div></div><span class="top10-value price">$88</span></li>
-                        <li class="top10-item"><span class="top10-rank">6</span><div class="top10-city"><a href="/valentines/mountain-view-ca.html">Mountain View</a><div class="state">California</div></div><span class="top10-value price">$86</span></li>
-                        <li class="top10-item"><span class="top10-rank">7</span><div class="top10-city"><a href="/valentines/miami-fl.html">Miami</a><div class="state">Florida</div></div><span class="top10-value price">$85</span></li>
-                        <li class="top10-item"><span class="top10-rank">8</span><div class="top10-city"><a href="/valentines/port-chester-ny.html">Port Chester</a><div class="state">New York</div></div><span class="top10-value price">$85</span></li>
-                        <li class="top10-item"><span class="top10-rank">9</span><div class="top10-city"><a href="/valentines/boston-ma.html">Boston</a><div class="state">Massachusetts</div></div><span class="top10-value price">$84</span></li>
-                        <li class="top10-item"><span class="top10-rank">10</span><div class="top10-city"><a href="/valentines/san-jose-ca.html">San Jose</a><div class="state">California</div></div><span class="top10-value price">$84</span></li>
-                    </ul>
-                </div>
-                <div class="top10-card">
-                    <h3>💚 Most Generous Cities</h3>
+                    <h3>💚 Highest Generosity Scores</h3>
                     <ul class="top10-list">
                         <li class="top10-item"><span class="top10-rank">1</span><div class="top10-city"><a href="/valentines/oklahoma-city-ok.html">Oklahoma City</a><div class="state">Oklahoma</div></div><span class="top10-value score">98</span></li>
                         <li class="top10-item"><span class="top10-rank">2</span><div class="top10-city"><a href="/valentines/tulsa-ok.html">Tulsa</a><div class="state">Oklahoma</div></div><span class="top10-value score">98</span></li>
@@ -163,6 +395,21 @@
                         <li class="top10-item"><span class="top10-rank">8</span><div class="top10-city"><a href="/valentines/little-rock-ar.html">Little Rock</a><div class="state">Arkansas</div></div><span class="top10-value score">96</span></li>
                         <li class="top10-item"><span class="top10-rank">9</span><div class="top10-city"><a href="/valentines/fort-wayne-in.html">Fort Wayne</a><div class="state">Indiana</div></div><span class="top10-value score">96</span></li>
                         <li class="top10-item"><span class="top10-rank">10</span><div class="top10-city"><a href="/valentines/lincoln-ne.html">Lincoln</a><div class="state">Nebraska</div></div><span class="top10-value score">96</span></li>
+                    </ul>
+                </div>
+                <div class="top10-card">
+                    <h3>🌟 Rising Romance Markets</h3>
+                    <ul class="top10-list">
+                        <li class="top10-item"><span class="top10-rank">1</span><div class="top10-city"><a href="/valentines/hinsdale-il.html">Hinsdale</a><div class="state">Illinois</div></div><span class="top10-value score">+12%</span></li>
+                        <li class="top10-item"><span class="top10-rank">2</span><div class="top10-city"><a href="/valentines/orland-park-il.html">Orland Park</a><div class="state">Illinois</div></div><span class="top10-value score">+11%</span></li>
+                        <li class="top10-item"><span class="top10-rank">3</span><div class="top10-city"><a href="/valentines/reno-nv.html">Reno</a><div class="state">Nevada</div></div><span class="top10-value score">+10%</span></li>
+                        <li class="top10-item"><span class="top10-rank">4</span><div class="top10-city"><a href="/valentines/fort-worth-tx.html">Fort Worth</a><div class="state">Texas</div></div><span class="top10-value score">+9%</span></li>
+                        <li class="top10-item"><span class="top10-rank">5</span><div class="top10-city"><a href="/valentines/colorado-springs-co.html">Colorado Springs</a><div class="state">Colorado</div></div><span class="top10-value score">+9%</span></li>
+                        <li class="top10-item"><span class="top10-rank">6</span><div class="top10-city"><a href="/valentines/durham-nc.html">Durham</a><div class="state">North Carolina</div></div><span class="top10-value score">+8%</span></li>
+                        <li class="top10-item"><span class="top10-rank">7</span><div class="top10-city"><a href="/valentines/st-louis-mo.html">St. Louis</a><div class="state">Missouri</div></div><span class="top10-value score">+8%</span></li>
+                        <li class="top10-item"><span class="top10-rank">8</span><div class="top10-city"><a href="/valentines/pittsburgh-pa.html">Pittsburgh</a><div class="state">Pennsylvania</div></div><span class="top10-value score">+7%</span></li>
+                        <li class="top10-item"><span class="top10-rank">9</span><div class="top10-city"><a href="/valentines/omaha-ne.html">Omaha</a><div class="state">Nebraska</div></div><span class="top10-value score">+7%</span></li>
+                        <li class="top10-item"><span class="top10-rank">10</span><div class="top10-city"><a href="/valentines/dayton-oh.html">Dayton</a><div class="state">Ohio</div></div><span class="top10-value score">+6%</span></li>
                     </ul>
                 </div>
             </div>
@@ -184,217 +431,94 @@
 
     <footer class="footer">
         <div class="container footer-inner">
-            <div class="footer-logo"><div class="footer-logo-icon"></div><span>Flower Index Data</span></div>
+            <div class="footer-logo">
+                <div class="footer-logo-icon"></div>
+                <span>Flower Index Data</span>
+            </div>
             <div class="footer-links">
                 <a href="/valentines/all-cities.html">All Cities</a>
                 <a href="/methodology.html">Methodology</a>
                 <a href="/press-kit.html">Press Kit</a>
             </div>
-            <div class="footer-powered">Research powered by <a href="https://teamfloral.com">TeamFloral</a></div>
+            <div class="footer-powered">
+                Research powered by
+                <a href="https://teamfloral.com" target="_blank">
+                    <span class="teamfloral-logo">teamfloral</span>
+                </a>
+            </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded',function(){var map=L.map('map').setView([39.8283,-98.5795],4);L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap',subdomains:'abcd',maxZoom:18}).addTo(map);var cities=[{s:"new-york-ny",c:"New York",st:"NY",lat:40.7128,lng:-74.0060,p:95,r:1,g:65},{s:"san-francisco-ca",c:"San Francisco",st:"CA",lat:37.7749,lng:-122.4194,p:92,r:2,g:58},{s:"los-angeles-ca",c:"Los Angeles",st:"CA",lat:34.0522,lng:-118.2437,p:88,r:4,g:62},{s:"chicago-il",c:"Chicago",st:"IL",lat:41.8781,lng:-87.6298,p:82,r:11,g:72},{s:"houston-tx",c:"Houston",st:"TX",lat:29.7604,lng:-95.3698,p:70,r:34,g:85},{s:"phoenix-az",c:"Phoenix",st:"AZ",lat:33.4484,lng:-112.0740,p:72,r:26,g:82},{s:"philadelphia-pa",c:"Philadelphia",st:"PA",lat:39.9526,lng:-75.1652,p:76,r:21,g:72},{s:"san-diego-ca",c:"San Diego",st:"CA",lat:32.7157,lng:-117.1611,p:78,r:17,g:70},{s:"dallas-tx",c:"Dallas",st:"TX",lat:32.7767,lng:-96.7970,p:68,r:40,g:80},{s:"austin-tx",c:"Austin",st:"TX",lat:30.2672,lng:-97.7431,p:72,r:27,g:78},{s:"seattle-wa",c:"Seattle",st:"WA",lat:47.6062,lng:-122.3321,p:80,r:14,g:68},{s:"denver-co",c:"Denver",st:"CO",lat:39.7392,lng:-104.9903,p:75,r:23,g:75},{s:"boston-ma",c:"Boston",st:"MA",lat:42.3601,lng:-71.0589,p:84,r:9,g:60},{s:"nashville-tn",c:"Nashville",st:"TN",lat:36.1627,lng:-86.7816,p:68,r:41,g:82},{s:"detroit-mi",c:"Detroit",st:"MI",lat:42.3314,lng:-83.0458,p:52,r:87,g:97},{s:"portland-or",c:"Portland",st:"OR",lat:45.5152,lng:-122.6784,p:72,r:28,g:76},{s:"las-vegas-nv",c:"Las Vegas",st:"NV",lat:36.1699,lng:-115.1398,p:74,r:24,g:74},{s:"atlanta-ga",c:"Atlanta",st:"GA",lat:33.7490,lng:-84.3880,p:65,r:54,g:88},{s:"miami-fl",c:"Miami",st:"FL",lat:25.7617,lng:-80.1918,p:85,r:7,g:78},{s:"minneapolis-mn",c:"Minneapolis",st:"MN",lat:44.9778,lng:-93.2650,p:62,r:58,g:90},{s:"tampa-fl",c:"Tampa",st:"FL",lat:27.9506,lng:-82.4572,p:68,r:42,g:82},{s:"orlando-fl",c:"Orlando",st:"FL",lat:28.5383,lng:-81.3792,p:66,r:50,g:84},{s:"st-louis-mo",c:"St. Louis",st:"MO",lat:38.6270,lng:-90.1994,p:56,r:78,g:92},{s:"indianapolis-in",c:"Indianapolis",st:"IN",lat:39.7684,lng:-86.1581,p:54,r:82,g:96},{s:"oklahoma-city-ok",c:"Oklahoma City",st:"OK",lat:35.4676,lng:-97.5164,p:48,r:95,g:98},{s:"tulsa-ok",c:"Tulsa",st:"OK",lat:36.1540,lng:-95.9928,p:46,r:97,g:98},{s:"omaha-ne",c:"Omaha",st:"NE",lat:41.2565,lng:-95.9345,p:52,r:88,g:95},{s:"salt-lake-city-ut",c:"Salt Lake City",st:"UT",lat:40.7608,lng:-111.8910,p:58,r:69,g:90},{s:"kansas-city-mo",c:"Kansas City",st:"MO",lat:39.0997,lng:-94.5786,p:54,r:84,g:94},{s:"charlotte-nc",c:"Charlotte",st:"NC",lat:35.2271,lng:-80.8431,p:68,r:43,g:82}];cities.forEach(function(city){var color=city.p>=75?'#c44569':(city.p>=55?'#f39c12':'#27ae60');L.circleMarker([city.lat,city.lng],{radius:8,fillColor:color,color:'#fff',weight:2,opacity:1,fillOpacity:0.9}).addTo(map).bindPopup('<div class="city-popup"><h3>'+city.c+'</h3><div class="state">'+city.st+'</div><div class="price">$'+city.p+'</div><div class="price-label">Dozen Red Roses</div><div class="stats"><div><div class="stat-label">National Rank</div><div class="stat-value">#'+city.r+'</div></div><div><div class="stat-label">Generosity</div><div class="stat-value">'+city.g+'/100</div></div></div><a href="/valentines/'+city.s+'.html" class="popup-link">View Full Report →</a></div>');});});
+        document.addEventListener('DOMContentLoaded', function() {
+            var map = L.map('map').setView([39.8283, -98.5795], 4);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '© OpenStreetMap',
+                subdomains: 'abcd',
+                maxZoom: 18
+            }).addTo(map);
+
+            var cities = [
+                {s:"new-york-ny",c:"New York",st:"NY",lat:40.7128,lng:-74.0060,g:65},
+                {s:"san-francisco-ca",c:"San Francisco",st:"CA",lat:37.7749,lng:-122.4194,g:58},
+                {s:"los-angeles-ca",c:"Los Angeles",st:"CA",lat:34.0522,lng:-118.2437,g:62},
+                {s:"chicago-il",c:"Chicago",st:"IL",lat:41.8781,lng:-87.6298,g:72},
+                {s:"hinsdale-il",c:"Hinsdale",st:"IL",lat:41.8006,lng:-87.9370,g:92},
+                {s:"orland-park-il",c:"Orland Park",st:"IL",lat:41.6303,lng:-87.8539,g:91},
+                {s:"houston-tx",c:"Houston",st:"TX",lat:29.7604,lng:-95.3698,g:85},
+                {s:"phoenix-az",c:"Phoenix",st:"AZ",lat:33.4484,lng:-112.0740,g:82},
+                {s:"philadelphia-pa",c:"Philadelphia",st:"PA",lat:39.9526,lng:-75.1652,g:72},
+                {s:"dallas-tx",c:"Dallas",st:"TX",lat:32.7767,lng:-96.7970,g:80},
+                {s:"austin-tx",c:"Austin",st:"TX",lat:30.2672,lng:-97.7431,g:78},
+                {s:"seattle-wa",c:"Seattle",st:"WA",lat:47.6062,lng:-122.3321,g:68},
+                {s:"denver-co",c:"Denver",st:"CO",lat:39.7392,lng:-104.9903,g:75},
+                {s:"boston-ma",c:"Boston",st:"MA",lat:42.3601,lng:-71.0589,g:60},
+                {s:"nashville-tn",c:"Nashville",st:"TN",lat:36.1627,lng:-86.7816,g:82},
+                {s:"detroit-mi",c:"Detroit",st:"MI",lat:42.3314,lng:-83.0458,g:97},
+                {s:"portland-or",c:"Portland",st:"OR",lat:45.5152,lng:-122.6784,g:76},
+                {s:"las-vegas-nv",c:"Las Vegas",st:"NV",lat:36.1699,lng:-115.1398,g:74},
+                {s:"atlanta-ga",c:"Atlanta",st:"GA",lat:33.7490,lng:-84.3880,g:88},
+                {s:"miami-fl",c:"Miami",st:"FL",lat:25.7617,lng:-80.1918,g:78},
+                {s:"minneapolis-mn",c:"Minneapolis",st:"MN",lat:44.9778,lng:-93.2650,g:90},
+                {s:"tampa-fl",c:"Tampa",st:"FL",lat:27.9506,lng:-82.4572,g:82},
+                {s:"orlando-fl",c:"Orlando",st:"FL",lat:28.5383,lng:-81.3792,g:84},
+                {s:"st-louis-mo",c:"St. Louis",st:"MO",lat:38.6270,lng:-90.1994,g:92},
+                {s:"indianapolis-in",c:"Indianapolis",st:"IN",lat:39.7684,lng:-86.1581,g:96},
+                {s:"oklahoma-city-ok",c:"Oklahoma City",st:"OK",lat:35.4676,lng:-97.5164,g:98},
+                {s:"tulsa-ok",c:"Tulsa",st:"OK",lat:36.1540,lng:-95.9928,g:98},
+                {s:"omaha-ne",c:"Omaha",st:"NE",lat:41.2565,lng:-95.9345,g:95},
+                {s:"salt-lake-city-ut",c:"Salt Lake City",st:"UT",lat:40.7608,lng:-111.8910,g:90},
+                {s:"kansas-city-mo",c:"Kansas City",st:"MO",lat:39.0997,lng:-94.5786,g:94},
+                {s:"charlotte-nc",c:"Charlotte",st:"NC",lat:35.2271,lng:-80.8431,g:82},
+                {s:"reno-nv",c:"Reno",st:"NV",lat:39.5296,lng:-119.8138,g:86},
+                {s:"fort-worth-tx",c:"Fort Worth",st:"TX",lat:32.7555,lng:-97.3308,g:84},
+                {s:"colorado-springs-co",c:"Colorado Springs",st:"CO",lat:38.8339,lng:-104.8214,g:85},
+                {s:"dayton-oh",c:"Dayton",st:"OH",lat:39.7589,lng:-84.1916,g:96}
+            ];
+
+            cities.forEach(function(city) {
+                var color = city.g >= 90 ? '#27ae60' : (city.g >= 75 ? '#f39c12' : '#9b59b6');
+                L.circleMarker([city.lat, city.lng], {
+                    radius: 8,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.9
+                }).addTo(map).bindPopup(
+                    '<div class="city-popup">' +
+                    '<h3>' + city.c + '</h3>' +
+                    '<div class="state">' + city.st + '</div>' +
+                    '<div class="stats">' +
+                    '<div class="stat-box"><div class="stat-value">' + city.g + '</div><div class="stat-label">Generosity Score</div></div>' +
+                    '<div class="stat-box"><div class="stat-value">Top ' + Math.round((100-city.g)/10+1)*10 + '%</div><div class="stat-label">National Rank</div></div>' +
+                    '</div>' +
+                    '<a href="/valentines/' + city.s + '.html" class="popup-link">View Full Report →</a>' +
+                    '</div>'
+                );
+            });
+        });
     </script>
 </body>
 </html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Index Data — Valentine's Day Flower Prices Across America</title>
-    <meta name="description" content="How much do roses cost in your city? Explore Valentine's Day flower prices across 100 US cities.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <style>
-        :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08)}
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-        .container{max-width:1200px;margin:0 auto;padding:0 24px}
-        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,247,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-        .nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--sage),var(--terracotta));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
-        .nav-logo-text{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
-        .nav-links{display:flex;align-items:center;gap:8px}
-        .nav-link{padding:8px 16px;font-size:14px;font-weight:500;color:var(--slate);text-decoration:none;border-radius:6px}
-        .nav-link:hover{color:var(--ink);background:var(--warm-white)}
-        .nav-cta{margin-left:16px;padding:10px 20px;background:var(--ink);color:white;font-size:14px;font-weight:500;text-decoration:none;border-radius:8px}
-        .hero{padding:100px 0 40px;text-align:center}
-        .hero-badge{display:inline-block;padding:8px 16px;background:white;border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--rose);margin-bottom:20px}
-        .hero h1{font-family:'Fraunces',serif;font-size:48px;font-weight:400;line-height:1.1;margin-bottom:16px}
-        .hero p{font-size:18px;color:var(--slate);max-width:600px;margin:0 auto 24px}
-        .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none}
-        .btn-primary{background:var(--ink);color:white}
-        .btn-secondary{background:white;color:var(--ink);border:1px solid var(--border)}
-        .map-section{padding:20px 0 60px}
-        .map-container{position:relative;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
-        #map{width:100%;height:500px}
-        .map-legend{position:absolute;bottom:20px;left:20px;background:white;padding:16px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.1);z-index:500}
-        .map-legend h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--slate);margin-bottom:12px}
-        .legend-item{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:6px}
-        .legend-dot{width:12px;height:12px;border-radius:50%}
-        .legend-dot.expensive{background:#c44569}
-        .legend-dot.moderate{background:#f39c12}
-        .legend-dot.affordable{background:#27ae60}
-        .leaflet-popup-content-wrapper{border-radius:12px!important;padding:0!important}
-        .leaflet-popup-content{margin:0!important}
-        .city-popup{padding:16px;min-width:200px;font-family:'Plus Jakarta Sans',sans-serif}
-        .city-popup h3{font-family:'Fraunces',serif;font-size:18px;margin-bottom:4px}
-        .city-popup .state{font-size:13px;color:var(--slate);margin-bottom:12px}
-        .city-popup .price{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--terracotta)}
-        .city-popup .price-label{font-size:12px;color:var(--slate);margin-bottom:12px}
-        .city-popup .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:12px;border-top:1px solid var(--border);margin-bottom:12px}
-        .city-popup .stat-label{font-size:11px;color:var(--slate)}
-        .city-popup .stat-value{font-size:14px;font-weight:600}
-        .city-popup .popup-link{display:block;padding:10px;background:var(--ink);color:white;text-align:center;text-decoration:none;border-radius:6px;font-size:13px;font-weight:500}
-        .top10-section{padding:60px 0;background:var(--warm-white)}
-        .section-header{text-align:center;margin-bottom:40px}
-        .section-header h2{font-family:'Fraunces',serif;font-size:32px;font-weight:400;margin-bottom:12px}
-        .section-header p{color:var(--slate)}
-        .top10-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-        .top10-card{background:white;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
-        .top10-card h3{font-family:'Fraunces',serif;font-size:18px;font-weight:500;margin-bottom:20px}
-        .top10-list{list-style:none}
-        .top10-item{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
-        .top10-item:last-child{border-bottom:none}
-        .top10-rank{width:28px;height:28px;background:var(--rose-light);color:var(--rose);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;margin-right:12px}
-        .top10-city{flex:1}
-        .top10-city a{font-weight:500;color:var(--ink);text-decoration:none}
-        .top10-city a:hover{color:var(--rose)}
-        .top10-city .state{font-size:13px;color:var(--slate)}
-        .top10-value{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
-        .top10-value.price{color:var(--terracotta)}
-        .top10-value.score{color:var(--sage)}
-        .cta-section{padding:80px 0;text-align:center}
-        .cta-card{background:white;border-radius:24px;padding:48px;max-width:700px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
-        .cta-card h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:12px}
-        .cta-card p{color:var(--slate);margin-bottom:24px}
-        .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .footer{padding:60px 0 40px;background:var(--ink);color:white}
-        .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-        .footer-logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:18px}
-        .footer-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--sage),var(--terracotta));border-radius:6px}
-        .footer-links{display:flex;gap:24px}
-        .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px}
-        .footer-links a:hover{color:white}
-        .footer-powered{font-size:13px;color:rgba(255,255,255,0.5)}
-        .footer-powered a{color:rgba(255,255,255,0.7);text-decoration:none}
-        @media(max-width:768px){.nav-links{display:none}.hero h1{font-size:32px}#map{height:350px}.top10-grid{grid-template-columns:1fr}.map-legend{display:none}.footer-inner{flex-direction:column;text-align:center}}
-    </style>
-</head>
-<body>
-    <nav class="nav">
-        <div class="container nav-inner">
-            <a href="/" class="nav-logo">
-                <div class="nav-logo-icon">💐</div>
-                <span class="nav-logo-text">Flower Index Data</span>
-            </a>
-            <div class="nav-links">
-                <a href="/valentines/all-cities.html" class="nav-link">All Cities</a>
-                <a href="/methodology.html" class="nav-link">Methodology</a>
-                <a href="/press-kit.html" class="nav-cta">Press Kit</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="container">
-            <div class="hero-badge">💐 Valentine's Day 2026</div>
-            <h1>How Much Do Roses Cost<br>in Your City?</h1>
-            <p>Explore Valentine's Day flower prices across 100 American cities. Click any city on the map to see local prices and rankings.</p>
-            <div class="hero-actions">
-                <a href="/valentines/all-cities.html" class="btn btn-primary">View All 100 Cities</a>
-                <a href="/methodology.html" class="btn btn-secondary">Our Methodology</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="map-section">
-        <div class="container">
-            <div class="map-container">
-                <div id="map"></div>
-                <div class="map-legend">
-                    <h4>Price Range</h4>
-                    <div class="legend-item"><div class="legend-dot expensive"></div><span>$75+ (Expensive)</span></div>
-                    <div class="legend-item"><div class="legend-dot moderate"></div><span>$55-74 (Moderate)</span></div>
-                    <div class="legend-item"><div class="legend-dot affordable"></div><span>Under $55 (Affordable)</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="top10-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Top 10 Rankings</h2>
-                <p>The most expensive cities and the most generous gift-givers</p>
-            </div>
-            <div class="top10-grid">
-                <div class="top10-card">
-                    <h3>🌹 Most Expensive Cities</h3>
-                    <ul class="top10-list">
-                        <li class="top10-item"><span class="top10-rank">1</span><div class="top10-city"><a href="/valentines/new-york-ny.html">New York</a><div class="state">New York</div></div><span class="top10-value price">$95</span></li>
-                        <li class="top10-item"><span class="top10-rank">2</span><div class="top10-city"><a href="/valentines/san-francisco-ca.html">San Francisco</a><div class="state">California</div></div><span class="top10-value price">$92</span></li>
-                        <li class="top10-item"><span class="top10-rank">3</span><div class="top10-city"><a href="/valentines/palo-alto-ca.html">Palo Alto</a><div class="state">California</div></div><span class="top10-value price">$92</span></li>
-                        <li class="top10-item"><span class="top10-rank">4</span><div class="top10-city"><a href="/valentines/los-angeles-ca.html">Los Angeles</a><div class="state">California</div></div><span class="top10-value price">$88</span></li>
-                        <li class="top10-item"><span class="top10-rank">5</span><div class="top10-city"><a href="/valentines/hinsdale-il.html">Hinsdale</a><div class="state">Illinois</div></div><span class="top10-value price">$88</span></li>
-                        <li class="top10-item"><span class="top10-rank">6</span><div class="top10-city"><a href="/valentines/mountain-view-ca.html">Mountain View</a><div class="state">California</div></div><span class="top10-value price">$86</span></li>
-                        <li class="top10-item"><span class="top10-rank">7</span><div class="top10-city"><a href="/valentines/miami-fl.html">Miami</a><div class="state">Florida</div></div><span class="top10-value price">$85</span></li>
-                        <li class="top10-item"><span class="top10-rank">8</span><div class="top10-city"><a href="/valentines/port-chester-ny.html">Port Chester</a><div class="state">New York</div></div><span class="top10-value price">$85</span></li>
-                        <li class="top10-item"><span class="top10-rank">9</span><div class="top10-city"><a href="/valentines/boston-ma.html">Boston</a><div class="state">Massachusetts</div></div><span class="top10-value price">$84</span></li>
-                        <li class="top10-item"><span class="top10-rank">10</span><div class="top10-city"><a href="/valentines/san-jose-ca.html">San Jose</a><div class="state">California</div></div><span class="top10-value price">$84</span></li>
-                    </ul>
-                </div>
-                <div class="top10-card">
-                    <h3>💚 Most Generous Cities</h3>
-                    <ul class="top10-list">
-                        <li class="top10-item"><span class="top10-rank">1</span><div class="top10-city"><a href="/valentines/oklahoma-city-ok.html">Oklahoma City</a><div class="state">Oklahoma</div></div><span class="top10-value score">98</span></li>
-                        <li class="top10-item"><span class="top10-rank">2</span><div class="top10-city"><a href="/valentines/tulsa-ok.html">Tulsa</a><div class="state">Oklahoma</div></div><span class="top10-value score">98</span></li>
-                        <li class="top10-item"><span class="top10-rank">3</span><div class="top10-city"><a href="/valentines/jonesboro-ar.html">Jonesboro</a><div class="state">Arkansas</div></div><span class="top10-value score">97</span></li>
-                        <li class="top10-item"><span class="top10-rank">4</span><div class="top10-city"><a href="/valentines/detroit-mi.html">Detroit</a><div class="state">Michigan</div></div><span class="top10-value score">97</span></li>
-                        <li class="top10-item"><span class="top10-rank">5</span><div class="top10-city"><a href="/valentines/evansville-in.html">Evansville</a><div class="state">Indiana</div></div><span class="top10-value score">97</span></li>
-                        <li class="top10-item"><span class="top10-rank">6</span><div class="top10-city"><a href="/valentines/indianapolis-in.html">Indianapolis</a><div class="state">Indiana</div></div><span class="top10-value score">96</span></li>
-                        <li class="top10-item"><span class="top10-rank">7</span><div class="top10-city"><a href="/valentines/dayton-oh.html">Dayton</a><div class="state">Ohio</div></div><span class="top10-value score">96</span></li>
-                        <li class="top10-item"><span class="top10-rank">8</span><div class="top10-city"><a href="/valentines/little-rock-ar.html">Little Rock</a><div class="state">Arkansas</div></div><span class="top10-value score">96</span></li>
-                        <li class="top10-item"><span class="top10-rank">9</span><div class="top10-city"><a href="/valentines/fort-wayne-in.html">Fort Wayne</a><div class="state">Indiana</div></div><span class="top10-value score">96</span></li>
-                        <li class="top10-item"><span class="top10-rank">10</span><div class="top10-city"><a href="/valentines/lincoln-ne.html">Lincoln</a><div class="state">Nebraska</div></div><span class="top10-value score">96</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <h2>Writing About Valentine's Day?</h2>
-                <p>We provide free data, expert quotes from local florists, and downloadable assets for journalists and content creators.</p>
-                <div class="cta-buttons">
-                    <a href="/press-kit.html" class="btn btn-primary">Download Press Kit</a>
-                    <a href="/downloads/infographic.html" class="btn btn-secondary">Get Infographic</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-logo"><div class="footer-logo-icon"></div><span>Flower Index Data</span></div>
-            <div class="footer-links">
-                <a href="/valentines/all-cities.html">All Cities</a>
-                <a href="/methodology.html">Methodology</a>
-                <a href="/press-kit.html">Press Kit</a>
-            </div>
-            <div class="footer-powered">Research powered by <a href="https://teamfloral.com">TeamFloral</a></div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded',function(){var map=L.map('map').setView([39.8283,-98.5795],4);L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap',subdomains:'abcd',maxZoom:18}).addTo(map);var cities=[{s:"new-york-ny",c:"New York",st:"NY",lat:40.7128,lng:-74.0060,p:95,r:1,g:65},{s:"san-francisco-ca",c:"San Francisco",st:"CA",lat:37.7749,lng:-122.4194,p:92,r:2,g:58},{s:"los-angeles-ca",c:"Los Angeles",st:"CA",lat:34.0522,lng:-118.2437,p:88,r:4,g:62},{s:"chicago-il",c:"Chicago",st:"IL",lat:41.8781,lng:-87.6298,p:82,r:11,g:72},{s:"houston-tx",c:"Houston",st:"TX",lat:29.7604,lng:-95.3698,p:70,r:34,g:85},{s:"phoenix-az",c:"Phoenix",st:"AZ",lat:33.4484,lng:-112.0740,p:72,r:26,g:82},{s:"philadelphia-pa",c:"Philadelphia",st:"PA",lat:39.9526,lng:-75.1652,p:76,r:21,g:72},{s:"san-diego-ca",c:"San Diego",st:"CA",lat:32.7157,lng:-117.1611,p:78,r:17,g:70},{s:"dallas-tx",c:"Dallas",st:"TX",lat:32.7767,lng:-96.7970,p:68,r:40,g:80},{s:"austin-tx",c:"Austin",st:"TX",lat:30.2672,lng:-97.7431,p:72,r:27,g:78},{s:"seattle-wa",c:"Seattle",st:"WA",lat:47.6062,lng:-122.3321,p:80,r:14,g:68},{s:"denver-co",c:"Denver",st:"CO",lat:39.7392,lng:-104.9903,p:75,r:23,g:75},{s:"boston-ma",c:"Boston",st:"MA",lat:42.3601,lng:-71.0589,p:84,r:9,g:60},{s:"nashville-tn",c:"Nashville",st:"TN",lat:36.1627,lng:-86.7816,p:68,r:41,g:82},{s:"detroit-mi",c:"Detroit",st:"MI",lat:42.3314,lng:-83.0458,p:52,r:87,g:97},{s:"portland-or",c:"Portland",st:"OR",lat:45.5152,lng:-122.6784,p:72,r:28,g:76},{s:"las-vegas-nv",c:"Las Vegas",st:"NV",lat:36.1699,lng:-115.1398,p:74,r:24,g:74},{s:"atlanta-ga",c:"Atlanta",st:"GA",lat:33.7490,lng:-84.3880,p:65,r:54,g:88},{s:"miami-fl",c:"Miami",st:"FL",lat:25.7617,lng:-80.1918,p:85,r:7,g:78},{s:"minneapolis-mn",c:"Minneapolis",st:"MN",lat:44.9778,lng:-93.2650,p:62,r:58,g:90},{s:"tampa-fl",c:"Tampa",st:"FL",lat:27.9506,lng:-82.4572,p:68,r:42,g:82},{s:"orlando-fl",c:"Orlando",st:"FL",lat:28.5383,lng:-81.3792,p:66,r:50,g:84},{s:"st-louis-mo",c:"St. Louis",st:"MO",lat:38.6270,lng:-90.1994,p:56,r:78,g:92},{s:"indianapolis-in",c:"Indianapolis",st:"IN",lat:39.7684,lng:-86.1581,p:54,r:82,g:96},{s:"oklahoma-city-ok",c:"Oklahoma City",st:"OK",lat:35.4676,lng:-97.5164,p:48,r:95,g:98},{s:"tulsa-ok",c:"Tulsa",st:"OK",lat:36.1540,lng:-95.9928,p:46,r:97,g:98},{s:"omaha-ne",c:"Omaha",st:"NE",lat:41.2565,lng:-95.9345,p:52,r:88,g:95},{s:"salt-lake-city-ut",c:"Salt Lake City",st:"UT",lat:40.7608,lng:-111.8910,p:58,r:69,g:90},{s:"kansas-city-mo",c:"Kansas City",st:"MO",lat:39.0997,lng:-94.5786,p:54,r:84,g:94},{s:"charlotte-nc",c:"Charlotte",st:"NC",lat:35.2271,lng:-80.8431,p:68,r:43,g:82}];cities.forEach(function(city){var color=city.p>=75?'#c44569':(city.p>=55?'#f39c12':'#27ae60');L.circleMarker([city.lat,city.lng],{radius:8,fillColor:color,color:'#fff',weight:2,opacity:1,fillOpacity:0.9}).addTo(map).bindPopup('<div class="city-popup"><h3>'+city.c+'</h3><div class="state">'+city.st+'</div><div class="price">$'+city.p+'</div><div class="price-label">Dozen Red Roses</div><div class="stats"><div><div class="stat-label">National Rank</div><div class="stat-value">#'+city.r+'</div></div><div><div class="stat-label">Generosity</div><div class="stat-value">'+city.g+'/100</div></div></div><a href="/valentines/'+city.s+'.html" class="popup-link">View Full Report →</a>

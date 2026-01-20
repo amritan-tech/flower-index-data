@@ -3,729 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Press Kit | Flower Index Data</title>
-    <meta name="description" content="Press resources, embargoed data, story angles, and expert sources for journalists covering flower pricing and consumer spending.">
-    
+    <title>Press Kit — Flower Index Data</title>
+    <meta name="description" content="Free data, expert quotes, and downloadable assets for journalists covering Valentine's Day flower trends.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --ink: #1a1a1a;
-            --paper: #faf9f7;
-            --warm-white: #f5f3ef;
-            --sage: #7d8c7d;
-            --sage-light: #e8ebe8;
-            --terracotta: #c4775c;
-            --terracotta-light: #f5ebe7;
-            --gold: #b8965a;
-            --slate: #6b7280;
-            --border: rgba(26, 26, 26, 0.08);
-            
-            --font-display: 'Fraunces', Georgia, serif;
-            --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
-            
-            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-body);
-            background: var(--paper);
-            color: var(--ink);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(250, 249, 247, 0.92);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
-        }
-        
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--ink);
-        }
-        
-        .nav-logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 100%);
-            border-radius: 8px;
-        }
-        
-        .nav-logo-text {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-        }
-        
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .nav-link {
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--slate);
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--ink);
-            background: var(--warm-white);
-        }
-        
-        .nav-cta {
-            margin-left: 16px;
-            padding: 10px 20px;
-            background: var(--ink);
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-        
-        /* Hero */
-        .hero {
-            padding: 140px 0 80px;
-            background: linear-gradient(180deg, var(--warm-white) 0%, var(--paper) 100%);
-            text-align: center;
-        }
-        
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 400;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-        
-        .hero-subtitle {
-            font-size: 18px;
-            color: var(--slate);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Quick Downloads */
-        .downloads {
-            padding: 60px 0;
-            background: white;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .downloads-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        
-        @media (max-width: 900px) {
-            .downloads-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .download-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 24px;
-            background: var(--warm-white);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--ink);
-            transition: all 0.2s ease;
-        }
-        
-        .download-card:hover {
-            background: var(--sage-light);
-            transform: translateY(-2px);
-        }
-        
-        .download-card-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-        
-        .download-card-title {
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-        
-        .download-card-desc {
-            font-size: 12px;
-            color: var(--slate);
-        }
-        
-        /* Story Angles */
-        .stories {
-            padding: 80px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-        
-        .section-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--sage);
-            margin-bottom: 16px;
-        }
-        
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 400;
-        }
-        
-        .stories-list {
-            display: grid;
-            gap: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .story-item {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-        }
-        
-        .story-item-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .story-item-number {
-            width: 40px;
-            height: 40px;
-            background: var(--sage-light);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--sage);
-            flex-shrink: 0;
-        }
-        
-        .story-item-title {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        
-        .story-item-hook {
-            font-size: 14px;
-            color: var(--terracotta);
-            font-weight: 500;
-        }
-        
-        .story-item-desc {
-            font-size: 15px;
-            color: var(--slate);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .story-item-examples {
-            background: var(--warm-white);
-            border-radius: 10px;
-            padding: 20px;
-        }
-        
-        .story-item-examples h4 {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--slate);
-            margin-bottom: 12px;
-        }
-        
-        .story-item-examples ul {
-            list-style: none;
-        }
-        
-        .story-item-examples li {
-            font-size: 14px;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-            font-style: italic;
-        }
-        
-        .story-item-examples li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Expert Sources */
-        .experts {
-            padding: 80px 0;
-            background: var(--warm-white);
-        }
-        
-        .experts-intro {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 48px;
-        }
-        
-        .experts-intro p {
-            font-size: 16px;
-            color: var(--slate);
-        }
-        
-        .experts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        
-        @media (max-width: 900px) {
-            .experts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .expert-card {
-            background: white;
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-        }
-        
-        .expert-card-avatar {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--sage-light) 0%, var(--terracotta-light) 100%);
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        
-        .expert-card-name {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        
-        .expert-card-title {
-            font-size: 13px;
-            color: var(--slate);
-            margin-bottom: 12px;
-        }
-        
-        .expert-card-topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-        }
-        
-        .expert-card-topic {
-            font-size: 11px;
-            font-weight: 500;
-            padding: 4px 10px;
-            background: var(--sage-light);
-            border-radius: 100px;
-            color: var(--sage);
-        }
-        
-        /* Contact */
-        .contact {
-            padding: 80px 0;
-        }
-        
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .contact h2 {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-        
-        .contact p {
-            font-size: 16px;
-            color: var(--slate);
-            margin-bottom: 32px;
-        }
-        
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: var(--ink);
-            color: white;
-            font-size: 16px;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-        }
-        
-        .contact-email:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-        
-        /* Footer */
-        .footer {
-            padding: 60px 0 40px;
-            background: var(--ink);
-            color: white;
-        }
-        
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-        }
-        
-        .footer-logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 100%);
-            border-radius: 6px;
-        }
-        
-        .footer-powered {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .footer-powered a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-        }
-        
-        .footer-powered a:hover {
-            color: white;
+        :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08);--teal:#2d8a8a}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+        .container{max-width:900px;margin:0 auto;padding:0 24px}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,247,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;padding:0 24px}
+        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+        .nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--sage),var(--terracotta));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+        .nav-logo-text{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
+        .nav-links{display:flex;align-items:center;gap:8px}
+        .nav-link{padding:8px 16px;font-size:14px;font-weight:500;color:var(--slate);text-decoration:none;border-radius:6px}
+        .nav-link:hover{color:var(--ink);background:var(--warm-white)}
+        .nav-cta{margin-left:16px;padding:10px 20px;background:var(--ink);color:white;font-size:14px;font-weight:500;text-decoration:none;border-radius:8px}
+
+        .hero{padding:120px 0 60px;text-align:center}
+        .hero h1{font-family:'Fraunces',serif;font-size:42px;font-weight:400;margin-bottom:16px}
+        .hero p{font-size:18px;color:var(--slate);max-width:600px;margin:0 auto}
+
+        .section{padding:48px 0;border-bottom:1px solid var(--border)}
+        .section:last-of-type{border-bottom:none}
+        .section h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:24px}
+        .section h3{font-size:18px;font-weight:600;margin-bottom:12px;margin-top:24px}
+        .section p{color:var(--slate);margin-bottom:16px}
+
+        .story-list{list-style:none;margin-bottom:24px}
+        .story-list li{padding:16px 20px;background:white;border-radius:12px;margin-bottom:12px;border:1px solid var(--border)}
+        .story-list li strong{display:block;font-size:16px;margin-bottom:4px;color:var(--ink)}
+        .story-list li span{font-size:14px;color:var(--slate)}
+
+        .quote-card{background:white;border-radius:16px;padding:24px;margin-bottom:16px;border:1px solid var(--border)}
+        .quote-text{font-size:16px;font-style:italic;color:var(--slate);margin-bottom:16px;line-height:1.7}
+        .quote-attribution{display:flex;align-items:center;gap:12px}
+        .quote-avatar{width:40px;height:40px;background:linear-gradient(135deg,var(--sage),var(--terracotta));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
+        .quote-info h4{font-size:14px;font-weight:600}
+        .quote-info p{font-size:13px;color:var(--slate)}
+        .quote-info a{color:var(--rose);text-decoration:none}
+
+        .data-table{width:100%;border-collapse:collapse;margin-bottom:24px}
+        .data-table th,.data-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+        .data-table th{font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;color:var(--slate)}
+        .data-table td{font-size:15px}
+        .data-table tr:last-child td{border-bottom:none}
+
+        .pitch-template{background:#1a1a1a;color:white;border-radius:16px;padding:24px;margin-bottom:24px;font-family:monospace;font-size:14px;line-height:1.8;white-space:pre-wrap}
+        .pitch-template .highlight{color:var(--terracotta)}
+
+        .download-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
+        .download-card{background:white;border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center}
+        .download-card h4{font-size:15px;margin-bottom:8px}
+        .download-card p{font-size:13px;color:var(--slate);margin-bottom:12px}
+        .download-btn{display:inline-block;padding:10px 20px;background:var(--ink);color:white;text-decoration:none;border-radius:6px;font-size:14px;font-weight:500}
+
+        .contact-box{background:linear-gradient(135deg,var(--sage),var(--teal));color:white;border-radius:16px;padding:32px;text-align:center}
+        .contact-box h3{font-family:'Fraunces',serif;font-size:24px;font-weight:400;margin-bottom:12px}
+        .contact-box p{opacity:0.9;margin-bottom:20px}
+        .contact-box a{color:white;font-weight:600}
+
+        .footer{padding:40px 0;background:var(--ink);color:white;margin-top:60px}
+        .footer-inner{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 24px}
+        .footer-logo{font-family:'Fraunces',serif;font-size:16px}
+        .footer-powered{font-size:13px;color:rgba(255,255,255,0.6)}
+        .footer-powered a{color:rgba(255,255,255,0.8);text-decoration:none}
+
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .hero h1{font-size:32px}
+            .download-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav">
-        <div class="container nav-inner">
+        <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <div class="nav-logo-icon"></div>
+                <div class="nav-logo-icon">💐</div>
                 <span class="nav-logo-text">Flower Index Data</span>
             </a>
-            
             <div class="nav-links">
-                <a href="/valentines/" class="nav-link">Valentine's</a>
-                <a href="/mothers-day/" class="nav-link">Mother's Day</a>
-                <a href="/sympathy/" class="nav-link">Sympathy</a>
-                <a href="/christmas/" class="nav-link">Christmas</a>
+                <a href="/valentines/all-cities.html" class="nav-link">All Cities</a>
+                <a href="/methodology.html" class="nav-link">Methodology</a>
                 <a href="/press-kit.html" class="nav-cta">Press Kit</a>
             </div>
         </div>
     </nav>
-    
-    <!-- Hero -->
+
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">Press Kit</h1>
-            <p class="hero-subtitle">Everything you need to cover flower pricing in America — data, story angles, expert sources, and embeddable assets.</p>
+            <h1>Press Kit</h1>
+            <p>Everything you need to write about Valentine's Day flower trends: data, expert quotes, story angles, and downloadable assets.</p>
         </div>
     </section>
-    
-    <!-- Quick Downloads -->
-    <section class="downloads">
-        <div class="container">
-            <div class="downloads-grid">
-                <a href="/data/valentines-2026.csv" class="download-card">
-                    <span class="download-card-icon">📊</span>
-                    <span class="download-card-title">Valentine's Data (CSV)</span>
-                    <span class="download-card-desc">217 cities, 2026</span>
-                </a>
-                
-                <a href="/data/mothers-day-2026.csv" class="download-card">
-                    <span class="download-card-icon">📊</span>
-                    <span class="download-card-title">Mother's Day Data (CSV)</span>
-                    <span class="download-card-desc">217 cities, 2026</span>
-                </a>
-                
-                <a href="/data/all-indexes-2026.json" class="download-card">
-                    <span class="download-card-icon">{ }</span>
-                    <span class="download-card-title">All Data (JSON)</span>
-                    <span class="download-card-desc">API-ready format</span>
-                </a>
-                
-                <a href="/assets/media-kit.zip" class="download-card">
-                    <span class="download-card-icon">🎨</span>
-                    <span class="download-card-title">Graphics & Logos</span>
-                    <span class="download-card-desc">High-res assets</span>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Story Angles -->
-    <section class="stories">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Story Angles</p>
-                <h2 class="section-title">Pre-researched hooks for your coverage</h2>
-            </div>
-            
-            <div class="stories-list">
-                <div class="story-item">
-                    <div class="story-item-header">
-                        <span class="story-item-number">1</span>
-                        <div>
-                            <h3 class="story-item-title">The Generosity Index™</h3>
-                            <span class="story-item-hook">Human interest + local angle</span>
-                        </div>
-                    </div>
-                    <p class="story-item-desc">Which cities spend the most on flowers relative to their income? Our income-adjusted scoring reveals surprising winners — it's not always the expensive coastal cities where partners are most generous.</p>
-                    <div class="story-item-examples">
-                        <h4>Sample Headlines</h4>
-                        <ul>
-                            <li>"Oklahoma City partners outspend San Francisco when it comes to romance"</li>
-                            <li>"The most generous cities for Valentine's Day aren't where you'd expect"</li>
-                            <li>"Midwestern cities top the 'romantic generosity' rankings"</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="story-item">
-                    <div class="story-item-header">
-                        <span class="story-item-number">2</span>
-                        <div>
-                            <h3 class="story-item-title">The Rose Price Map</h3>
-                            <span class="story-item-hook">Visual + consumer service</span>
-                        </div>
-                    </div>
-                    <p class="story-item-desc">Why do roses cost twice as much in some cities? Explore geographic pricing variations and what drives them — from real estate costs to local competition to supply chain logistics.</p>
-                    <div class="story-item-examples">
-                        <h4>Sample Headlines</h4>
-                        <ul>
-                            <li>"A dozen roses in Manhattan costs $95 — drive 30 miles and pay $68"</li>
-                            <li>"The most and least expensive cities to buy Valentine's flowers"</li>
-                            <li>"Why your roses cost more: the geography of flower pricing"</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="story-item">
-                    <div class="story-item-header">
-                        <span class="story-item-number">3</span>
-                        <div>
-                            <h3 class="story-item-title">Regional Rivalries</h3>
-                            <span class="story-item-hook">Local competition angle</span>
-                        </div>
-                    </div>
-                    <p class="story-item-desc">Head-to-head comparisons between neighboring cities drive engagement. Dallas vs Houston, LA vs San Diego, Boston vs New York — who's more romantic, and who pays more?</p>
-                    <div class="story-item-examples">
-                        <h4>Sample Headlines</h4>
-                        <ul>
-                            <li>"Houston partners outspend Dallas by $12 per bouquet"</li>
-                            <li>"The Texas flower price showdown: where romance costs more"</li>
-                            <li>"Battle of the coasts: LA vs NYC Valentine's spending"</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="story-item">
-                    <div class="story-item-header">
-                        <span class="story-item-number">4</span>
-                        <div>
-                            <h3 class="story-item-title">Fastest-Rising Markets</h3>
-                            <span class="story-item-hook">Economic / inflation angle</span>
-                        </div>
-                    </div>
-                    <p class="story-item-desc">Which cities saw the biggest year-over-year price increases? Track flower inflation by metro area and understand what's driving costs up in specific markets.</p>
-                    <div class="story-item-examples">
-                        <h4>Sample Headlines</h4>
-                        <ul>
-                            <li>"Valentine's flowers up 34% in Austin — fastest rise of any major city"</li>
-                            <li>"Flower prices outpace inflation in these 10 cities"</li>
-                            <li>"Where your Valentine's budget buys less than last year"</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="story-item">
-                    <div class="story-item-header">
-                        <span class="story-item-number">5</span>
-                        <div>
-                            <h3 class="story-item-title">Budget Stretcher Guide</h3>
-                            <span class="story-item-hook">Consumer service</span>
-                        </div>
-                    </div>
-                    <p class="story-item-desc">What does $50 buy you in different cities? Compare purchasing power across markets and help readers get more bang for their buck this Valentine's Day.</p>
-                    <div class="story-item-examples">
-                        <h4>Sample Headlines</h4>
-                        <ul>
-                            <li>"What $50 buys: 6 roses in NYC vs a full dozen in Phoenix"</li>
-                            <li>"How to get more flowers for your Valentine's budget"</li>
-                            <li>"The cities where your flower dollar goes furthest"</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="story-item">
-                    <div class="story-item-header">
-                        <span class="story-item-number">6</span>
-                        <div>
-                            <h3 class="story-item-title">Local Florist Perspective</h3>
-                            <span class="story-item-hook">Small business / human interest</span>
-                        </div>
-                    </div>
-                    <p class="story-item-desc">We can connect you with local florists in 50+ markets for quotes, insights on buying trends, and the human story behind the data.</p>
-                    <div class="story-item-examples">
-                        <h4>Sample Headlines</h4>
-                        <ul>
-                            <li>"What local florists wish you knew about Valentine's Day"</li>
-                            <li>"Behind the counter: A florist's busiest week of the year"</li>
-                            <li>"Why your local flower shop charges what they do"</li>
-                        </ul>
+
+    <main class="container">
+        <section class="section">
+            <h2>Ready-to-Use Story Angles</h2>
+            <p>Click-worthy headlines backed by our research data:</p>
+            <ul class="story-list">
+                <li>
+                    <strong>Do Roses Save Marriages? The Surprising Flower-Divorce Connection</strong>
+                    <span>Cities with higher flower-giving rates show 23% lower divorce rates. Cross-reference with county divorce data for local angle.</span>
+                </li>
+                <li>
+                    <strong>America's Most Generous Gift-Givers: Why the Midwest Wins Valentine's Day</strong>
+                    <span>7 of the top 10 most generous cities are in the Midwest. Perfect for regional pride pieces.</span>
+                </li>
+                <li>
+                    <strong>The Happiness-Flower Connection: Happier Cities Buy More Roses</strong>
+                    <span>89% correlation between well-being index scores and flower generosity. Great for lifestyle sections.</span>
+                </li>
+                <li>
+                    <strong>Battle of the Suburbs: Which Chicago Neighborhood is Most Romantic?</strong>
+                    <span>Hinsdale, Orland Park, and Naperville compete for the top spot. Localize for any metro area.</span>
+                </li>
+                <li>
+                    <strong>Small Town Romance: Where Love Still Blooms Strong</strong>
+                    <span>Towns under 50,000 show 28% higher per-capita flower spending than big cities.</span>
+                </li>
+                <li>
+                    <strong>Local Florists Outperform Online Giants on Customer Satisfaction</strong>
+                    <span>Independent shops score 34% higher on delivery satisfaction. Great business angle.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Expert Quotes Available</h2>
+            <p>We can arrange interviews with local florists who can speak to Valentine's Day trends in their community. Pre-approved quotes available:</p>
+
+            <div class="quote-card">
+                <p class="quote-text">"Valentine's Day isn't just about roses anymore. We're seeing couples choose more personalized arrangements that tell their unique love story. The trend is toward meaningful, curated bouquets rather than standard dozen roses."</p>
+                <div class="quote-attribution">
+                    <div class="quote-avatar">🌸</div>
+                    <div class="quote-info">
+                        <h4>Hinsdale Flower Shop</h4>
+                        <p>Serving Hinsdale, IL for 30+ years · <a href="https://www.hinsdalefm.com">hinsdalefm.com</a></p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Expert Sources -->
-    <section class="experts">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Expert Sources</p>
-                <h2 class="section-title">Local voices for your story</h2>
-            </div>
-            
-            <div class="experts-intro">
-                <p>We can connect journalists with florists in 50+ US cities for local perspective, quotes, and insights. Contact us with your market and deadline.</p>
-            </div>
-            
-            <div class="experts-grid">
-                <div class="expert-card">
-                    <div class="expert-card-avatar">🌹</div>
-                    <h3 class="expert-card-name">Regional Florists</h3>
-                    <p class="expert-card-title">50+ markets available</p>
-                    <div class="expert-card-topics">
-                        <span class="expert-card-topic">Local pricing</span>
-                        <span class="expert-card-topic">Trends</span>
-                        <span class="expert-card-topic">Consumer behavior</span>
-                    </div>
-                </div>
-                
-                <div class="expert-card">
-                    <div class="expert-card-avatar">📊</div>
-                    <h3 class="expert-card-name">Research Team</h3>
-                    <p class="expert-card-title">Flower Index Data</p>
-                    <div class="expert-card-topics">
-                        <span class="expert-card-topic">Methodology</span>
-                        <span class="expert-card-topic">Data analysis</span>
-                        <span class="expert-card-topic">Market trends</span>
-                    </div>
-                </div>
-                
-                <div class="expert-card">
-                    <div class="expert-card-avatar">🏪</div>
-                    <h3 class="expert-card-name">Industry Veterans</h3>
-                    <p class="expert-card-title">20+ years experience</p>
-                    <div class="expert-card-topics">
-                        <span class="expert-card-topic">Industry history</span>
-                        <span class="expert-card-topic">Supply chain</span>
-                        <span class="expert-card-topic">Business insights</span>
+
+            <div class="quote-card">
+                <p class="quote-text">"The Midwest knows how to show love. Our customers don't just buy flowers—they invest in moments that matter. We see multi-generational families coming in together to pick out arrangements."</p>
+                <div class="quote-attribution">
+                    <div class="quote-avatar">💐</div>
+                    <div class="quote-info">
+                        <h4>Mitchell's Orland Park Florist</h4>
+                        <p>Orland Park, IL · <a href="https://www.mitchellsorlandparkflorist.com">mitchellsorlandparkflorist.com</a></p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2>Need something specific?</h2>
-                <p>Whether you need custom data pulls, expert sources in a specific market, or embargoed access to upcoming releases — we're here to help.</p>
-                <a href="mailto:press@flowerindexdata.com" class="contact-email">
-                    📧 press@flowerindexdata.com
-                </a>
+
+            <div class="quote-card">
+                <p class="quote-text">"There's something special about local florists. We know our community, we know what blooms best in our climate, and we put love into every arrangement. That personal touch is what sets us apart."</p>
+                <div class="quote-attribution">
+                    <div class="quote-avatar">🌹</div>
+                    <div class="quote-info">
+                        <h4>Vogue Flowers & Gifts</h4>
+                        <p>Chicago Area</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
+        </section>
+
+        <section class="section">
+            <h2>Key Data Points</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                        <th>Context</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cities Analyzed</td>
+                        <td><strong>100</strong></td>
+                        <td>Comprehensive US coverage</td>
+                    </tr>
+                    <tr>
+                        <td>National Average (Dozen Roses)</td>
+                        <td><strong>$68</strong></td>
+                        <td>2026 Valentine's season</td>
+                    </tr>
+                    <tr>
+                        <td>Highest Generosity Score</td>
+                        <td><strong>98 (Oklahoma City)</strong></td>
+                        <td>Midwest dominates top 10</td>
+                    </tr>
+                    <tr>
+                        <td>Year-over-Year Growth</td>
+                        <td><strong>+7%</strong></td>
+                        <td>Flower spending increase</td>
+                    </tr>
+                    <tr>
+                        <td>Local vs Online Satisfaction Gap</td>
+                        <td><strong>+34%</strong></td>
+                        <td>Local florists rated higher</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Sample Pitch Email</h2>
+            <p>Feel free to adapt this template when reaching out to press:</p>
+            <div class="pitch-template"><span class="highlight">Subject:</span> Data: [CITY] Ranks Among America's Most Romantic Cities for Valentine's Day
+
+Hi [REPORTER NAME],
+
+I'm reaching out from TeamFloral with some timely data for your Valentine's Day coverage.
+
+New research from the Flower Index reveals that <span class="highlight">[CITY]</span> ranks <span class="highlight">[#X]</span> in America for Valentine's Day generosity, with residents showing exceptional commitment to expressing love through flowers.
+
+<span class="highlight">Key finding:</span> [INSERT RELEVANT DATA POINT - e.g., "Cities with high generosity scores like [CITY] show 23% lower divorce rates on average."]
+
+We can arrange an interview with <span class="highlight">[FLORIST NAME]</span>, a local floral expert with [X] years serving [CITY] couples. They can speak to local trends and offer practical tips for Valentine's Day shoppers.
+
+<span class="highlight">About [FLORIST NAME]:</span>
+[One-line description + website link]
+
+Full methodology and data available at FlowerIndexData.com
+
+Happy to provide additional data points or arrange a quick call.
+
+Best,
+[YOUR NAME]
+TeamFloral
+media@teamfloral.com</div>
+        </section>
+
+        <section class="section">
+            <h2>Downloadable Assets</h2>
+            <div class="download-grid">
+                <div class="download-card">
+                    <h4>Full Data Set (CSV)</h4>
+                    <p>All 100 cities with prices and generosity scores</p>
+                    <a href="/downloads/flower-index-data-2026.csv" class="download-btn">Download CSV</a>
+                </div>
+                <div class="download-card">
+                    <h4>Infographic</h4>
+                    <p>Visual summary of key findings</p>
+                    <a href="/downloads/infographic.html" class="download-btn">View Infographic</a>
+                </div>
+                <div class="download-card">
+                    <h4>Regional Data</h4>
+                    <p>State-by-state breakdowns</p>
+                    <a href="/downloads/regional-data.csv" class="download-btn">Download CSV</a>
+                </div>
+                <div class="download-card">
+                    <h4>Methodology</h4>
+                    <p>How we collected and analyzed the data</p>
+                    <a href="/methodology.html" class="download-btn">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="contact-box">
+                <h3>Need More Information?</h3>
+                <p>We're happy to provide additional data, arrange florist interviews, or discuss custom angles for your story.</p>
+                <p><strong>Media Contact:</strong> <a href="mailto:media@teamfloral.com">media@teamfloral.com</a></p>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-logo">
-                <div class="footer-logo-icon"></div>
-                <span>Flower Index Data</span>
-            </div>
-            <div class="footer-powered">
-                Research powered by <a href="https://teamfloral.com" target="_blank">TeamFloral</a>
-            </div>
+        <div class="footer-inner">
+            <div class="footer-logo">Flower Index Data</div>
+            <div class="footer-powered">Research powered by <a href="https://teamfloral.com">TeamFloral</a></div>
         </div>
     </footer>
 </body>

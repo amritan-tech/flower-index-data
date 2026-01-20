@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Widget | Flower Index Data</title>
+    <meta name="description" content="Add flower pricing data to your website with our embeddable widget. Free for florists and publishers.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --warm-white: #f5f3ef;
+            --sage: #7d8c7d;
+            --terracotta: #c4775c;
+            --slate: #6b7280;
+            --border: rgba(26, 26, 26, 0.08);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 249, 247, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 100%);
+            border-radius: 8px;
+        }
+        
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 140px 0 60px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--slate);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Widget Preview */
+        .preview-section {
+            padding: 60px 0;
+        }
+        
+        .preview-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--sage);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .widget-container {
+            max-width: 400px;
+            margin: 0 auto 60px;
+        }
+        
+        /* The actual widget */
+        .fid-widget {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        
+        .fid-widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .fid-widget-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        
+        .fid-widget-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            background: #f5eef0;
+            color: #9e6b7a;
+            border-radius: 100px;
+        }
+        
+        .fid-widget-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .fid-widget-stat:last-of-type {
+            border-bottom: none;
+        }
+        
+        .fid-widget-stat-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .fid-widget-stat-value {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        
+        .fid-widget-stat-change {
+            font-size: 12px;
+            font-weight: 500;
+            color: #c4775c;
+            margin-left: 6px;
+        }
+        
+        .fid-widget-footer {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        
+        .fid-widget-link {
+            font-size: 12px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+        
+        .fid-widget-link:hover {
+            color: #1a1a1a;
+        }
+        
+        .fid-widget-link strong {
+            color: #1a1a1a;
+        }
+        
+        /* Code Section */
+        .code-section {
+            background: var(--warm-white);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 60px;
+        }
+        
+        .code-section h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        
+        .code-section p {
+            font-size: 14px;
+            color: var(--slate);
+            margin-bottom: 20px;
+        }
+        
+        .code-block {
+            background: var(--ink);
+            color: #a0e0a0;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .code-block .tag { color: #ff8080; }
+        .code-block .attr { color: #80c0ff; }
+        .code-block .string { color: #a0e0a0; }
+        
+        /* Options */
+        .options-section {
+            margin-bottom: 60px;
+        }
+        
+        .options-section h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 700px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .option-card h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .option-card p {
+            font-size: 14px;
+            color: var(--slate);
+            margin-bottom: 12px;
+        }
+        
+        .option-card code {
+            display: block;
+            background: var(--warm-white);
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: var(--terracotta);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: 13px;
+            color: var(--slate);
+        }
+        
+        .footer a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon"></div>
+                <span class="nav-logo-text">Flower Index Data</span>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Embed the Flower Index</h1>
+            <p class="hero-subtitle">Add local flower pricing data to your website with a single line of code. Free for florists.</p>
+        </div>
+    </section>
+    
+    <!-- Widget Preview -->
+    <section class="preview-section">
+        <div class="container">
+            <p class="preview-label">Live Preview</p>
+            
+            <div class="widget-container">
+                <!-- This is what the widget looks like -->
+                <div class="fid-widget">
+                    <div class="fid-widget-header">
+                        <span class="fid-widget-title">Valentine's Day Prices</span>
+                        <span class="fid-widget-badge">Phoenix, AZ</span>
+                    </div>
+                    
+                    <div class="fid-widget-stat">
+                        <span class="fid-widget-stat-label">Dozen Red Roses</span>
+                        <div>
+                            <span class="fid-widget-stat-value">$72</span>
+                            <span class="fid-widget-stat-change">↑ 28%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fid-widget-stat">
+                        <span class="fid-widget-stat-label">Mixed Bouquet</span>
+                        <div>
+                            <span class="fid-widget-stat-value">$58</span>
+                            <span class="fid-widget-stat-change">↑ 22%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fid-widget-stat">
+                        <span class="fid-widget-stat-label">Generosity Score</span>
+                        <div>
+                            <span class="fid-widget-stat-value">82</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fid-widget-footer">
+                        <a href="https://flowerindexdata.com/valentines/phoenix-az/" class="fid-widget-link">
+                            Data from <strong>Flower Index Data</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Embed Code -->
+            <div class="code-section">
+                <h3>Copy this code</h3>
+                <p>Paste this snippet anywhere in your website's HTML. The widget will automatically load with pricing data for your city.</p>
+                
+                <div class="code-block">
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"https://flowerindexdata.com/widget.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"fid-widget"</span> 
+     <span class="attr">data-city</span>=<span class="string">"phoenix"</span> 
+     <span class="attr">data-state</span>=<span class="string">"az"</span>
+     <span class="attr">data-index</span>=<span class="string">"valentines"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                </div>
+            </div>
+            
+            <!-- Options -->
+            <div class="options-section">
+                <h3>Customization Options</h3>
+                
+                <div class="options-grid">
+                    <div class="option-card">
+                        <h4>Choose Your Index</h4>
+                        <p>Display pricing for different holidays and occasions.</p>
+                        <code>data-index="valentines"<br>data-index="mothers-day"<br>data-index="sympathy"<br>data-index="christmas"</code>
+                    </div>
+                    
+                    <div class="option-card">
+                        <h4>Set Your Location</h4>
+                        <p>Show pricing for any city in our database.</p>
+                        <code>data-city="houston"<br>data-state="tx"</code>
+                    </div>
+                    
+                    <div class="option-card">
+                        <h4>Dark Mode</h4>
+                        <p>Match your site's dark theme.</p>
+                        <code>data-theme="dark"</code>
+                    </div>
+                    
+                    <div class="option-card">
+                        <h4>Compact Size</h4>
+                        <p>Smaller widget for sidebars.</p>
+                        <code>data-size="compact"</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Research powered by <a href="https://teamfloral.com">TeamFloral</a> · <a href="/">Flower Index Data</a></p>
+        </div>
+    </footer>
+</body>
+</html>

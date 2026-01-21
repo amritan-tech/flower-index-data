@@ -152,6 +152,27 @@
         .footer-powered a:hover{color:white}
         .teamfloral-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;color:white;letter-spacing:0.5px}
 
+        /* Slideshow Controls */
+        .slideshow-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
+        .slideshow-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:white;color:var(--ink);font-size:16px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center}
+        .slideshow-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+        .slideshow-btn.play-pause{font-size:14px}
+        .slideshow-dots{display:flex;gap:8px}
+        .slideshow-dot{width:10px;height:10px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s}
+        .slideshow-dot.active{background:var(--rose);transform:scale(1.2)}
+        .slideshow-dot:hover{background:var(--slate)}
+
+        /* Region Selector */
+        .region-selector{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+        .region-selector label{font-size:13px;color:var(--slate)}
+        .region-selector select{padding:8px 14px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;border:1px solid var(--border);border-radius:8px;background:white;color:var(--ink);cursor:pointer;min-width:180px}
+        .region-selector select:focus{outline:none;border-color:var(--rose)}
+
+        /* Slide transition */
+        .regional-grid{transition:opacity 0.4s ease-in-out}
+        .regional-grid.fade-out{opacity:0}
+        .regional-grid.fade-in{opacity:1}
+
         @media(max-width:768px){
             .nav-links{display:none}
             .hero h1{font-size:32px}
@@ -161,6 +182,9 @@
             .insights-grid{grid-template-columns:1fr 1fr}
             .map-legend{display:none}
             .footer-inner{flex-direction:column;text-align:center}
+            .region-selector{flex-direction:column}
+            .slideshow-controls{gap:12px}
+            .slideshow-btn{width:36px;height:36px;font-size:14px}
         }
     </style>
 </head>
@@ -295,20 +319,38 @@
         </div>
     </section>
 
-    <!-- Regional Spotlight -->
+    <!-- Regional Spotlight (Dynamic Slideshow) -->
     <section class="regional-section">
         <div class="container">
             <div class="regional-header">
-                <h2>Regional Spotlight: Illinois</h2>
-                <p>The Land of Lincoln shows serious love on Valentine's Day, with Chicago suburbs leading the charge in romance.</p>
+                <h2>Regional Spotlight: <span id="region-name">Illinois</span></h2>
+                <p id="region-description">The Land of Lincoln shows serious love on Valentine's Day, with Chicago suburbs leading the charge in romance.</p>
+                <div class="slideshow-controls">
+                    <button class="slideshow-btn" onclick="prevRegion()" aria-label="Previous region">←</button>
+                    <div class="slideshow-dots" id="slideshow-dots"></div>
+                    <button class="slideshow-btn" onclick="nextRegion()" aria-label="Next region">→</button>
+                    <button class="slideshow-btn play-pause" id="play-pause-btn" onclick="toggleAutoplay()" aria-label="Pause slideshow">⏸</button>
+                </div>
+                <div class="region-selector">
+                    <label for="region-select">Or select your region:</label>
+                    <select id="region-select" onchange="selectRegion(this.value)">
+                        <option value="illinois">Illinois / Chicago Metro</option>
+                        <option value="texas">Texas</option>
+                        <option value="california">California</option>
+                        <option value="florida">Florida</option>
+                        <option value="ohio">Ohio / Midwest</option>
+                        <option value="newyork">New York / Northeast</option>
+                        <option value="southcarolina">South Carolina</option>
+                    </select>
+                </div>
             </div>
             <div class="regional-grid">
                 <div class="regional-card">
                     <div class="regional-card-header">
-                        <h3>Chicago Metro Romance Rankings</h3>
-                        <p>Top suburbs by generosity score</p>
+                        <h3 id="rankings-title">Chicago Metro Romance Rankings</h3>
+                        <p>Top cities by generosity score</p>
                     </div>
-                    <div class="regional-card-body">
+                    <div class="regional-card-body" id="rankings-body">
                         <div class="regional-stat-row"><span class="city">Hinsdale</span><span class="value">Score: 92</span></div>
                         <div class="regional-stat-row"><span class="city">Orland Park</span><span class="value">Score: 91</span></div>
                         <div class="regional-stat-row"><span class="city">Naperville</span><span class="value">Score: 89</span></div>
@@ -318,10 +360,10 @@
                 </div>
                 <div class="regional-card">
                     <div class="regional-card-header" style="background:linear-gradient(135deg,var(--terracotta) 0%,var(--rose) 100%)">
-                        <h3>Premium Floral Markets</h3>
+                        <h3 id="markets-title">Premium Floral Markets</h3>
                         <p>Where quality matters most</p>
                     </div>
-                    <div class="regional-card-body">
+                    <div class="regional-card-body" id="markets-body">
                         <div class="regional-stat-row"><span class="city">Hinsdale</span><span class="value">Premium+</span></div>
                         <div class="regional-stat-row"><span class="city">Lake Forest</span><span class="value">Premium+</span></div>
                         <div class="regional-stat-row"><span class="city">Winnetka</span><span class="value">Premium</span></div>
@@ -518,6 +560,272 @@
                     '</div>'
                 );
             });
+        });
+
+        // Regional Data for Dynamic Spotlight
+        var regionData = {
+            illinois: {
+                name: 'Illinois',
+                description: 'The Land of Lincoln shows serious love on Valentine\'s Day, with Chicago suburbs leading the charge in romance.',
+                rankingsTitle: 'Chicago Metro Romance Rankings',
+                rankings: [
+                    {city: 'Hinsdale', value: 'Score: 92'},
+                    {city: 'Orland Park', value: 'Score: 91'},
+                    {city: 'Naperville', value: 'Score: 89'},
+                    {city: 'Oak Park', value: 'Score: 87'},
+                    {city: 'Evanston', value: 'Score: 85'}
+                ],
+                marketsTitle: 'Premium Floral Markets',
+                markets: [
+                    {city: 'Hinsdale', value: 'Premium+'},
+                    {city: 'Lake Forest', value: 'Premium+'},
+                    {city: 'Winnetka', value: 'Premium'},
+                    {city: 'Orland Park', value: 'Premium'},
+                    {city: 'La Grange', value: 'Premium'}
+                ]
+            },
+            texas: {
+                name: 'Texas',
+                description: 'Everything\'s bigger in Texas, including the love! The Lone Star State shows strong Valentine\'s Day spirit across its diverse metro areas.',
+                rankingsTitle: 'Texas Metro Romance Rankings',
+                rankings: [
+                    {city: 'Houston', value: 'Score: 85'},
+                    {city: 'Fort Worth', value: 'Score: 84'},
+                    {city: 'Dallas', value: 'Score: 80'},
+                    {city: 'Austin', value: 'Score: 78'},
+                    {city: 'San Antonio', value: 'Score: 82'}
+                ],
+                marketsTitle: 'Rising Texas Markets',
+                markets: [
+                    {city: 'Fort Worth', value: '+9% YoY'},
+                    {city: 'Plano', value: '+7% YoY'},
+                    {city: 'Austin', value: '+6% YoY'},
+                    {city: 'Houston', value: '+5% YoY'},
+                    {city: 'Dallas', value: '+4% YoY'}
+                ]
+            },
+            california: {
+                name: 'California',
+                description: 'The Golden State leads in flower innovation, with couples choosing unique arrangements that reflect California\'s creative spirit.',
+                rankingsTitle: 'California Metro Rankings',
+                rankings: [
+                    {city: 'San Diego', value: 'Score: 76'},
+                    {city: 'Sacramento', value: 'Score: 74'},
+                    {city: 'Los Angeles', value: 'Score: 62'},
+                    {city: 'San Francisco', value: 'Score: 58'},
+                    {city: 'Palo Alto', value: 'Score: 55'}
+                ],
+                marketsTitle: 'Premium California Markets',
+                markets: [
+                    {city: 'Palo Alto', value: '$92 avg'},
+                    {city: 'San Francisco', value: '$92 avg'},
+                    {city: 'Los Angeles', value: '$88 avg'},
+                    {city: 'Beverly Hills', value: '$95 avg'},
+                    {city: 'San Diego', value: '$72 avg'}
+                ]
+            },
+            florida: {
+                name: 'Florida',
+                description: 'The Sunshine State brings warmth to Valentine\'s Day, with strong flower-giving traditions across its diverse communities.',
+                rankingsTitle: 'Florida Metro Romance Rankings',
+                rankings: [
+                    {city: 'Orlando', value: 'Score: 84'},
+                    {city: 'Tampa', value: 'Score: 82'},
+                    {city: 'Jacksonville', value: 'Score: 80'},
+                    {city: 'Miami', value: 'Score: 78'},
+                    {city: 'Fort Lauderdale', value: 'Score: 76'}
+                ],
+                marketsTitle: 'Florida Market Trends',
+                markets: [
+                    {city: 'Orlando', value: '+6% YoY'},
+                    {city: 'Tampa', value: '+5% YoY'},
+                    {city: 'Miami', value: '+4% YoY'},
+                    {city: 'Jacksonville', value: '+4% YoY'},
+                    {city: 'Naples', value: 'Premium'}
+                ]
+            },
+            ohio: {
+                name: 'Ohio / Midwest',
+                description: 'The heartland truly lives up to its name! Midwest cities dominate our generosity rankings with genuine, heartfelt giving.',
+                rankingsTitle: 'Midwest Romance Rankings',
+                rankings: [
+                    {city: 'Oklahoma City', value: 'Score: 98'},
+                    {city: 'Tulsa', value: 'Score: 98'},
+                    {city: 'Dayton', value: 'Score: 96'},
+                    {city: 'Indianapolis', value: 'Score: 96'},
+                    {city: 'Columbus', value: 'Score: 94'}
+                ],
+                marketsTitle: 'Rising Midwest Markets',
+                markets: [
+                    {city: 'Dayton', value: '+6% YoY'},
+                    {city: 'Columbus', value: '+5% YoY'},
+                    {city: 'Cincinnati', value: '+5% YoY'},
+                    {city: 'Cleveland', value: '+4% YoY'},
+                    {city: 'Toledo', value: '+3% YoY'}
+                ]
+            },
+            newyork: {
+                name: 'New York / Northeast',
+                description: 'The Big Apple and Northeast corridor show sophisticated taste in floral arrangements, with premium markets leading the way.',
+                rankingsTitle: 'Northeast Metro Rankings',
+                rankings: [
+                    {city: 'Philadelphia', value: 'Score: 72'},
+                    {city: 'Boston', value: 'Score: 60'},
+                    {city: 'New York City', value: 'Score: 65'},
+                    {city: 'Hartford', value: 'Score: 70'},
+                    {city: 'Providence', value: 'Score: 68'}
+                ],
+                marketsTitle: 'Premium Northeast Markets',
+                markets: [
+                    {city: 'New York City', value: '$95 avg'},
+                    {city: 'Boston', value: '$85 avg'},
+                    {city: 'Greenwich', value: '$90 avg'},
+                    {city: 'Philadelphia', value: '$75 avg'},
+                    {city: 'Westchester', value: '$88 avg'}
+                ]
+            },
+            southcarolina: {
+                name: 'South Carolina',
+                description: 'Southern charm meets Valentine\'s Day romance! South Carolina florists bring warmth and tradition to every arrangement.',
+                rankingsTitle: 'South Carolina Romance Rankings',
+                rankings: [
+                    {city: 'Charleston', value: 'Score: 86'},
+                    {city: 'Columbia', value: 'Score: 84'},
+                    {city: 'Greenville', value: 'Score: 82'},
+                    {city: 'Hartsville', value: 'Score: 88'},
+                    {city: 'Myrtle Beach', value: 'Score: 80'}
+                ],
+                marketsTitle: 'SC Premium Markets',
+                markets: [
+                    {city: 'Charleston', value: 'Premium'},
+                    {city: 'Hilton Head', value: 'Premium'},
+                    {city: 'Greenville', value: 'Growing'},
+                    {city: 'Hartsville', value: 'Local Fav'},
+                    {city: 'Columbia', value: 'Growing'}
+                ]
+            }
+        };
+
+        // Slideshow Variables
+        var regionKeys = ['illinois', 'texas', 'california', 'florida', 'ohio', 'newyork', 'southcarolina'];
+        var currentRegionIndex = 0;
+        var autoplayInterval = null;
+        var isAutoplaying = true;
+        var autoplayDelay = 5000; // 5 seconds per slide
+
+        // Initialize slideshow dots
+        function initSlideshow() {
+            var dotsContainer = document.getElementById('slideshow-dots');
+            dotsContainer.innerHTML = '';
+            regionKeys.forEach(function(key, index) {
+                var dot = document.createElement('div');
+                dot.className = 'slideshow-dot' + (index === 0 ? ' active' : '');
+                dot.onclick = function() { goToRegion(index); };
+                dotsContainer.appendChild(dot);
+            });
+            startAutoplay();
+        }
+
+        function updateDots() {
+            var dots = document.querySelectorAll('.slideshow-dot');
+            dots.forEach(function(dot, index) {
+                dot.className = 'slideshow-dot' + (index === currentRegionIndex ? ' active' : '');
+            });
+        }
+
+        function updateRegion(region, animate) {
+            var data = regionData[region];
+            if (!data) return;
+
+            var grid = document.querySelector('.regional-grid');
+
+            if (animate) {
+                grid.classList.add('fade-out');
+                setTimeout(function() {
+                    applyRegionData(data);
+                    grid.classList.remove('fade-out');
+                    grid.classList.add('fade-in');
+                    setTimeout(function() { grid.classList.remove('fade-in'); }, 400);
+                }, 300);
+            } else {
+                applyRegionData(data);
+            }
+
+            // Update dropdown to match
+            document.getElementById('region-select').value = region;
+            updateDots();
+        }
+
+        function applyRegionData(data) {
+            document.getElementById('region-name').textContent = data.name;
+            document.getElementById('region-description').textContent = data.description;
+            document.getElementById('rankings-title').textContent = data.rankingsTitle;
+            document.getElementById('markets-title').textContent = data.marketsTitle;
+
+            var rankingsHtml = '';
+            data.rankings.forEach(function(item) {
+                rankingsHtml += '<div class="regional-stat-row"><span class="city">' + item.city + '</span><span class="value">' + item.value + '</span></div>';
+            });
+            document.getElementById('rankings-body').innerHTML = rankingsHtml;
+
+            var marketsHtml = '';
+            data.markets.forEach(function(item) {
+                marketsHtml += '<div class="regional-stat-row"><span class="city">' + item.city + '</span><span class="value">' + item.value + '</span></div>';
+            });
+            document.getElementById('markets-body').innerHTML = marketsHtml;
+        }
+
+        function nextRegion() {
+            currentRegionIndex = (currentRegionIndex + 1) % regionKeys.length;
+            updateRegion(regionKeys[currentRegionIndex], true);
+            resetAutoplay();
+        }
+
+        function prevRegion() {
+            currentRegionIndex = (currentRegionIndex - 1 + regionKeys.length) % regionKeys.length;
+            updateRegion(regionKeys[currentRegionIndex], true);
+            resetAutoplay();
+        }
+
+        function goToRegion(index) {
+            currentRegionIndex = index;
+            updateRegion(regionKeys[currentRegionIndex], true);
+            resetAutoplay();
+        }
+
+        function selectRegion(region) {
+            currentRegionIndex = regionKeys.indexOf(region);
+            if (currentRegionIndex === -1) currentRegionIndex = 0;
+            updateRegion(region, true);
+            resetAutoplay();
+        }
+
+        function startAutoplay() {
+            if (autoplayInterval) clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(function() {
+                if (isAutoplaying) nextRegion();
+            }, autoplayDelay);
+        }
+
+        function resetAutoplay() {
+            if (isAutoplaying) startAutoplay();
+        }
+
+        function toggleAutoplay() {
+            isAutoplaying = !isAutoplaying;
+            var btn = document.getElementById('play-pause-btn');
+            btn.textContent = isAutoplaying ? '⏸' : '▶';
+            btn.setAttribute('aria-label', isAutoplaying ? 'Pause slideshow' : 'Play slideshow');
+            if (isAutoplaying) {
+                startAutoplay();
+            } else {
+                clearInterval(autoplayInterval);
+            }
+        }
+
+        // Initialize slideshow when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initSlideshow();
         });
     </script>
 </body>

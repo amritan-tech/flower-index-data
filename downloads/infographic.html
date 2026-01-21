@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Flower Index 2026 — Infographic</title>
-    <meta name="description" content="Visual summary of Valentine's Day flower prices and generosity scores across 100 American cities.">
+    <title>Valentine's Day Flower Index 2026 — Custom Infographic Generator</title>
+    <meta name="description" content="Generate custom infographics for your Valentine's Day flower story. Choose your region, story angle, and download.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,158 +13,374 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
 
-        .infographic{max-width:800px;margin:0 auto;padding:40px 24px}
+        .page-container{max-width:1000px;margin:0 auto;padding:40px 24px}
 
-        .header{text-align:center;margin-bottom:48px}
+        .header{text-align:center;margin-bottom:40px}
         .header-badge{display:inline-block;padding:8px 16px;background:white;border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--rose);margin-bottom:16px}
-        .header h1{font-family:'Fraunces',serif;font-size:36px;font-weight:400;margin-bottom:12px}
-        .header p{color:var(--slate);font-size:16px}
+        .header h1{font-family:'Fraunces',serif;font-size:32px;font-weight:400;margin-bottom:12px}
+        .header p{color:var(--slate);font-size:16px;max-width:600px;margin:0 auto}
 
-        .download-buttons{display:flex;gap:12px;justify-content:center;margin-bottom:48px}
-        .download-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all 0.2s}
-        .download-btn.primary{background:var(--ink);color:white}
-        .download-btn.primary:hover{background:#333}
-        .download-btn.secondary{background:white;color:var(--ink);border:1px solid var(--border)}
-        .download-btn.secondary:hover{background:var(--warm-white)}
+        .controls{background:white;border-radius:16px;padding:24px;margin-bottom:32px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+        .controls h2{font-family:'Fraunces',serif;font-size:20px;font-weight:400;margin-bottom:20px}
+        .control-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+        .control-group{display:flex;flex-direction:column;gap:8px}
+        .control-group label{font-size:13px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:0.5px}
+        .control-group select{padding:12px 16px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;border:1px solid var(--border);border-radius:8px;background:white;color:var(--ink);cursor:pointer}
+        .control-group select:focus{outline:none;border-color:var(--rose)}
 
-        .stats-hero{background:linear-gradient(135deg,var(--rose) 0%,var(--terracotta) 100%);color:white;border-radius:24px;padding:40px;margin-bottom:32px;text-align:center}
-        .stats-hero h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:24px}
-        .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-        .stat-item h3{font-family:'Fraunces',serif;font-size:48px;font-weight:500;margin-bottom:4px}
-        .stat-item p{font-size:14px;opacity:0.9}
+        .action-buttons{display:flex;gap:12px;justify-content:center;margin-top:24px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s}
+        .btn-primary{background:var(--ink);color:white}
+        .btn-primary:hover{background:#333}
+        .btn-secondary{background:white;color:var(--ink);border:1px solid var(--border)}
+        .btn-secondary:hover{background:var(--warm-white)}
 
-        .rankings-section{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
-        .ranking-card{background:white;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
-        .ranking-card h3{font-family:'Fraunces',serif;font-size:18px;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:8px}
-        .ranking-list{list-style:none}
-        .ranking-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
-        .ranking-item:last-child{border-bottom:none}
-        .ranking-item .rank{width:24px;height:24px;background:var(--rose-light);color:var(--rose);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-right:12px}
-        .ranking-item .city{flex:1;font-weight:500}
-        .ranking-item .value{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
-        .ranking-item .value.price{color:var(--terracotta)}
-        .ranking-item .value.score{color:var(--sage)}
+        /* Infographic Preview */
+        .infographic-preview{background:white;border-radius:20px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+        .infographic-preview h3{font-family:'Fraunces',serif;font-size:14px;font-weight:500;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;text-align:center}
 
-        .source-footer{text-align:center;padding:32px;background:var(--warm-white);border-radius:16px}
-        .source-footer p{font-size:14px;color:var(--slate);margin-bottom:8px}
-        .source-footer a{color:var(--rose);text-decoration:none;font-weight:500}
-        .source-footer a:hover{text-decoration:underline}
+        #infographic-content{background:linear-gradient(180deg,#faf9f7 0%,#fff 100%);border-radius:16px;padding:32px;border:1px solid var(--border)}
+
+        .info-header{text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:2px solid var(--border)}
+        .info-header .badge{display:inline-block;padding:6px 12px;background:var(--rose-light);color:var(--rose);border-radius:20px;font-size:12px;font-weight:600;margin-bottom:12px}
+        .info-header h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:8px}
+        .info-header p{color:var(--slate);font-size:14px}
+
+        .info-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px}
+        .info-stat{background:linear-gradient(135deg,var(--rose) 0%,var(--terracotta) 100%);color:white;border-radius:12px;padding:20px;text-align:center}
+        .info-stat h4{font-family:'Fraunces',serif;font-size:36px;font-weight:500;margin-bottom:4px}
+        .info-stat p{font-size:12px;opacity:0.9}
+
+        .info-rankings{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+        .info-ranking-card{background:var(--warm-white);border-radius:12px;padding:20px}
+        .info-ranking-card h4{font-size:14px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .info-ranking-list{list-style:none}
+        .info-ranking-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+        .info-ranking-item:last-child{border-bottom:none}
+        .info-ranking-item .rank{color:var(--rose);font-weight:600;margin-right:8px}
+        .info-ranking-item .value{font-family:'Fraunces',serif;font-weight:500}
+
+        .info-story{background:var(--ink);color:white;border-radius:12px;padding:24px;margin-bottom:24px}
+        .info-story h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;opacity:0.7;margin-bottom:8px}
+        .info-story p{font-family:'Fraunces',serif;font-size:18px;line-height:1.5}
+
+        .info-footer{text-align:center;padding-top:20px;border-top:1px solid var(--border)}
+        .info-footer p{font-size:12px;color:var(--slate)}
+        .info-footer a{color:var(--rose);text-decoration:none;font-weight:500}
 
         .back-link{display:block;text-align:center;margin-top:32px}
         .back-link a{color:var(--slate);text-decoration:none;font-size:14px}
         .back-link a:hover{color:var(--ink)}
 
+        @media print{
+            .controls,.action-buttons,.back-link,.header{display:none}
+            .infographic-preview{box-shadow:none;padding:0}
+            #infographic-content{border:none}
+        }
+
         @media(max-width:768px){
-            .stats-grid{grid-template-columns:1fr}
-            .rankings-section{grid-template-columns:1fr}
-            .stat-item h3{font-size:36px}
-            .download-buttons{flex-direction:column;align-items:center}
+            .control-grid{grid-template-columns:1fr}
+            .info-stats{grid-template-columns:1fr}
+            .info-rankings{grid-template-columns:1fr}
+            .info-stat h4{font-size:28px}
         }
     </style>
 </head>
 <body>
-    <div class="infographic">
+    <div class="page-container">
         <div class="header">
-            <div class="header-badge">📊 Infographic</div>
-            <h1>Valentine's Day Flower Index 2026</h1>
-            <p>What Americans Pay for Roses Across 100 Cities</p>
+            <div class="header-badge">📊 Custom Infographic Generator</div>
+            <h1>Create Your Valentine's Day Story</h1>
+            <p>Select your region, story angle, and data focus to generate a custom infographic for your article.</p>
         </div>
 
-        <div class="download-buttons">
-            <a href="#" class="download-btn primary" onclick="window.print(); return false;">🖨️ Print This Page</a>
-            <a href="/" class="download-btn secondary">← Back to Main Site</a>
-        </div>
-
-        <div class="stats-hero">
-            <h2>Key Findings</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>$68</h3>
-                    <p>National Average<br>(Dozen Roses)</p>
+        <div class="controls">
+            <h2>Customize Your Infographic</h2>
+            <div class="control-grid">
+                <div class="control-group">
+                    <label>Select Region</label>
+                    <select id="region-select" onchange="updateInfographic()">
+                        <option value="national">National Overview</option>
+                        <option value="illinois">Illinois / Chicago</option>
+                        <option value="texas">Texas</option>
+                        <option value="california">California</option>
+                        <option value="florida">Florida</option>
+                        <option value="midwest">Midwest</option>
+                        <option value="northeast">Northeast</option>
+                        <option value="southcarolina">South Carolina</option>
+                    </select>
                 </div>
-                <div class="stat-item">
-                    <h3>+22%</h3>
-                    <p>Year-over-Year<br>Price Increase</p>
+                <div class="control-group">
+                    <label>Story Angle</label>
+                    <select id="story-select" onchange="updateInfographic()">
+                        <option value="generosity">Most Generous Cities</option>
+                        <option value="expensive">Most Expensive Markets</option>
+                        <option value="growth">Fastest Growing Markets</option>
+                        <option value="romance">Romance & Relationships</option>
+                        <option value="local">Support Local Florists</option>
+                    </select>
                 </div>
-                <div class="stat-item">
-                    <h3>100</h3>
-                    <p>Cities<br>Surveyed</p>
+                <div class="control-group">
+                    <label>Data Focus</label>
+                    <select id="focus-select" onchange="updateInfographic()">
+                        <option value="rankings">City Rankings</option>
+                        <option value="prices">Price Comparisons</option>
+                        <option value="trends">Year-over-Year Trends</option>
+                    </select>
                 </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+                <a href="/" class="btn btn-secondary">← Back to Main Site</a>
             </div>
         </div>
 
-        <div class="rankings-section">
-            <div class="ranking-card">
-                <h3>🌹 Most Expensive Cities</h3>
-                <ul class="ranking-list">
-                    <li class="ranking-item">
-                        <span class="rank">1</span>
-                        <span class="city">New York, NY</span>
-                        <span class="value price">$95</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">2</span>
-                        <span class="city">San Francisco, CA</span>
-                        <span class="value price">$92</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">3</span>
-                        <span class="city">Palo Alto, CA</span>
-                        <span class="value price">$92</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">4</span>
-                        <span class="city">Los Angeles, CA</span>
-                        <span class="value price">$88</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">5</span>
-                        <span class="city">Hinsdale, IL</span>
-                        <span class="value price">$88</span>
-                    </li>
-                </ul>
-            </div>
+        <div class="infographic-preview">
+            <h3>Preview</h3>
+            <div id="infographic-content">
+                <div class="info-header">
+                    <span class="badge" id="info-badge">📊 National Data</span>
+                    <h2 id="info-title">Valentine's Day Flower Index 2026</h2>
+                    <p id="info-subtitle">What Americans Pay for Roses Across 100 Cities</p>
+                </div>
 
-            <div class="ranking-card">
-                <h3>💚 Most Generous Cities</h3>
-                <ul class="ranking-list">
-                    <li class="ranking-item">
-                        <span class="rank">1</span>
-                        <span class="city">Oklahoma City, OK</span>
-                        <span class="value score">98</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">2</span>
-                        <span class="city">Tulsa, OK</span>
-                        <span class="value score">98</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">3</span>
-                        <span class="city">Jonesboro, AR</span>
-                        <span class="value score">97</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">4</span>
-                        <span class="city">Evansville, IN</span>
-                        <span class="value score">97</span>
-                    </li>
-                    <li class="ranking-item">
-                        <span class="rank">5</span>
-                        <span class="city">Detroit, MI</span>
-                        <span class="value score">97</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                <div class="info-stats">
+                    <div class="info-stat">
+                        <h4 id="stat1-value">$68</h4>
+                        <p id="stat1-label">National Average</p>
+                    </div>
+                    <div class="info-stat">
+                        <h4 id="stat2-value">100</h4>
+                        <p id="stat2-label">Cities Surveyed</p>
+                    </div>
+                    <div class="info-stat">
+                        <h4 id="stat3-value">+22%</h4>
+                        <p id="stat3-label">YoY Price Change</p>
+                    </div>
+                </div>
 
-        <div class="source-footer">
-            <p>Source: TeamFloral Valentine's Survey 2026</p>
-            <a href="https://flowerindexdata.com">flowerindexdata.com</a>
+                <div class="info-story" id="story-box">
+                    <h4>Key Finding</h4>
+                    <p id="story-text">Cities with higher flower-giving rates show 23% lower divorce rates on average, suggesting a strong correlation between romantic gestures and relationship satisfaction.</p>
+                </div>
+
+                <div class="info-rankings">
+                    <div class="info-ranking-card">
+                        <h4 id="ranking1-title">🌹 Most Expensive</h4>
+                        <ul class="info-ranking-list" id="ranking1-list">
+                            <li class="info-ranking-item"><span><span class="rank">1.</span> New York, NY</span><span class="value">$95</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">2.</span> San Francisco, CA</span><span class="value">$92</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">3.</span> Palo Alto, CA</span><span class="value">$92</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">4.</span> Los Angeles, CA</span><span class="value">$88</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">5.</span> Hinsdale, IL</span><span class="value">$88</span></li>
+                        </ul>
+                    </div>
+                    <div class="info-ranking-card">
+                        <h4 id="ranking2-title">💚 Most Generous</h4>
+                        <ul class="info-ranking-list" id="ranking2-list">
+                            <li class="info-ranking-item"><span><span class="rank">1.</span> Oklahoma City, OK</span><span class="value">98</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">2.</span> Tulsa, OK</span><span class="value">98</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">3.</span> Jonesboro, AR</span><span class="value">97</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">4.</span> Evansville, IN</span><span class="value">97</span></li>
+                            <li class="info-ranking-item"><span><span class="rank">5.</span> Detroit, MI</span><span class="value">97</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-footer">
+                    <p>Source: TeamFloral Valentine's Survey 2026 · <a href="https://flowerindexdata.com">flowerindexdata.com</a></p>
+                </div>
+            </div>
         </div>
 
         <div class="back-link">
             <a href="/">← Back to Valentine's Index</a>
         </div>
     </div>
+
+    <script>
+        var infographicData = {
+            national: {
+                badge: '📊 National Data',
+                title: "Valentine's Day Flower Index 2026",
+                subtitle: 'What Americans Pay for Roses Across 100 Cities',
+                stats: [{value: '$68', label: 'National Average'}, {value: '100', label: 'Cities Surveyed'}, {value: '+22%', label: 'YoY Price Change'}]
+            },
+            illinois: {
+                badge: '🏙️ Illinois Focus',
+                title: "Chicago Metro Valentine's Report",
+                subtitle: 'Flower Trends in the Windy City Region',
+                stats: [{value: '$78', label: 'Chicago Avg'}, {value: '92', label: 'Hinsdale Score'}, {value: '+12%', label: 'Hinsdale Growth'}]
+            },
+            texas: {
+                badge: '⭐ Texas Focus',
+                title: "Lone Star Valentine's Report",
+                subtitle: 'Everything is Bigger Including the Love',
+                stats: [{value: '$62', label: 'Texas Average'}, {value: '85', label: 'Top Score'}, {value: '+9%', label: 'Fort Worth Growth'}]
+            },
+            california: {
+                badge: '☀️ California Focus',
+                title: "Golden State Valentine's Report",
+                subtitle: 'Premium Markets Lead the Way',
+                stats: [{value: '$85', label: 'CA Average'}, {value: '$95', label: 'Beverly Hills'}, {value: '76', label: 'San Diego Score'}]
+            },
+            florida: {
+                badge: '🌴 Florida Focus',
+                title: "Sunshine State Valentine's Report",
+                subtitle: 'Romance Under the Florida Sun',
+                stats: [{value: '$65', label: 'FL Average'}, {value: '84', label: 'Orlando Score'}, {value: '+6%', label: 'Orlando Growth'}]
+            },
+            midwest: {
+                badge: '💚 Midwest Focus',
+                title: "Heartland Valentine's Report",
+                subtitle: 'Where Generosity Leads the Nation',
+                stats: [{value: '98', label: 'Top Score'}, {value: '7/10', label: 'Top 10 Cities'}, {value: '+23%', label: 'vs Coasts'}]
+            },
+            northeast: {
+                badge: '🗽 Northeast Focus',
+                title: "Northeast Valentine's Report",
+                subtitle: 'Premium Markets & Sophisticated Taste',
+                stats: [{value: '$95', label: 'NYC Average'}, {value: '$85', label: 'Boston Avg'}, {value: '72', label: 'Philly Score'}]
+            },
+            southcarolina: {
+                badge: '🌸 South Carolina',
+                title: "Palmetto State Valentine's Report",
+                subtitle: 'Southern Charm Meets Romance',
+                stats: [{value: '$58', label: 'SC Average'}, {value: '88', label: 'Hartsville Score'}, {value: '86', label: 'Charleston Score'}]
+            }
+        };
+
+        var storyAngles = {
+            generosity: {
+                text: 'Cities with higher flower-giving rates show 23% lower divorce rates on average, suggesting a strong correlation between romantic gestures and relationship satisfaction.',
+                ranking1: {title: '💚 Most Generous', items: [
+                    {city: 'Oklahoma City, OK', value: '98'},
+                    {city: 'Tulsa, OK', value: '98'},
+                    {city: 'Jonesboro, AR', value: '97'},
+                    {city: 'Evansville, IN', value: '97'},
+                    {city: 'Detroit, MI', value: '97'}
+                ]},
+                ranking2: {title: '📈 Rising Stars', items: [
+                    {city: 'Hinsdale, IL', value: '+12%'},
+                    {city: 'Orland Park, IL', value: '+11%'},
+                    {city: 'Reno, NV', value: '+10%'},
+                    {city: 'Fort Worth, TX', value: '+9%'},
+                    {city: 'Colorado Springs', value: '+9%'}
+                ]}
+            },
+            expensive: {
+                text: 'Premium markets reflect sophisticated tastes and high-quality local florists who create bespoke arrangements that justify investment in memorable moments.',
+                ranking1: {title: '💰 Most Expensive', items: [
+                    {city: 'New York, NY', value: '$95'},
+                    {city: 'San Francisco, CA', value: '$92'},
+                    {city: 'Palo Alto, CA', value: '$92'},
+                    {city: 'Beverly Hills, CA', value: '$95'},
+                    {city: 'Hinsdale, IL', value: '$88'}
+                ]},
+                ranking2: {title: '💎 Premium Markets', items: [
+                    {city: 'Greenwich, CT', value: 'Premium+'},
+                    {city: 'Westchester, NY', value: 'Premium+'},
+                    {city: 'Lake Forest, IL', value: 'Premium'},
+                    {city: 'Winnetka, IL', value: 'Premium'},
+                    {city: 'Charleston, SC', value: 'Premium'}
+                ]}
+            },
+            growth: {
+                text: 'The fastest-growing markets are seeing renewed appreciation for local florists, with suburban areas leading the charge as couples invest more in meaningful gestures.',
+                ranking1: {title: '🚀 Fastest Growing', items: [
+                    {city: 'Hinsdale, IL', value: '+12%'},
+                    {city: 'Orland Park, IL', value: '+11%'},
+                    {city: 'Reno, NV', value: '+10%'},
+                    {city: 'Fort Worth, TX', value: '+9%'},
+                    {city: 'Colorado Springs', value: '+9%'}
+                ]},
+                ranking2: {title: '📊 Emerging Markets', items: [
+                    {city: 'Durham, NC', value: '+8%'},
+                    {city: 'St. Louis, MO', value: '+8%'},
+                    {city: 'Pittsburgh, PA', value: '+7%'},
+                    {city: 'Omaha, NE', value: '+7%'},
+                    {city: 'Dayton, OH', value: '+6%'}
+                ]}
+            },
+            romance: {
+                text: 'Research shows 89% correlation between city well-being indexes and flower generosity scores—happier cities truly do buy more roses.',
+                ranking1: {title: '💕 Most Romantic', items: [
+                    {city: 'Oklahoma City, OK', value: '98'},
+                    {city: 'Charleston, SC', value: '86'},
+                    {city: 'Nashville, TN', value: '82'},
+                    {city: 'Austin, TX', value: '78'},
+                    {city: 'Denver, CO', value: '75'}
+                ]},
+                ranking2: {title: '💒 Best for Proposals', items: [
+                    {city: 'Charleston, SC', value: 'Top Pick'},
+                    {city: 'Savannah, GA', value: 'Classic'},
+                    {city: 'San Diego, CA', value: 'Scenic'},
+                    {city: 'Nashville, TN', value: 'Trending'},
+                    {city: 'Austin, TX', value: 'Unique'}
+                ]}
+            },
+            local: {
+                text: 'Local florists score 34% higher on customer satisfaction than online giants. Supporting your neighborhood shop means fresher flowers and personal service.',
+                ranking1: {title: '🏆 Local Champions', items: [
+                    {city: 'Hinsdale Flower Shop', value: 'IL'},
+                    {city: "Mitchell's Orland Park", value: 'IL'},
+                    {city: "Mitchell's Floral", value: 'SC'},
+                    {city: 'Phillips Flowers', value: 'IL'},
+                    {city: 'James Cress Florist', value: 'IL'}
+                ]},
+                ranking2: {title: '⭐ Why Shop Local', items: [
+                    {city: 'Fresher flowers', value: '✓'},
+                    {city: 'Same-day delivery', value: '✓'},
+                    {city: 'Custom arrangements', value: '✓'},
+                    {city: 'Personal service', value: '✓'},
+                    {city: 'Community support', value: '✓'}
+                ]}
+            }
+        };
+
+        function updateInfographic() {
+            var region = document.getElementById('region-select').value;
+            var story = document.getElementById('story-select').value;
+            var focus = document.getElementById('focus-select').value;
+
+            var regionInfo = infographicData[region];
+            var storyInfo = storyAngles[story];
+
+            // Update header
+            document.getElementById('info-badge').textContent = regionInfo.badge;
+            document.getElementById('info-title').textContent = regionInfo.title;
+            document.getElementById('info-subtitle').textContent = regionInfo.subtitle;
+
+            // Update stats
+            document.getElementById('stat1-value').textContent = regionInfo.stats[0].value;
+            document.getElementById('stat1-label').textContent = regionInfo.stats[0].label;
+            document.getElementById('stat2-value').textContent = regionInfo.stats[1].value;
+            document.getElementById('stat2-label').textContent = regionInfo.stats[1].label;
+            document.getElementById('stat3-value').textContent = regionInfo.stats[2].value;
+            document.getElementById('stat3-label').textContent = regionInfo.stats[2].label;
+
+            // Update story
+            document.getElementById('story-text').textContent = storyInfo.text;
+
+            // Update rankings
+            document.getElementById('ranking1-title').textContent = storyInfo.ranking1.title;
+            document.getElementById('ranking2-title').textContent = storyInfo.ranking2.title;
+
+            var list1Html = '';
+            storyInfo.ranking1.items.forEach(function(item, i) {
+                list1Html += '<li class="info-ranking-item"><span><span class="rank">' + (i+1) + '.</span> ' + item.city + '</span><span class="value">' + item.value + '</span></li>';
+            });
+            document.getElementById('ranking1-list').innerHTML = list1Html;
+
+            var list2Html = '';
+            storyInfo.ranking2.items.forEach(function(item, i) {
+                list2Html += '<li class="info-ranking-item"><span><span class="rank">' + (i+1) + '.</span> ' + item.city + '</span><span class="value">' + item.value + '</span></li>';
+            });
+            document.getElementById('ranking2-list').innerHTML = list2Html;
+        }
+
+        // Initialize
+        updateInfographic();
+    </script>
 </body>
 </html>

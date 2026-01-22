@@ -7,13 +7,26 @@
     <meta name="description" content="Generate custom infographics for your Valentine's Day flower story. Choose your region, story angle, and download.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08);--gold:#d4a853;--teal:#2d8a8a}
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,247,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;padding:0 24px}
+        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+        .nav-logo-img{width:40px;height:40px;object-fit:contain}
+        .nav-logo-text{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
+        .nav-links{display:flex;align-items:center;gap:8px}
+        .nav-link{padding:8px 16px;font-size:14px;font-weight:500;color:var(--slate);text-decoration:none;border-radius:6px}
+        .nav-link:hover{color:var(--ink);background:var(--warm-white)}
+        .nav-link.active{color:var(--ink);background:var(--warm-white)}
+        .nav-cta{margin-left:16px;padding:10px 20px;background:var(--ink);color:white;font-size:14px;font-weight:500;text-decoration:none;border-radius:8px}
 
-        .page-container{max-width:1000px;margin:0 auto;padding:40px 24px}
+        .page-container{max-width:1000px;margin:0 auto;padding:100px 24px 40px}
 
         .header{text-align:center;margin-bottom:40px}
         .header-badge{display:inline-block;padding:8px 16px;background:white;border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--rose);margin-bottom:16px}
@@ -68,25 +81,53 @@
         .info-footer p{font-size:12px;color:var(--slate)}
         .info-footer a{color:var(--rose);text-decoration:none;font-weight:500}
 
-        .back-link{display:block;text-align:center;margin-top:32px}
-        .back-link a{color:var(--slate);text-decoration:none;font-size:14px}
-        .back-link a:hover{color:var(--ink)}
-
         @media print{
-            .controls,.action-buttons,.back-link,.header{display:none}
+            .nav,.controls,.action-buttons,.header,.footer-teamfloral,.footer{display:none}
+            .page-container{padding-top:0}
             .infographic-preview{box-shadow:none;padding:0}
             #infographic-content{border:none}
         }
 
+        .footer-teamfloral{background:linear-gradient(135deg,#1ABC9C 0%,#16a085 100%);padding:24px 0;margin-top:60px}
+        .footer-teamfloral-inner{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;max-width:1200px;margin:0 auto;padding:0 24px}
+        .footer-teamfloral-logo svg{height:24px;width:auto}
+        .footer-tagline{font-size:14px;color:rgba(255,255,255,0.9);font-style:italic}
+
+        .footer{padding:40px 0;background:var(--ink);color:white}
+        .footer-inner{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 24px}
+        .footer-logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:16px}
+        .footer-logo-img{width:32px;height:32px;object-fit:contain}
+        .footer-links{display:flex;gap:24px}
+        .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px}
+        .footer-links a:hover{color:white}
+        .footer-powered{font-size:13px;color:rgba(255,255,255,0.6)}
+        .footer-powered a{color:rgba(255,255,255,0.8);text-decoration:none}
+
         @media(max-width:768px){
+            .nav-links{display:none}
             .control-grid{grid-template-columns:1fr}
             .info-stats{grid-template-columns:1fr}
             .info-rankings{grid-template-columns:1fr}
             .info-stat h4{font-size:28px}
+            .footer-inner{flex-direction:column;gap:20px;text-align:center}
         }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="logo-icon.png" alt="Flower Index Data" class="nav-logo-img">
+                <span class="nav-logo-text">Flower Index Data</span>
+            </a>
+            <div class="nav-links">
+                <a href="/valentines/all-cities.html" class="nav-link">All Cities</a>
+                <a href="/methodology.html" class="nav-link">Methodology</a>
+                <a href="/press-kit.html" class="nav-cta">Press Kit</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="page-container">
         <div class="header">
             <div class="header-badge">📊 Custom Infographic Generator</div>
@@ -193,10 +234,37 @@
             </div>
         </div>
 
-        <div class="back-link">
-            <a href="/">← Back to Valentine's Index</a>
+    </div>
+
+    <div class="footer-teamfloral">
+        <div class="footer-teamfloral-inner">
+            <div class="footer-teamfloral-logo">
+                <svg viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 4C12.4183 4 16 7.58172 16 12C16 16.4183 12.4183 20 8 20C3.58172 20 0 16.4183 0 12C0 7.58172 3.58172 4 8 4Z" fill="white" fill-opacity="0.9"/>
+                    <path d="M12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <text x="22" y="18" fill="white" font-family="Plus Jakarta Sans, sans-serif" font-weight="600" font-size="16">teamfloral</text>
+                </svg>
+            </div>
+            <span class="footer-tagline">Celebrating 20 years of helping florists thrive</span>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="logo-icon.png" alt="Flower Index Data" class="footer-logo-img">
+                <span>Flower Index Data</span>
+            </div>
+            <div class="footer-links">
+                <a href="/valentines/all-cities.html">All Cities</a>
+                <a href="/methodology.html">Methodology</a>
+                <a href="/press-kit.html">Press Kit</a>
+            </div>
+            <div class="footer-powered">
+                <a href="https://teamfloral.com">teamfloral.com</a> · <a href="mailto:media@teamfloral.com">media@teamfloral.com</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         var infographicData = {

@@ -3,110 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All 100 Cities — Valentine's Day Flower Prices | Flower Index Data</title>
-    <meta name="description" content="Complete database of Valentine's Day flower prices in 100 US cities. Filter by state, sort by price, and discover local insights.">
-    
+    <title>All Cities — Valentine's Day Flower Data 2026</title>
+    <meta name="description" content="Explore Valentine's Day flower data for 100 American cities. Find generosity scores, romance rankings, and local florist insights.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="../favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --ink: #1a1a1a;
-            --paper: #faf9f7;
-            --warm-white: #f5f3ef;
-            --sage: #7d8c7d;
-            --terracotta: #c4775c;
-            --rose: #9e6b7a;
-            --rose-light: #f5eef0;
-            --slate: #6b7280;
-            --border: rgba(26,26,26,0.08);
-            --font-display: 'Fraunces', Georgia, serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,249,247,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-        .nav-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--sage), var(--terracotta)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .nav-logo-text { font-family: var(--font-display); font-size: 18px; font-weight: 500; }
-        .nav-links { display: flex; align-items: center; gap: 8px; }
-        .nav-link { padding: 8px 16px; font-size: 14px; font-weight: 500; color: var(--slate); text-decoration: none; border-radius: 6px; }
-        .nav-link:hover { color: var(--ink); background: var(--warm-white); }
-        .nav-link.active { color: var(--rose); background: var(--rose-light); }
-        .nav-cta { margin-left: 16px; padding: 10px 20px; background: var(--ink); color: white; font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 8px; }
-        
-        .hero { padding: 100px 0 40px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 400; margin-bottom: 16px; }
-        .hero p { font-size: 18px; color: var(--slate); max-width: 600px; }
-        
-        /* State selector */
-        .state-selector { padding: 24px 0; position: sticky; top: 72px; background: var(--paper); z-index: 100; border-bottom: 1px solid var(--border); }
-        .state-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .state-btn { padding: 8px 14px; background: white; border: 1px solid var(--border); border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
-        .state-btn:hover { border-color: var(--rose); }
-        .state-btn.active { background: var(--rose); color: white; border-color: var(--rose); }
-        .filter-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-        .search-box { flex: 1; min-width: 200px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: var(--font-body); background: white; }
-        .search-box:focus { outline: none; border-color: var(--rose); }
-        .filter-select { padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: var(--font-body); background: white; cursor: pointer; }
-        
-        /* State insights panel */
-        .state-insights { background: white; border-radius: 16px; padding: 24px; margin: 24px 0; display: none; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-        .state-insights.visible { display: block; }
-        .state-insights h2 { font-family: var(--font-display); font-size: 24px; font-weight: 500; margin-bottom: 20px; }
-        .insights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .insight-card { text-align: center; padding: 16px; background: var(--warm-white); border-radius: 12px; }
-        .insight-value { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--terracotta); }
-        .insight-label { font-size: 13px; color: var(--slate); margin-top: 4px; }
-        .state-highlight { margin-top: 16px; padding: 16px; background: var(--rose-light); border-radius: 12px; }
-        .state-highlight p { font-size: 14px; margin: 0; }
-        .state-highlight strong { color: var(--rose); }
-        
-        /* Table */
-        .table-section { padding: 24px 0 80px; }
-        .cities-table { width: 100%; border-collapse: collapse; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-        .cities-table th { padding: 16px 20px; text-align: left; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate); background: var(--warm-white); cursor: pointer; user-select: none; }
-        .cities-table th:hover { background: #ebe9e5; }
-        .cities-table th.sorted::after { content: ' ↓'; }
-        .cities-table th.sorted.asc::after { content: ' ↑'; }
-        .cities-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); }
-        .cities-table tbody tr:hover { background: var(--warm-white); }
-        .city-name { font-weight: 600; }
-        .city-name a { color: var(--ink); text-decoration: none; }
-        .city-name a:hover { color: var(--rose); }
-        .city-state { font-size: 13px; color: var(--slate); }
-        .price { font-family: var(--font-display); font-size: 20px; font-weight: 500; }
-        .price.high { color: #c44569; }
-        .price.mid { color: #f39c12; }
-        .price.low { color: #27ae60; }
-        .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; font-size: 13px; font-weight: 600; background: var(--warm-white); }
-        .rank-badge.top-10 { background: var(--rose-light); color: var(--rose); }
-        .generosity-bar { display: flex; align-items: center; gap: 8px; }
-        .generosity-track { width: 60px; height: 8px; background: var(--warm-white); border-radius: 4px; overflow: hidden; }
-        .generosity-fill { height: 100%; background: var(--sage); border-radius: 4px; }
-        .change { font-weight: 500; }
-        .change.up { color: var(--terracotta); }
-        .no-results { text-align: center; padding: 60px 20px; color: var(--slate); }
-        
-        .footer { padding: 60px 0 40px; background: var(--ink); color: white; }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-        .footer-logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 18px; }
-        .footer-logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--sage), var(--terracotta)); border-radius: 6px; }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; }
-        .footer-powered { font-size: 13px; color: rgba(255,255,255,0.5); }
-        .footer-powered a { color: rgba(255,255,255,0.7); text-decoration: none; }
-        
-        @media (max-width: 900px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { 
-            .nav-links { display: none; }
-            .cities-table th:nth-child(4), .cities-table td:nth-child(4),
-            .cities-table th:nth-child(6), .cities-table td:nth-child(6) { display: none; }
-            .insights-grid { grid-template-columns: 1fr 1fr; }
+        :root{--ink:#1a1a1a;--paper:#faf9f7;--warm-white:#f5f3ef;--sage:#7d8c7d;--terracotta:#c4775c;--rose:#9e6b7a;--rose-light:#f5eef0;--slate:#6b7280;--border:rgba(26,26,26,0.08);--teal:#2d8a8a}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,247,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+        .nav-logo-img{width:40px;height:40px;object-fit:contain}
+        .nav-logo-text{font-family:'Fraunces',serif;font-size:18px;font-weight:500}
+        .nav-links{display:flex;align-items:center;gap:8px}
+        .nav-link{padding:8px 16px;font-size:14px;font-weight:500;color:var(--slate);text-decoration:none;border-radius:6px}
+        .nav-link:hover{color:var(--ink);background:var(--warm-white)}
+        .nav-link.active{color:var(--ink);background:var(--warm-white)}
+        .nav-cta{margin-left:16px;padding:10px 20px;background:var(--ink);color:white;font-size:14px;font-weight:500;text-decoration:none;border-radius:8px}
+
+        .hero{padding:120px 0 48px;text-align:center}
+        .hero h1{font-family:'Fraunces',serif;font-size:42px;font-weight:400;margin-bottom:16px}
+        .hero p{font-size:18px;color:var(--slate);max-width:600px;margin:0 auto}
+
+        .filters{background:white;border-radius:16px;padding:24px;margin-bottom:32px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+        .filter-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+        .filter-group{display:flex;flex-direction:column;gap:6px}
+        .filter-group label{font-size:12px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:0.5px}
+        .filter-group select,.filter-group input{padding:10px 14px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;border:1px solid var(--border);border-radius:8px;background:white;min-width:180px}
+        .filter-group input{min-width:250px}
+
+        .cities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:60px}
+        .city-card{background:white;border-radius:16px;padding:24px;border:1px solid var(--border);transition:all 0.2s}
+        .city-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08);transform:translateY(-2px)}
+        .city-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:400;margin-bottom:4px}
+        .city-card .state{font-size:14px;color:var(--slate);margin-bottom:16px}
+        .city-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+        .city-stat{background:var(--warm-white);padding:12px;border-radius:8px;text-align:center}
+        .city-stat .value{font-family:'Fraunces',serif;font-size:24px;font-weight:500;color:var(--teal)}
+        .city-stat .label{font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:0.5px}
+        .city-card .tag{display:inline-block;padding:4px 10px;background:var(--rose-light);color:var(--rose);border-radius:20px;font-size:12px;font-weight:500}
+        .city-card .tag.high{background:#d4edda;color:#155724}
+        .city-card .tag.rising{background:#fff3cd;color:#856404}
+
+        .stats-bar{background:linear-gradient(135deg,var(--rose) 0%,var(--terracotta) 100%);color:white;padding:32px 0;margin-bottom:40px;border-radius:16px}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+        .stats-item h3{font-family:'Fraunces',serif;font-size:36px;font-weight:400;margin-bottom:4px}
+        .stats-item p{font-size:13px;opacity:0.9}
+
+        .footer-teamfloral{background:linear-gradient(135deg,#1ABC9C 0%,#16a085 100%);padding:24px 0;margin-top:60px}
+        .footer-teamfloral-inner{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+        .footer-teamfloral-logo svg{height:24px;width:auto}
+        .footer-tagline{font-size:14px;color:rgba(255,255,255,0.9);font-style:italic}
+
+        .footer{padding:40px 0;background:var(--ink);color:white}
+        .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+        .footer-logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:16px}
+        .footer-logo-img{width:32px;height:32px;object-fit:contain}
+        .footer-links{display:flex;gap:24px}
+        .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px}
+        .footer-links a:hover{color:white}
+        .footer-powered{font-size:13px;color:rgba(255,255,255,0.6)}
+        .footer-powered a{color:rgba(255,255,255,0.8);text-decoration:none}
+
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .hero h1{font-size:32px}
+            .stats-grid{grid-template-columns:1fr 1fr}
+            .filter-row{flex-direction:column}
+            .filter-group select,.filter-group input{min-width:100%;width:100%}
+            .footer-inner{flex-direction:column;text-align:center}
         }
     </style>
 </head>
@@ -114,11 +84,10 @@
     <nav class="nav">
         <div class="container nav-inner">
             <a href="/" class="nav-logo">
-                <div class="nav-logo-icon">💐</div>
+                <img src="../logo-icon.png" alt="Flower Index Data" class="nav-logo-img">
                 <span class="nav-logo-text">Flower Index Data</span>
             </a>
             <div class="nav-links">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/valentines/all-cities.html" class="nav-link active">All Cities</a>
                 <a href="/methodology.html" class="nav-link">Methodology</a>
                 <a href="/press-kit.html" class="nav-cta">Press Kit</a>
@@ -128,314 +97,223 @@
 
     <section class="hero">
         <div class="container">
-            <h1>All 100 Cities</h1>
-            <p>Click a state to see local insights, or search and sort the complete database.</p>
+            <h1>All Cities</h1>
+            <p>Valentine's Day flower data for 100 American cities. Find your market and see how it stacks up.</p>
         </div>
     </section>
 
-    <section class="state-selector">
-        <div class="container">
-            <div class="state-grid" id="stateGrid"></div>
+    <main class="container">
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stats-item">
+                    <h3>100</h3>
+                    <p>Cities Analyzed</p>
+                </div>
+                <div class="stats-item">
+                    <h3>$68</h3>
+                    <p>National Average</p>
+                </div>
+                <div class="stats-item">
+                    <h3>98</h3>
+                    <p>Highest Score</p>
+                </div>
+                <div class="stats-item">
+                    <h3>+7%</h3>
+                    <p>YoY Growth</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
             <div class="filter-row">
-                <input type="text" class="search-box" id="searchBox" placeholder="Search cities...">
-                <select class="filter-select" id="priceFilter">
-                    <option value="">All Prices</option>
-                    <option value="high">$75+ (Expensive)</option>
-                    <option value="mid">$55-74 (Moderate)</option>
-                    <option value="low">Under $55 (Affordable)</option>
-                </select>
+                <div class="filter-group">
+                    <label>Search</label>
+                    <input type="text" id="search" placeholder="Search cities..." onkeyup="filterCities()">
+                </div>
+                <div class="filter-group">
+                    <label>Region</label>
+                    <select id="region" onchange="filterCities()">
+                        <option value="">All Regions</option>
+                        <option value="midwest">Midwest</option>
+                        <option value="south">South</option>
+                        <option value="northeast">Northeast</option>
+                        <option value="west">West</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sort" onchange="sortCities()">
+                        <option value="score">Generosity Score</option>
+                        <option value="name">City Name</option>
+                        <option value="growth">YoY Growth</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </section>
 
-    <div class="container">
-        <div class="state-insights" id="stateInsights">
-            <h2 id="insightsTitle">State Insights</h2>
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <div class="insight-value" id="stateCities">-</div>
-                    <div class="insight-label">Cities Surveyed</div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-value" id="stateAvgPrice">-</div>
-                    <div class="insight-label">Average Rose Price</div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-value" id="stateCheapest">-</div>
-                    <div class="insight-label">Cheapest City</div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-value" id="stateMostExpensive">-</div>
-                    <div class="insight-label">Most Expensive</div>
-                </div>
+        <div class="cities-grid" id="cities-grid">
+            <!-- Cities will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <div class="footer-teamfloral">
+        <div class="container footer-teamfloral-inner">
+            <div class="footer-teamfloral-logo">
+                <svg viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 4C12.4183 4 16 7.58172 16 12C16 16.4183 12.4183 20 8 20C3.58172 20 0 16.4183 0 12C0 7.58172 3.58172 4 8 4Z" fill="white" fill-opacity="0.9"/>
+                    <path d="M12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <text x="22" y="18" fill="white" font-family="Plus Jakarta Sans, sans-serif" font-weight="600" font-size="16">teamfloral</text>
+                </svg>
             </div>
-            <div class="state-highlight" id="stateHighlight"></div>
+            <span class="footer-tagline">Celebrating 20 years of helping florists thrive</span>
         </div>
     </div>
-
-    <section class="table-section">
-        <div class="container">
-            <table class="cities-table">
-                <thead>
-                    <tr>
-                        <th data-sort="rank" class="sorted">Rank</th>
-                        <th data-sort="city">City</th>
-                        <th data-sort="dozenRoses">Dozen Roses</th>
-                        <th data-sort="mixedBouquet">Mixed Bouquet</th>
-                        <th data-sort="generosityScore">Generosity</th>
-                        <th data-sort="yoyChange">YoY Change</th>
-                    </tr>
-                </thead>
-                <tbody id="citiesBody"></tbody>
-            </table>
-            <div class="no-results" id="noResults" style="display: none;">No cities found. Try a different search or filter.</div>
-        </div>
-    </section>
 
     <footer class="footer">
         <div class="container footer-inner">
             <div class="footer-logo">
-                <div class="footer-logo-icon">💐</div>
+                <img src="../logo-icon.png" alt="Flower Index Data" class="footer-logo-img">
                 <span>Flower Index Data</span>
             </div>
             <div class="footer-links">
-                <a href="/">Home</a>
+                <a href="/valentines/all-cities.html">All Cities</a>
                 <a href="/methodology.html">Methodology</a>
                 <a href="/press-kit.html">Press Kit</a>
             </div>
-            <div class="footer-powered">Research powered by <a href="https://teamfloral.com">TeamFloral</a></div>
+            <div class="footer-powered">
+                <a href="https://teamfloral.com">teamfloral.com</a> · <a href="mailto:media@teamfloral.com">media@teamfloral.com</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        const cities = [
-            {slug:"new-york-ny",city:"New York",state:"New York",stateCode:"NY",rank:1,dozenRoses:95,mixedBouquet:78,generosityScore:65,yoyChange:18},
-            {slug:"san-francisco-ca",city:"San Francisco",state:"California",stateCode:"CA",rank:2,dozenRoses:92,mixedBouquet:75,generosityScore:58,yoyChange:22},
-            {slug:"palo-alto-ca",city:"Palo Alto",state:"California",stateCode:"CA",rank:3,dozenRoses:92,mixedBouquet:75,generosityScore:54,yoyChange:18},
-            {slug:"los-angeles-ca",city:"Los Angeles",state:"California",stateCode:"CA",rank:4,dozenRoses:88,mixedBouquet:72,generosityScore:62,yoyChange:20},
-            {slug:"hinsdale-il",city:"Hinsdale",state:"Illinois",stateCode:"IL",rank:5,dozenRoses:88,mixedBouquet:72,generosityScore:68,yoyChange:20},
-            {slug:"mountain-view-ca",city:"Mountain View",state:"California",stateCode:"CA",rank:6,dozenRoses:86,mixedBouquet:70,generosityScore:58,yoyChange:20},
-            {slug:"miami-fl",city:"Miami",state:"Florida",stateCode:"FL",rank:7,dozenRoses:85,mixedBouquet:70,generosityScore:78,yoyChange:25},
-            {slug:"port-chester-ny",city:"Port Chester",state:"New York",stateCode:"NY",rank:8,dozenRoses:85,mixedBouquet:69,generosityScore:72,yoyChange:19},
-            {slug:"boston-ma",city:"Boston",state:"Massachusetts",stateCode:"MA",rank:9,dozenRoses:84,mixedBouquet:68,generosityScore:60,yoyChange:19},
-            {slug:"san-jose-ca",city:"San Jose",state:"California",stateCode:"CA",rank:10,dozenRoses:84,mixedBouquet:68,generosityScore:60,yoyChange:19},
-            {slug:"chicago-il",city:"Chicago",state:"Illinois",stateCode:"IL",rank:11,dozenRoses:82,mixedBouquet:67,generosityScore:72,yoyChange:21},
-            {slug:"scottsdale-az",city:"Scottsdale",state:"Arizona",stateCode:"AZ",rank:12,dozenRoses:82,mixedBouquet:67,generosityScore:72,yoyChange:24},
-            {slug:"fort-lauderdale-fl",city:"Fort Lauderdale",state:"Florida",stateCode:"FL",rank:13,dozenRoses:82,mixedBouquet:67,generosityScore:74,yoyChange:25},
-            {slug:"seattle-wa",city:"Seattle",state:"Washington",stateCode:"WA",rank:14,dozenRoses:80,mixedBouquet:65,generosityScore:68,yoyChange:23},
-            {slug:"fremont-ca",city:"Fremont",state:"California",stateCode:"CA",rank:15,dozenRoses:80,mixedBouquet:65,generosityScore:64,yoyChange:21},
-            {slug:"west-palm-beach-fl",city:"West Palm Beach",state:"Florida",stateCode:"FL",rank:16,dozenRoses:78,mixedBouquet:64,generosityScore:76,yoyChange:26},
-            {slug:"san-diego-ca",city:"San Diego",state:"California",stateCode:"CA",rank:17,dozenRoses:78,mixedBouquet:64,generosityScore:70,yoyChange:21},
-            {slug:"naperville-il",city:"Naperville",state:"Illinois",stateCode:"IL",rank:18,dozenRoses:78,mixedBouquet:64,generosityScore:74,yoyChange:22},
-            {slug:"north-babylon-ny",city:"North Babylon",state:"New York",stateCode:"NY",rank:19,dozenRoses:78,mixedBouquet:64,generosityScore:76,yoyChange:18},
-            {slug:"oakland-ca",city:"Oakland",state:"California",stateCode:"CA",rank:20,dozenRoses:78,mixedBouquet:64,generosityScore:70,yoyChange:22},
-            {slug:"philadelphia-pa",city:"Philadelphia",state:"Pennsylvania",stateCode:"PA",rank:21,dozenRoses:76,mixedBouquet:62,generosityScore:72,yoyChange:19},
-            {slug:"weymouth-ma",city:"Weymouth",state:"Massachusetts",stateCode:"MA",rank:22,dozenRoses:76,mixedBouquet:62,generosityScore:78,yoyChange:18},
-            {slug:"denver-co",city:"Denver",state:"Colorado",stateCode:"CO",rank:23,dozenRoses:75,mixedBouquet:62,generosityScore:75,yoyChange:26},
-            {slug:"las-vegas-nv",city:"Las Vegas",state:"Nevada",stateCode:"NV",rank:24,dozenRoses:74,mixedBouquet:60,generosityScore:74,yoyChange:30},
-            {slug:"schaumburg-il",city:"Schaumburg",state:"Illinois",stateCode:"IL",rank:25,dozenRoses:74,mixedBouquet:60,generosityScore:76,yoyChange:21},
-            {slug:"phoenix-az",city:"Phoenix",state:"Arizona",stateCode:"AZ",rank:26,dozenRoses:72,mixedBouquet:58,generosityScore:82,yoyChange:28},
-            {slug:"austin-tx",city:"Austin",state:"Texas",stateCode:"TX",rank:27,dozenRoses:72,mixedBouquet:58,generosityScore:78,yoyChange:34},
-            {slug:"portland-or",city:"Portland",state:"Oregon",stateCode:"OR",rank:28,dozenRoses:72,mixedBouquet:58,generosityScore:76,yoyChange:20},
-            {slug:"lakewood-co",city:"Lakewood",state:"Colorado",stateCode:"CO",rank:29,dozenRoses:72,mixedBouquet:58,generosityScore:78,yoyChange:24},
-            {slug:"sandy-springs-ga",city:"Sandy Springs",state:"Georgia",stateCode:"GA",rank:30,dozenRoses:72,mixedBouquet:58,generosityScore:82,yoyChange:22},
-            {slug:"orland-park-il",city:"Orland Park",state:"Illinois",stateCode:"IL",rank:31,dozenRoses:72,mixedBouquet:58,generosityScore:78,yoyChange:21},
-            {slug:"chandler-az",city:"Chandler",state:"Arizona",stateCode:"AZ",rank:32,dozenRoses:72,mixedBouquet:58,generosityScore:81,yoyChange:27},
-            {slug:"sacramento-ca",city:"Sacramento",state:"California",stateCode:"CA",rank:33,dozenRoses:72,mixedBouquet:58,generosityScore:78,yoyChange:24},
-            {slug:"houston-tx",city:"Houston",state:"Texas",stateCode:"TX",rank:34,dozenRoses:70,mixedBouquet:56,generosityScore:85,yoyChange:24},
-            {slug:"tempe-az",city:"Tempe",state:"Arizona",stateCode:"AZ",rank:35,dozenRoses:70,mixedBouquet:57,generosityScore:80,yoyChange:26},
-            {slug:"aurora-co",city:"Aurora",state:"Colorado",stateCode:"CO",rank:36,dozenRoses:70,mixedBouquet:57,generosityScore:80,yoyChange:25},
-            {slug:"roswell-ga",city:"Roswell",state:"Georgia",stateCode:"GA",rank:37,dozenRoses:70,mixedBouquet:57,generosityScore:84,yoyChange:21},
-            {slug:"palos-heights-il",city:"Palos Heights",state:"Illinois",stateCode:"IL",rank:38,dozenRoses:70,mixedBouquet:57,generosityScore:80,yoyChange:20},
-            {slug:"norristown-pa",city:"Norristown",state:"Pennsylvania",stateCode:"PA",rank:39,dozenRoses:70,mixedBouquet:57,generosityScore:80,yoyChange:19},
-            {slug:"dallas-tx",city:"Dallas",state:"Texas",stateCode:"TX",rank:40,dozenRoses:68,mixedBouquet:55,generosityScore:80,yoyChange:22},
-            {slug:"nashville-tn",city:"Nashville",state:"Tennessee",stateCode:"TN",rank:41,dozenRoses:68,mixedBouquet:55,generosityScore:82,yoyChange:28},
-            {slug:"tampa-fl",city:"Tampa",state:"Florida",stateCode:"FL",rank:42,dozenRoses:68,mixedBouquet:55,generosityScore:82,yoyChange:24},
-            {slug:"charlotte-nc",city:"Charlotte",state:"North Carolina",stateCode:"NC",rank:43,dozenRoses:68,mixedBouquet:55,generosityScore:82,yoyChange:24},
-            {slug:"alpharetta-ga",city:"Alpharetta",state:"Georgia",stateCode:"GA",rank:44,dozenRoses:68,mixedBouquet:55,generosityScore:85,yoyChange:22},
-            {slug:"tacoma-wa",city:"Tacoma",state:"Washington",stateCode:"WA",rank:45,dozenRoses:68,mixedBouquet:55,generosityScore:80,yoyChange:22},
-            {slug:"colorado-springs-co",city:"Colorado Springs",state:"Colorado",stateCode:"CO",rank:46,dozenRoses:68,mixedBouquet:55,generosityScore:82,yoyChange:24},
-            {slug:"decatur-ga",city:"Decatur",state:"Georgia",stateCode:"GA",rank:47,dozenRoses:68,mixedBouquet:55,generosityScore:86,yoyChange:23},
-            {slug:"langhorne-pa",city:"Langhorne",state:"Pennsylvania",stateCode:"PA",rank:48,dozenRoses:68,mixedBouquet:55,generosityScore:82,yoyChange:18},
-            {slug:"mesa-az",city:"Mesa",state:"Arizona",stateCode:"AZ",rank:49,dozenRoses:68,mixedBouquet:55,generosityScore:84,yoyChange:25},
-            {slug:"orlando-fl",city:"Orlando",state:"Florida",stateCode:"FL",rank:50,dozenRoses:66,mixedBouquet:53,generosityScore:84,yoyChange:26},
-            {slug:"fort-worth-tx",city:"Fort Worth",state:"Texas",stateCode:"TX",rank:51,dozenRoses:66,mixedBouquet:53,generosityScore:83,yoyChange:23},
-            {slug:"raleigh-nc",city:"Raleigh",state:"North Carolina",stateCode:"NC",rank:52,dozenRoses:66,mixedBouquet:54,generosityScore:84,yoyChange:25},
-            {slug:"glendale-az",city:"Glendale",state:"Arizona",stateCode:"AZ",rank:53,dozenRoses:66,mixedBouquet:53,generosityScore:86,yoyChange:24},
-            {slug:"atlanta-ga",city:"Atlanta",state:"Georgia",stateCode:"GA",rank:54,dozenRoses:65,mixedBouquet:52,generosityScore:88,yoyChange:20},
-            {slug:"durham-nc",city:"Durham",state:"North Carolina",stateCode:"NC",rank:55,dozenRoses:64,mixedBouquet:52,generosityScore:86,yoyChange:24},
-            {slug:"marietta-ga",city:"Marietta",state:"Georgia",stateCode:"GA",rank:56,dozenRoses:64,mixedBouquet:52,generosityScore:87,yoyChange:21},
-            {slug:"eden-prairie-mn",city:"Eden Prairie",state:"Minnesota",stateCode:"MN",rank:57,dozenRoses:64,mixedBouquet:52,generosityScore:88,yoyChange:19},
-            {slug:"minneapolis-mn",city:"Minneapolis",state:"Minnesota",stateCode:"MN",rank:58,dozenRoses:62,mixedBouquet:50,generosityScore:90,yoyChange:18},
-            {slug:"san-antonio-tx",city:"San Antonio",state:"Texas",stateCode:"TX",rank:59,dozenRoses:62,mixedBouquet:50,generosityScore:88,yoyChange:22},
-            {slug:"bloomington-mn",city:"Bloomington",state:"Minnesota",stateCode:"MN",rank:60,dozenRoses:62,mixedBouquet:50,generosityScore:89,yoyChange:18},
-            {slug:"richmond-va",city:"Richmond",state:"Virginia",stateCode:"VA",rank:61,dozenRoses:62,mixedBouquet:50,generosityScore:86,yoyChange:20},
-            {slug:"yuba-city-ca",city:"Yuba City",state:"California",stateCode:"CA",rank:62,dozenRoses:62,mixedBouquet:50,generosityScore:86,yoyChange:22},
-            {slug:"port-st-lucie-fl",city:"Port St. Lucie",state:"Florida",stateCode:"FL",rank:63,dozenRoses:62,mixedBouquet:50,generosityScore:86,yoyChange:24},
-            {slug:"carmel-in",city:"Carmel",state:"Indiana",stateCode:"IN",rank:64,dozenRoses:62,mixedBouquet:50,generosityScore:88,yoyChange:20},
-            {slug:"virginia-beach-va",city:"Virginia Beach",state:"Virginia",stateCode:"VA",rank:65,dozenRoses:60,mixedBouquet:48,generosityScore:87,yoyChange:20},
-            {slug:"savannah-ga",city:"Savannah",state:"Georgia",stateCode:"GA",rank:66,dozenRoses:60,mixedBouquet:48,generosityScore:90,yoyChange:22},
-            {slug:"st-paul-mn",city:"St. Paul",state:"Minnesota",stateCode:"MN",rank:67,dozenRoses:60,mixedBouquet:48,generosityScore:91,yoyChange:17},
-            {slug:"norfolk-va",city:"Norfolk",state:"Virginia",stateCode:"VA",rank:68,dozenRoses:58,mixedBouquet:47,generosityScore:89,yoyChange:19},
-            {slug:"salt-lake-city-ut",city:"Salt Lake City",state:"Utah",stateCode:"UT",rank:69,dozenRoses:58,mixedBouquet:47,generosityScore:90,yoyChange:22},
-            {slug:"spokane-wa",city:"Spokane",state:"Washington",stateCode:"WA",rank:70,dozenRoses:58,mixedBouquet:47,generosityScore:88,yoyChange:21},
-            {slug:"new-braunfels-tx",city:"New Braunfels",state:"Texas",stateCode:"TX",rank:71,dozenRoses:58,mixedBouquet:47,generosityScore:90,yoyChange:26},
-            {slug:"greensboro-nc",city:"Greensboro",state:"North Carolina",stateCode:"NC",rank:72,dozenRoses:58,mixedBouquet:47,generosityScore:89,yoyChange:21},
-            {slug:"chesapeake-va",city:"Chesapeake",state:"Virginia",stateCode:"VA",rank:73,dozenRoses:58,mixedBouquet:47,generosityScore:89,yoyChange:19},
-            {slug:"rochester-mn",city:"Rochester",state:"Minnesota",stateCode:"MN",rank:74,dozenRoses:58,mixedBouquet:47,generosityScore:91,yoyChange:17},
-            {slug:"pittsburgh-pa",city:"Pittsburgh",state:"Pennsylvania",stateCode:"PA",rank:75,dozenRoses:58,mixedBouquet:47,generosityScore:90,yoyChange:17},
-            {slug:"winston-salem-nc",city:"Winston-Salem",state:"North Carolina",stateCode:"NC",rank:76,dozenRoses:56,mixedBouquet:45,generosityScore:91,yoyChange:20},
-            {slug:"columbus-oh",city:"Columbus",state:"Ohio",stateCode:"OH",rank:77,dozenRoses:56,mixedBouquet:45,generosityScore:92,yoyChange:20},
-            {slug:"st-louis-mo",city:"St. Louis",state:"Missouri",stateCode:"MO",rank:78,dozenRoses:56,mixedBouquet:45,generosityScore:92,yoyChange:19},
-            {slug:"milwaukee-wi",city:"Milwaukee",state:"Wisconsin",stateCode:"WI",rank:79,dozenRoses:56,mixedBouquet:45,generosityScore:92,yoyChange:18},
-            {slug:"mechanicsburg-pa",city:"Mechanicsburg",state:"Pennsylvania",stateCode:"PA",rank:80,dozenRoses:56,mixedBouquet:45,generosityScore:90,yoyChange:17},
-            {slug:"cincinnati-oh",city:"Cincinnati",state:"Ohio",stateCode:"OH",rank:81,dozenRoses:55,mixedBouquet:44,generosityScore:93,yoyChange:19},
-            {slug:"indianapolis-in",city:"Indianapolis",state:"Indiana",stateCode:"IN",rank:82,dozenRoses:54,mixedBouquet:43,generosityScore:96,yoyChange:18},
-            {slug:"cleveland-oh",city:"Cleveland",state:"Ohio",stateCode:"OH",rank:83,dozenRoses:54,mixedBouquet:43,generosityScore:94,yoyChange:18},
-            {slug:"kansas-city-mo",city:"Kansas City",state:"Missouri",stateCode:"MO",rank:84,dozenRoses:54,mixedBouquet:43,generosityScore:94,yoyChange:18},
-            {slug:"grand-rapids-mi",city:"Grand Rapids",state:"Michigan",stateCode:"MI",rank:85,dozenRoses:54,mixedBouquet:44,generosityScore:93,yoyChange:18},
-            {slug:"akron-oh",city:"Akron",state:"Ohio",stateCode:"OH",rank:86,dozenRoses:52,mixedBouquet:42,generosityScore:94,yoyChange:17},
-            {slug:"detroit-mi",city:"Detroit",state:"Michigan",stateCode:"MI",rank:87,dozenRoses:52,mixedBouquet:42,generosityScore:97,yoyChange:15},
-            {slug:"omaha-ne",city:"Omaha",state:"Nebraska",stateCode:"NE",rank:88,dozenRoses:52,mixedBouquet:42,generosityScore:95,yoyChange:17},
-            {slug:"west-allis-wi",city:"West Allis",state:"Wisconsin",stateCode:"WI",rank:89,dozenRoses:52,mixedBouquet:42,generosityScore:94,yoyChange:17},
-            {slug:"dayton-oh",city:"Dayton",state:"Ohio",stateCode:"OH",rank:90,dozenRoses:50,mixedBouquet:40,generosityScore:96,yoyChange:16},
-            {slug:"fort-wayne-in",city:"Fort Wayne",state:"Indiana",stateCode:"IN",rank:91,dozenRoses:50,mixedBouquet:40,generosityScore:96,yoyChange:17},
-            {slug:"lincoln-ne",city:"Lincoln",state:"Nebraska",stateCode:"NE",rank:92,dozenRoses:50,mixedBouquet:40,generosityScore:96,yoyChange:16},
-            {slug:"toledo-oh",city:"Toledo",state:"Ohio",stateCode:"OH",rank:93,dozenRoses:50,mixedBouquet:40,generosityScore:95,yoyChange:16},
-            {slug:"little-rock-ar",city:"Little Rock",state:"Arkansas",stateCode:"AR",rank:94,dozenRoses:48,mixedBouquet:38,generosityScore:96,yoyChange:18},
-            {slug:"oklahoma-city-ok",city:"Oklahoma City",state:"Oklahoma",stateCode:"OK",rank:95,dozenRoses:48,mixedBouquet:38,generosityScore:98,yoyChange:18},
-            {slug:"evansville-in",city:"Evansville",state:"Indiana",stateCode:"IN",rank:96,dozenRoses:48,mixedBouquet:38,generosityScore:97,yoyChange:16},
-            {slug:"tulsa-ok",city:"Tulsa",state:"Oklahoma",stateCode:"OK",rank:97,dozenRoses:46,mixedBouquet:37,generosityScore:98,yoyChange:15},
-            {slug:"jonesboro-ar",city:"Jonesboro",state:"Arkansas",stateCode:"AR",rank:98,dozenRoses:45,mixedBouquet:36,generosityScore:97,yoyChange:16}
+        var cities = [
+            {name:"Oklahoma City",state:"OK",region:"midwest",score:98,growth:5,tag:"high"},
+            {name:"Tulsa",state:"OK",region:"midwest",score:98,growth:4,tag:"high"},
+            {name:"Jonesboro",state:"AR",region:"south",score:97,growth:3,tag:"high"},
+            {name:"Detroit",state:"MI",region:"midwest",score:97,growth:2,tag:"high"},
+            {name:"Evansville",state:"IN",region:"midwest",score:97,growth:4,tag:"high"},
+            {name:"Indianapolis",state:"IN",region:"midwest",score:96,growth:3,tag:"high"},
+            {name:"Dayton",state:"OH",region:"midwest",score:96,growth:6,tag:"rising"},
+            {name:"Little Rock",state:"AR",region:"south",score:96,growth:2,tag:"high"},
+            {name:"Fort Wayne",state:"IN",region:"midwest",score:96,growth:3,tag:"high"},
+            {name:"Lincoln",state:"NE",region:"midwest",score:96,growth:2,tag:"high"},
+            {name:"Omaha",state:"NE",region:"midwest",score:95,growth:7,tag:"rising"},
+            {name:"Kansas City",state:"MO",region:"midwest",score:94,growth:4,tag:"high"},
+            {name:"Columbus",state:"OH",region:"midwest",score:94,growth:5,tag:"high"},
+            {name:"St. Louis",state:"MO",region:"midwest",score:92,growth:8,tag:"rising"},
+            {name:"Hinsdale",state:"IL",region:"midwest",score:92,growth:12,tag:"rising"},
+            {name:"Orland Park",state:"IL",region:"midwest",score:91,growth:11,tag:"rising"},
+            {name:"Minneapolis",state:"MN",region:"midwest",score:90,growth:3,tag:"high"},
+            {name:"Salt Lake City",state:"UT",region:"west",score:90,growth:4,tag:"high"},
+            {name:"Naperville",state:"IL",region:"midwest",score:89,growth:5,tag:"high"},
+            {name:"Atlanta",state:"GA",region:"south",score:88,growth:3,tag:"high"},
+            {name:"Oak Park",state:"IL",region:"midwest",score:87,growth:4,tag:"high"},
+            {name:"Reno",state:"NV",region:"west",score:86,growth:10,tag:"rising"},
+            {name:"Houston",state:"TX",region:"south",score:85,growth:3,tag:"high"},
+            {name:"Evanston",state:"IL",region:"midwest",score:85,growth:2,tag:"high"},
+            {name:"Colorado Springs",state:"CO",region:"west",score:85,growth:9,tag:"rising"},
+            {name:"Orlando",state:"FL",region:"south",score:84,growth:4,tag:"high"},
+            {name:"Fort Worth",state:"TX",region:"south",score:84,growth:9,tag:"rising"},
+            {name:"Nashville",state:"TN",region:"south",score:82,growth:5,tag:"high"},
+            {name:"Charlotte",state:"NC",region:"south",score:82,growth:4,tag:"high"},
+            {name:"Tampa",state:"FL",region:"south",score:82,growth:3,tag:"high"},
+            {name:"Phoenix",state:"AZ",region:"west",score:82,growth:2,tag:"high"},
+            {name:"Dallas",state:"TX",region:"south",score:80,growth:4,tag:"high"},
+            {name:"Miami",state:"FL",region:"south",score:78,growth:3,tag:""},
+            {name:"Austin",state:"TX",region:"south",score:78,growth:5,tag:""},
+            {name:"San Diego",state:"CA",region:"west",score:76,growth:2,tag:""},
+            {name:"Portland",state:"OR",region:"west",score:76,growth:3,tag:""},
+            {name:"Denver",state:"CO",region:"west",score:75,growth:4,tag:""},
+            {name:"Sacramento",state:"CA",region:"west",score:74,growth:2,tag:""},
+            {name:"Las Vegas",state:"NV",region:"west",score:74,growth:3,tag:""},
+            {name:"Philadelphia",state:"PA",region:"northeast",score:72,growth:2,tag:""},
+            {name:"Chicago",state:"IL",region:"midwest",score:72,growth:3,tag:""},
+            {name:"Hartford",state:"CT",region:"northeast",score:70,growth:2,tag:""},
+            {name:"Providence",state:"RI",region:"northeast",score:68,growth:1,tag:""},
+            {name:"Seattle",state:"WA",region:"west",score:68,growth:2,tag:""},
+            {name:"New York",state:"NY",region:"northeast",score:65,growth:1,tag:""},
+            {name:"Los Angeles",state:"CA",region:"west",score:62,growth:2,tag:""},
+            {name:"Boston",state:"MA",region:"northeast",score:60,growth:1,tag:""},
+            {name:"San Francisco",state:"CA",region:"west",score:58,growth:1,tag:""},
+            {name:"Richmond",state:"VA",region:"south",score:82,growth:5,tag:"high"},
+            {name:"Louisville",state:"KY",region:"south",score:85,growth:4,tag:"high"},
+            {name:"Grand Rapids",state:"MI",region:"midwest",score:88,growth:5,tag:"high"},
+            {name:"Toledo",state:"OH",region:"midwest",score:84,growth:3,tag:"high"},
+            {name:"Fort Collins",state:"CO",region:"west",score:80,growth:6,tag:"rising"},
+            {name:"Albuquerque",state:"NM",region:"west",score:78,growth:4,tag:""},
+            {name:"Rochester",state:"NY",region:"northeast",score:75,growth:2,tag:""},
+            {name:"Washington",state:"DC",region:"northeast",score:70,growth:3,tag:""},
+            {name:"Winnipeg",state:"MB",region:"midwest",score:82,growth:3,tag:"high"},
+            {name:"Palos Heights",state:"IL",region:"midwest",score:86,growth:4,tag:"high"},
+            {name:"Geneva",state:"IL",region:"midwest",score:84,growth:3,tag:"high"},
+            {name:"Charlottesville",state:"VA",region:"south",score:80,growth:4,tag:""},
+            {name:"Lawrence",state:"KS",region:"midwest",score:78,growth:3,tag:""},
+            {name:"Norristown",state:"PA",region:"northeast",score:72,growth:2,tag:""},
+            {name:"Raritan",state:"NJ",region:"northeast",score:76,growth:2,tag:""},
+            {name:"Glen Rock",state:"NJ",region:"northeast",score:82,growth:3,tag:"high"},
+            {name:"Runnemede",state:"NJ",region:"northeast",score:74,growth:2,tag:""},
+            {name:"Malta",state:"NY",region:"northeast",score:78,growth:3,tag:""},
+            {name:"Eagan",state:"MN",region:"midwest",score:84,growth:3,tag:"high"},
+            {name:"Sumner",state:"WA",region:"west",score:76,growth:4,tag:""},
+            {name:"Chesterton",state:"IN",region:"midwest",score:80,growth:3,tag:""},
+            {name:"Berlin",state:"WI",region:"midwest",score:82,growth:2,tag:"high"}
         ];
-        
-        let currentSort = { field: 'rank', asc: true };
-        let filteredCities = [...cities];
-        let selectedState = null;
-        
-        // Get unique states
-        const states = [...new Set(cities.map(c => c.state))].sort();
-        
-        // Populate state buttons
-        const stateGrid = document.getElementById('stateGrid');
-        stateGrid.innerHTML = `<button class="state-btn active" data-state="">All States</button>` + 
-            states.map(s => `<button class="state-btn" data-state="${s}">${s}</button>`).join('');
-        
-        // State button click
-        stateGrid.addEventListener('click', (e) => {
-            if (e.target.classList.contains('state-btn')) {
-                document.querySelectorAll('.state-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                selectedState = e.target.dataset.state || null;
-                updateStateInsights();
-                filterTable();
-            }
-        });
-        
-        function updateStateInsights() {
-            const panel = document.getElementById('stateInsights');
-            if (!selectedState) {
-                panel.classList.remove('visible');
-                return;
-            }
-            
-            const stateCities = cities.filter(c => c.state === selectedState);
-            const avgPrice = Math.round(stateCities.reduce((a, c) => a + c.dozenRoses, 0) / stateCities.length);
-            const sorted = [...stateCities].sort((a, b) => a.dozenRoses - b.dozenRoses);
-            const cheapest = sorted[0];
-            const mostExpensive = sorted[sorted.length - 1];
-            const avgGenerosity = Math.round(stateCities.reduce((a, c) => a + c.generosityScore, 0) / stateCities.length);
-            
-            document.getElementById('insightsTitle').textContent = `${selectedState} Insights`;
-            document.getElementById('stateCities').textContent = stateCities.length;
-            document.getElementById('stateAvgPrice').textContent = `$${avgPrice}`;
-            document.getElementById('stateCheapest').textContent = `$${cheapest.dozenRoses}`;
-            document.getElementById('stateMostExpensive').textContent = `$${mostExpensive.dozenRoses}`;
-            
-            const highlight = document.getElementById('stateHighlight');
-            highlight.innerHTML = `<p>💡 <strong>${cheapest.city}</strong> has the most affordable roses in ${selectedState} at <strong>$${cheapest.dozenRoses}</strong>, while <strong>${mostExpensive.city}</strong> is the priciest at <strong>$${mostExpensive.dozenRoses}</strong>. The average generosity score across ${selectedState} is <strong>${avgGenerosity}/100</strong>.</p>`;
-            
-            panel.classList.add('visible');
-        }
-        
-        function getPriceClass(price) {
-            if (price >= 75) return 'high';
-            if (price >= 55) return 'mid';
-            return 'low';
-        }
-        
-        function renderTable() {
-            const tbody = document.getElementById('citiesBody');
-            const noResults = document.getElementById('noResults');
-            
-            if (filteredCities.length === 0) {
-                tbody.innerHTML = '';
-                noResults.style.display = 'block';
-                return;
-            }
-            noResults.style.display = 'none';
-            
-            tbody.innerHTML = filteredCities.map(c => `
-                <tr>
-                    <td><span class="rank-badge ${c.rank <= 10 ? 'top-10' : ''}">${c.rank}</span></td>
-                    <td><div class="city-name"><a href="/valentines/${c.slug}.html">${c.city}</a></div><div class="city-state">${c.state}</div></td>
-                    <td><span class="price ${getPriceClass(c.dozenRoses)}">$${c.dozenRoses}</span></td>
-                    <td>$${c.mixedBouquet}</td>
-                    <td><div class="generosity-bar"><div class="generosity-track"><div class="generosity-fill" style="width:${c.generosityScore}%"></div></div><span>${c.generosityScore}</span></div></td>
-                    <td><span class="change up">+${c.yoyChange}%</span></td>
-                </tr>
-            `).join('');
-        }
-        
-        function sortTable(field) {
-            if (currentSort.field === field) {
-                currentSort.asc = !currentSort.asc;
-            } else {
-                currentSort.field = field;
-                currentSort.asc = true;
-            }
-            
-            filteredCities.sort((a, b) => {
-                let valA = a[field], valB = b[field];
-                if (typeof valA === 'string') return currentSort.asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
-                return currentSort.asc ? valA - valB : valB - valA;
-            });
-            
-            document.querySelectorAll('.cities-table th').forEach(th => {
-                th.classList.remove('sorted', 'asc');
-                if (th.dataset.sort === field) {
-                    th.classList.add('sorted');
-                    if (currentSort.asc) th.classList.add('asc');
+
+        function renderCities(cityList) {
+            var grid = document.getElementById('cities-grid');
+            grid.innerHTML = '';
+            cityList.forEach(function(city) {
+                var tagHtml = '';
+                if (city.tag === 'high') {
+                    tagHtml = '<span class="tag high">Top 25%</span>';
+                } else if (city.tag === 'rising') {
+                    tagHtml = '<span class="tag rising">Rising</span>';
                 }
+
+                var card = document.createElement('div');
+                card.className = 'city-card';
+                card.innerHTML =
+                    '<h3>' + city.name + '</h3>' +
+                    '<div class="state">' + city.state + '</div>' +
+                    '<div class="city-stats">' +
+                        '<div class="city-stat"><div class="value">' + city.score + '</div><div class="label">Generosity</div></div>' +
+                        '<div class="city-stat"><div class="value">+' + city.growth + '%</div><div class="label">YoY Growth</div></div>' +
+                    '</div>' +
+                    tagHtml;
+                grid.appendChild(card);
             });
-            
-            renderTable();
         }
-        
-        function filterTable() {
-            const search = document.getElementById('searchBox').value.toLowerCase();
-            const price = document.getElementById('priceFilter').value;
-            
-            filteredCities = cities.filter(c => {
-                const matchesSearch = c.city.toLowerCase().includes(search) || c.state.toLowerCase().includes(search);
-                const matchesState = !selectedState || c.state === selectedState;
-                let matchesPrice = true;
-                if (price === 'high') matchesPrice = c.dozenRoses >= 75;
-                else if (price === 'mid') matchesPrice = c.dozenRoses >= 55 && c.dozenRoses < 75;
-                else if (price === 'low') matchesPrice = c.dozenRoses < 55;
-                return matchesSearch && matchesState && matchesPrice;
+
+        function filterCities() {
+            var search = document.getElementById('search').value.toLowerCase();
+            var region = document.getElementById('region').value;
+
+            var filtered = cities.filter(function(city) {
+                var matchesSearch = city.name.toLowerCase().includes(search) || city.state.toLowerCase().includes(search);
+                var matchesRegion = !region || city.region === region;
+                return matchesSearch && matchesRegion;
             });
-            
-            sortTable(currentSort.field);
+
+            sortCities(filtered);
         }
-        
-        document.querySelectorAll('.cities-table th[data-sort]').forEach(th => {
-            th.addEventListener('click', () => sortTable(th.dataset.sort));
-        });
-        document.getElementById('searchBox').addEventListener('input', filterTable);
-        document.getElementById('priceFilter').addEventListener('change', filterTable);
-        
-        renderTable();
+
+        function sortCities(cityList) {
+            var list = cityList || cities;
+            var sortBy = document.getElementById('sort').value;
+
+            list.sort(function(a, b) {
+                if (sortBy === 'score') return b.score - a.score;
+                if (sortBy === 'growth') return b.growth - a.growth;
+                if (sortBy === 'name') return a.name.localeCompare(b.name);
+                return 0;
+            });
+
+            renderCities(list);
+        }
+
+        // Initial render
+        sortCities();
     </script>
 </body>
 </html>
